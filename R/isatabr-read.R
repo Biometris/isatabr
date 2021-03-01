@@ -58,6 +58,8 @@ readISATab <- function(path = getwd(),
                        zipfile = NULL,
                        verbose = FALSE) {
   checkCharacter(path)
+  ## Run file.path to assure trailing / are removed/added when needed.
+  path <- file.path(path)
   if (!file.exists(path)) {
     stop(path, " is not an existing folder on this system!")
   }
