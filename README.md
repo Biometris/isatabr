@@ -1,10 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<!--
-[![Build status](https://ci.appveyor.com/api/projects/status/pksd2fuf6w28cpsu?svg=true)](https://ci.appveyor.com/project/mverouden/wurmc)
-[![Build Status](https://travis-ci.org/mverouden/wurmc.svg?branch=master)](https://travis-ci.org/mverouden/wurmc)
-[![codecov](https://codecov.io/gh/mverouden/wurmc/branch/master/graph/badge.svg)](https://codecov.io/gh/mverouden/wurmc)
--->
 
 # The official repository for the R package isatabr
 
@@ -21,5 +16,5 @@ format.
 It can be installed using:
 
 ``` r
-remotes::install_github("mverouden/isatabr")
+remotes::install_github("Biometris/isatabr")
 ```
