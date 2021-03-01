@@ -1,7 +1,7 @@
 Package: isatabr
 Type: Package
 Date: 2021-03-01
-Title:
+Title: 
     R implementation for the ISA Abstract Model of the metadata framework
 Version: 0.0.0.9000
 Description: More about what it does (maybe more than one line)
@@ -13,7 +13,7 @@ Authors@R: c(
     )
 Maintainer: Maikel Verouden <Maikel.Verouden@gmail.com>
 Encoding: UTF-8
-Depends:
+Depends: 
     methods
 Imports: 
     magrittr
@@ -21,3 +21,4 @@ License: file LICENSE
 BugReports: https://github.com/mverouden/isatabr/issues
 LazyData: TRUE
 RoxygenNote: 7.1.1
+Suggests: tinytest
