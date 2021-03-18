@@ -78,7 +78,7 @@ replaceExcess <- function(x) {
 
 checkCharacter <- function(...) {
   args <- list(...)
-  if (!lapply(args, is.character) %>% unlist %>% all()) {
+  if (!all(sapply(args, is.character))) {
     stop("The provided arguments must be of class character.")
   }
 }

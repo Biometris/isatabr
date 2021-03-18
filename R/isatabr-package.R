@@ -32,7 +32,6 @@
 #' Maikel Verouden
 #'
 #' @import methods
-#' @importFrom magrittr %>%
 #' @importFrom stats na.omit
 #' @importFrom utils count.fields data read.csv read.table write.table
 #'

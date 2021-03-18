@@ -15,8 +15,6 @@ Maintainer: Maikel Verouden <Maikel.Verouden@gmail.com>
 Encoding: UTF-8
 Depends: 
     methods
-Imports: 
-    magrittr
 License: file LICENSE
 BugReports: https://github.com/mverouden/isatabr/issues
 LazyData: TRUE
