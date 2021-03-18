@@ -260,7 +260,7 @@ setReplaceMethod(
   signature = c(x = "ISA", i = "character", value = "ANY"),
   definition = function(x, i, value) {
     if (i == ISASyntax$path) {
-      if (class(value) != "character") {
+      if (!inherits(value, "character")) {
         stop(paste0("The \"",
                     ISASyntax$path,
                     "\" slot of the ISA-class object can only be specified as ",
@@ -273,7 +273,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$iFileName) {
-      if (class(value) != "character") {
+      if (!inherits(value, "character")) {
         stop(paste0("The \"",
                     ISASyntax$iFileName,
                     "\" slot of the ISA-class object can only be specified as ",
@@ -310,7 +310,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$oSR) {
-      if (class(value) != "data.frame") {
+      if (!inherits(value, "data.frame")) {
         stop(paste0("The \"",
                     ISASyntax$oSR,
                     "\" slot of the ISA-class object can only be of class ",
@@ -320,7 +320,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$invest) {
-      if (class(value) != "data.frame") {
+      if (!inherits(value, "data.frame")) {
         stop(paste0("The \"",
                     ISASyntax$invest,
                     "\" slot of the ISA-class object can only be of class ",
@@ -330,7 +330,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$iPubs) {
-      if (class(value) != "data.frame") {
+      if (!inherits(value, "data.frame")) {
         stop(paste0("The \"",
                     ISASyntax$iPubs,
                     "\" slot of the ISA-class object can only be of class ",
@@ -340,7 +340,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$iContacts) {
-      if (class(value) != "data.frame") {
+      if (!inherits(value, "data.frame")) {
         stop(paste0("The \"",
                     ISASyntax$iContacts,
                     "\" slot of the ISA-class object can only be of class ",
@@ -350,7 +350,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$study) {
-      if (class(value) != "list") {
+      if (!inherits(value, "list")) {
         stop(paste0("The \"",
                     ISASyntax$study,
                     "\" slot of the ISA-class object can only be of class ",
@@ -360,7 +360,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$sDD) {
-      if (class(value) != "list") {
+      if (!inherits(value, "list")) {
         stop(paste0("The \"",
                     ISASyntax$sDD,
                     "\" slot of the ISA-class object can only be of class ",
@@ -370,7 +370,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$sPubs) {
-      if (class(value) != "list") {
+      if (!inherits(value, "list")) {
         stop(paste0("The \"",
                     ISASyntax$sPubs,
                     "\" slot of the ISA-class object can only be of class ",
@@ -380,7 +380,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$sFacts) {
-      if (class(value) != "list") {
+      if (!inherits(value, "list")) {
         stop(paste0("The \"",
                     ISASyntax$sFacts,
                     "\" slot of the ISA-class object can only be of class ",
@@ -390,7 +390,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$sAssays) {
-      if (class(value) != "list") {
+      if (!inherits(value, "list")) {
         stop(paste0("The \"",
                     ISASyntax$sAssays,
                     "\" slot of the ISA-class object can only be of class ",
@@ -400,7 +400,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$sProts) {
-      if (class(value) != "list") {
+      if (!inherits(value, "list")) {
         stop(paste0("The \"",
                     ISASyntax$sProts,
                     "\" slot of the ISA-class object can only be of class ",
@@ -410,7 +410,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$sContacts) {
-      if (class(value) != "list") {
+      if (!inherits(value, "list")) {
         stop(paste0("The \"",
                     ISASyntax$sContacts,
                     "\" slot of the ISA-class object can only be of class ",
@@ -420,7 +420,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$sFiles) {
-      if (class(value) != "list") {
+      if (!inherits(value, "list")) {
         stop(paste0("The \"",
                     ISASyntax$sFiles,
                     "\" slot of the ISA-class object can only be of class ",
@@ -430,7 +430,7 @@ setReplaceMethod(
       }
     }
     if (i == ISASyntax$aFiles) {
-      if (class(value) != "list") {
+      if (!inherits(value, "list")) {
         stop(paste0("The \"",
                     ISASyntax$aFiles,
                     "\" slot of the ISA-class object can only be of class ",
