@@ -6,11 +6,12 @@
 #' @description
 #' Retrieve from an object of the \code{\link{ISA-class}} the Investigation
 #' Identifier and Investigation File Name. To directly access the Investigation
-#' Identifier use the names() function, e.g. names(getInvestigationInfo(isaObject)).
+#' Identifier use the names() function, e.g.
+#' names(getInvestigationInfo(isaObject)).
 #'
 #' @param isaObject An object of the \code{\link{ISA-class}}.
 #'
-#' @return An named character vector containing the Investigation File Name and
+#' @return A named character vector containing the Investigation File Name and
 #'         the name representing the Investigation Identifier.
 #'
 #' @author
@@ -29,13 +30,14 @@ getInvestigationInfo <- function(isaObject) {
 #' Retrieve the Study Indentifier(s) and Study File Name(s) from an ISA object.
 #'
 #' @description
-#' Retrieve from an object of the \code{\link{ISA-class}} the Study Identifier(s)
-#' and Study File Name(s) as contained in the Investigation. To directly access
-#' the Study Identifier(s) use the names() function, e.g. names(getStudyInfo(isaObject)).
+#' Retrieve from an object of the \code{\link{ISA-class}} the Study
+#' Identifier(s) and Study File Name(s) as contained in the Investigation.
+#' To directly access the Study Identifier(s) use the names() function, e.g.
+#' names(getStudyInfo(isaObject)).
 #'
 #' @param isaObject An object of the \code{\link{ISA-class}}.
 #'
-#' @return An named character vector containing the Study File Name(s) and the
+#' @return A named character vector containing the Study File Name(s) and the
 #'         name(s) representing the Study Identifier(s).
 #'
 #' @author
@@ -45,7 +47,10 @@ getInvestigationInfo <- function(isaObject) {
 #'
 #' @export
 getStudyInfo <- function(isaObject) {
-  sapply(X = isaObject[ISASyntax$study], FUN = function(x) {x[[ISASyntax$sFileName]]})
+  sapply(X = isaObject[ISASyntax$study],
+         FUN = function(x) {
+           x[[ISASyntax$sFileName]]
+         })
 }
 
 #' @title
@@ -57,7 +62,7 @@ getStudyInfo <- function(isaObject) {
 #'
 #' @param isaObject An object of the \code{\link{ISA-class}}.
 #'
-#' @return An named character vector of a list containing the Assay File Name(s)
+#' @return A named character vector of a list containing the Assay File Name(s)
 #'         for each Study Indentifier. The name of the character vector or names
 #'         of the list elements represent(s) the Study Identifier(s).
 #'
@@ -78,7 +83,8 @@ getAssayInfo <- function(isaObject) {
 #' Retrieve the Assay File Name(s) from an ISA object.
 #'
 #' @description
-#' Retrieve from an object of the \code{\link{ISA-class}} the Assay File Name(s).
+#' Retrieve from an object of the \code{\link{ISA-class}} the Assay File
+#' Name(s).
 #'
 #' @param isaObject An object of the \code{\link{ISA-class}}.
 #'
@@ -201,7 +207,10 @@ getAssayTechnologyTypes <- function(isaObject) {
 #'
 #' @export
 getAssayTechnologyTypesPerStudy <- function(isaObject) {
-  lapply(X = isaObject[ISASyntax$sAssays], FUN = function(x) {x[[ISASyntax$sAssayTechType]]})
+  lapply(X = isaObject[ISASyntax$sAssays],
+         FUN = function(x) {
+           x[[ISASyntax$sAssayTechType]]
+         })
 }
 
 #' @title
@@ -273,7 +282,8 @@ getAssayMeasurementTypes <- function(isaObject) {
 #'
 #' @return A list of Study Identifiers. Each element of the list, named by a
 #'         Study Identifier, contains a character vector specifying the Study
-#'         Assay Measurement Types belonging to a specific study (marked by its Study Identifier).
+#'         Assay Measurement Types belonging to a specific study (marked by its
+#'         Study Identifier).
 #'
 #' @author
 #' Maikel Verouden
@@ -282,7 +292,10 @@ getAssayMeasurementTypes <- function(isaObject) {
 #'
 #' @export
 getAssayMeasurementTypesPerStudy <- function(isaObject) {
-  lapply(X = isaObject[ISASyntax$sAssays], FUN = function(x) {x[[ISASyntax$sAssayMeasType]]})
+  lapply(X = isaObject[ISASyntax$sAssays],
+         FUN = function(x) {
+           x[[ISASyntax$sAssayMeasType]]
+         })
 }
 
 #' @title
@@ -422,8 +435,9 @@ getAssayFileNamesPerSample <- function(isaObject) {
 #' @export
 getSampleToRawDataFile <- function(isaObject) {
   lapply(X = isaObject[ISASyntax$aFiles], FUN = function(df) {
-    tmpdf <- df[, c(ISASyntax$sampleName,
-                    ISASyntax$rawDataFile[ISASyntax$rawDataFile %in% colnames(df)])]
+    tmpdf <-
+      df[, c(ISASyntax$sampleName,
+             ISASyntax$rawDataFile[ISASyntax$rawDataFile %in% colnames(df)])]
     tmpdf <- tmpdf[!duplicated(tmpdf), ]
     tmpdf <- tmpdf[order(tmpdf[[ISASyntax$sampleName]]), ]
   })
@@ -480,8 +494,9 @@ getSampleToAssayName <- function(isaObject) {
 #' @export
 getRawDataFileToSample <- function(isaObject) {
   lapply(X = isaObject[ISASyntax$aFiles], FUN = function(df) {
-    tmpdf <- df[ , c(ISASyntax$rawDataFile[ISASyntax$rawDataFile %in% colnames(df)],
-                     ISASyntax$sampleName)]
+    tmpdf <-
+      df[ , c(ISASyntax$rawDataFile[ISASyntax$rawDataFile %in% colnames(df)],
+              ISASyntax$sampleName)]
     tmpdf <- tmpdf[!duplicated(tmpdf), ]
     tmpdf <- tmpdf[order(tmpdf[[1]], tmpdf[[ISASyntax$sampleName]]), ]
   })
@@ -620,9 +635,10 @@ getTreatmentGroups <- function(isaObject) {
                               FUN = function(x) {
                                 rep(x, each = length(samplesPerStudy[[j]]))
                               }))
-      subgroups[[i]] <- samplesPerStudy[[j]][apply(X = studyFiles[[j]][names(treatments[[j]])] == df,
-                                                   MARGIN = 1,
-                                                   FUN = all)]
+      subgroups[[i]] <-
+        samplesPerStudy[[j]][apply(X = studyFiles[[j]][names(treatments[[j]])] == df,
+                                   MARGIN = 1,
+                                   FUN = all)]
     }
     groups[[j]] <- subgroups
   }
