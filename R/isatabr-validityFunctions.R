@@ -33,14 +33,46 @@
 #'
 #' @export
 validISAObject <- function(object) {
-  noIFilenames <- length(object[ISASyntax$iFileName])
+  ## Check that path point to an existing folder.
+  path <- object["path"]
+  if (!file.exists(path)) {
+    stop(path, " is not an existing folder on this system!")
+  } else {
+    path <- normalizePath(path)
+  }
+  ## Check number of investigation files - should be 1.
+  iFileName <- object[ISASyntax$iFileName]
+  noIFilenames <- length(iFileName)
   if (noIFilenames == 0) {
-    stop("Did not find any investigation file at folder ", object["path"])
+    stop("Did not find any investigation file at folder ", path)
   } else if (noIFilenames > 1) {
     stop("Found too many possible investigation files: ",
          paste(object["Investigation Filename"], collapse = ", "))
   } else {# noIFilenames == 1
     return(TRUE)
+  }
+  ## Check structure of investigation file name.
+  if (!grepl(pattern = paste0("^",
+                              ISASyntax$iPrefix,
+                              ".*[a-zA-Z0-9_-]",
+                              "(\\.txt)$"),
+             x = iFileName,
+             perl = TRUE)) {
+    stop(paste0("The investigation file: \"",
+                iFileName,
+                "\" for the \"",
+                ISASyntax$iFileName,
+                "\" slot does not match the requirements (start with ",
+                "\"i_\" and end with \".txt\")."))
+  }
+  ## Check that investigation file is found in path.
+  if (!iFileName %in% list.files(path)) {
+    stop(paste0("The \"",
+                ISASyntax$iFileName,
+                "\": \"",
+                iFileName,
+                "\" is not present in the folder: ",
+                path))
   }
 }
 setValidity(Class = "ISA", method = validISAObject)
