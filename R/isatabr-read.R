@@ -6,11 +6,11 @@
 #' specific folder, and builds an object of the \code{\link{ISA-class}}.
 #'
 #' @param path A character vector with the name of the directory in which the
-#'             ISA-Tab files are located (if the parameter zipfile is not provided
-#'             or if it is equal to NULL), or the name of the directory where the
-#'             zip archive containing the ISA-Tab files is located (if the
-#'             parameter zipfile is not NULL). The default value is the current
-#'             working directory.
+#'             ISA-Tab files are located (if the parameter zipfile is not
+#'             provided or if it is equal to NULL), or the name of the
+#'             directory where the zip archive containing the ISA-Tab files is
+#'             located (if the parameter zipfile is not NULL). The default
+#'             value is the current working directory.
 #' @param zipfile A character vector with the name of the zip archive containing
 #'                ISA-Ttab files themselves (without a directory name in the zip
 #'                archive). The default value is NULL (specifying that the ISA-
@@ -80,8 +80,9 @@ readZippedISATabFiles <- function(path = getwd(),
   if (verbose) {
     message("Unzipping file in temporary directory: ", tmpdir)
   }
-  unzippedISATabFiles <- utils::unzip(zipfile = normalizePath(file.path(path, zipfile)),
-                                      exdir = tmpdir)
+  unzippedISATabFiles <-
+    utils::unzip(zipfile = normalizePath(file.path(path, zipfile)),
+                 exdir = tmpdir)
   if (verbose) {
     message("Unzipped files: ", paste(gsub(pattern = file.path(tmpdir, "/"),
                                            replacement = "",
