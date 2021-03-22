@@ -15,7 +15,7 @@
 #'             files of the dataset.
 #'
 #' @rdname ISA-class
-#' @aliases  ISA-initialize
+#' @aliases ISA-initialize
 #' @importFrom utils read.table read.delim
 #' @export
 setMethod(
