@@ -13,7 +13,8 @@ getAssayFileNames(isaObject)
 An character vector containing the Assay File Name(s).
 }
 \description{
-Retrieve from an object of the \code{\link{ISA-class}} the Assay File Name(s).
+Retrieve from an object of the \code{\link{ISA-class}} the Assay File
+Name(s).
 }
 \seealso{
 Other ISAinfo: 

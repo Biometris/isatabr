@@ -10,13 +10,14 @@ getStudyInfo(isaObject)
 \item{isaObject}{An object of the \code{\link{ISA-class}}.}
 }
 \value{
-An named character vector containing the Study File Name(s) and the
+A named character vector containing the Study File Name(s) and the
         name(s) representing the Study Identifier(s).
 }
 \description{
-Retrieve from an object of the \code{\link{ISA-class}} the Study Identifier(s)
-and Study File Name(s) as contained in the Investigation. To directly access
-the Study Identifier(s) use the names() function, e.g. names(getStudyInfo(isaObject)).
+Retrieve from an object of the \code{\link{ISA-class}} the Study
+Identifier(s) and Study File Name(s) as contained in the Investigation.
+To directly access the Study Identifier(s) use the names() function, e.g.
+names(getStudyInfo(isaObject)).
 }
 \seealso{
 Other ISAinfo: 

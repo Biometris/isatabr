@@ -12,7 +12,8 @@ getAssayMeasurementTypesPerStudy(isaObject)
 \value{
 A list of Study Identifiers. Each element of the list, named by a
         Study Identifier, contains a character vector specifying the Study
-        Assay Measurement Types belonging to a specific study (marked by its Study Identifier).
+        Assay Measurement Types belonging to a specific study (marked by its
+        Study Identifier).
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Study Assay

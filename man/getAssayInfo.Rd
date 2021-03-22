@@ -10,7 +10,7 @@ getAssayInfo(isaObject)
 \item{isaObject}{An object of the \code{\link{ISA-class}}.}
 }
 \value{
-An named character vector of a list containing the Assay File Name(s)
+A named character vector of a list containing the Assay File Name(s)
         for each Study Indentifier. The name of the character vector or names
         of the list elements represent(s) the Study Identifier(s).
 }
