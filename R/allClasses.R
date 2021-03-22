@@ -72,28 +72,94 @@
 #'              The character vector to extract or replace this slot is "Assay
 #'              Files".
 #'
-#' @author
-#' Maikel Verouden
+#' @author Maikel Verouden
 #'
 #' @keywords classes
 #' @rdname ISA-class
 #' @exportClass ISA
 ISA <- setClass(Class = "ISA",
-                   slots = c(
-                     path = "character",
-                     iFileName = "character",
-                     oSR = "data.frame",
-                     invest = "data.frame",
-                     iPubs = "data.frame",
-                     iContacts = "data.frame",
-                     study = "list",
-                     sDD = "list",
-                     sPubs = "list",
-                     sFacts = "list",
-                     sAssays = "list",
-                     sProts = "list",
-                     sContacts = "list",
-                     sFiles = "list",
-                     aFiles = "list"
-                   )
+                slots = c(
+                  path = "character",
+                  iFileName = "character",
+                  oSR = "data.frame",
+                  invest = "data.frame",
+                  iPubs = "data.frame",
+                  iContacts = "data.frame",
+                  study = "list",
+                  sDD = "list",
+                  sPubs = "list",
+                  sFacts = "list",
+                  sAssays = "list",
+                  sProts = "list",
+                  sContacts = "list",
+                  sFiles = "list",
+                  aFiles = "list"
                 )
+)
+
+### assayTab Class ----
+#' @title
+#' S4 Class assayTab, initialization, extract- and replace-methods
+#'
+#' @description
+#' An S4 class to store information from an assay files.
+#'
+#' @slot path A length-one character vector containing the path to the ISA-Tab
+#'            dataset.
+#' @slot sFileName A length-one character vector containing the study
+#'                 filename (by definition starting with \strong{\emph{s_}} and
+#'                 ending at \strong{\emph{.txt}}).
+#' @slot sIndentifier A length-one character vector containing the study
+#'                    identifier.
+#' @slot aFileName A length-one character vector containing the assay
+#'                 filename (by definition starting with \strong{\emph{a_}} and
+#'                 ending at \strong{\emph{.txt}}).
+#' @slot aFile A data.frame containing the contents of the Assay Table file.
+#' @slot aTechType A length-one character vector containing the assay
+#'                 technology type.
+#' @slot aMeasType A length-one character vector containing the assay
+#'                 measurement type.
+#'
+#' @keywords classes
+#' @rdname assayTab-class
+#' @exportClass assayTab
+assayTab <- setClass(Class = "assayTab",
+                     slots = c(
+                       path = "character",
+                       sFilename = "character",
+                       sIdentifier = "character",
+                       aFilename = "character",
+                       aFile = "data.frame",
+                       aTechType = "character",
+                       aMeasType = "character"
+                     )
+)
+
+### Derived assayTab Classes ----
+## Special classes for different technology types to enable different methods
+## for each technology type.
+
+#' @keywords classes
+#' @rdname assayTab-class
+#' @exportClass MSAssayTab
+MSAssayTab <- setClass(Class = "MSAssayTab",
+                       contains = "assayTab")
+
+#' @keywords classes
+#' @rdname assayTab-class
+#' @exportClass microArrayAssayTab
+microArrayAssayTab <- setClass(Class = "microArrayAssayTab",
+                               contains = "assayTab")
+
+#' @keywords classes
+#' @rdname assayTab-class
+#' @exportClass seqAssayTab
+seqAssayTab <- setClass(Class = "seqAssayTab",
+                        contains = "assayTab")
+
+#' @keywords classes
+#' @rdname assayTab-class
+#' @exportClass NMRAssayTab
+NMRAssayTab <- setClass(Class = "NMRAssayTab",
+                        contains = "assayTab")
+
