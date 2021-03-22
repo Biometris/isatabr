@@ -6,6 +6,9 @@
 \usage{
 getAssayFileNamesPerSample(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A list of character vectors, where each list element,(named by the
 Sample Name, contains the Assay File Names in which that specific sample has

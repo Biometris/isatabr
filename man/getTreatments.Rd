@@ -6,6 +6,9 @@
 \usage{
 getTreatments(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A list of data frames, where each list element, named by the Study
         Identifier, contains the unique Factor Value combinations of a

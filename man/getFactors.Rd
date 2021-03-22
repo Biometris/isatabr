@@ -6,6 +6,9 @@
 \usage{
 getFactors(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A list of factor lists, where each list element, named by the Study
         Identifier, contains a list of  factors specifying the Factor Values

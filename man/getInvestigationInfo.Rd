@@ -7,6 +7,9 @@ ISA object.}
 \usage{
 getInvestigationInfo(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A named character vector containing the Investigation File Name and
         the name representing the Investigation Identifier.

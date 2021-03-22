@@ -1,8 +1,7 @@
 Package: isatabr
 Type: Package
 Date: 2021-03-01
-Title: 
-    R implementation for the ISA Abstract Model of the metadata framework
+Title: R Implementation for the ISA Abstract Model of the Metadata Framework
 Version: 0.0.0.9000
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
@@ -11,12 +10,13 @@ Authors@R: c(
            email = "Maikel.Verouden@wur.nl"),
     person("Wageningen University & Research, Biometris", role = c("cph"))
     )
-Maintainer: Maikel Verouden <Maikel.Verouden@gmail.com>
+Maintainer: Maikel Verouden <Maikel.Verouden@wur.nl>
 Encoding: UTF-8
 Depends: 
     methods
+Suggests: tinytest
 License: file LICENSE
-BugReports: https://github.com/mverouden/isatabr/issues
+URL: https://github.com/Biometris/isatabr/
+BugReports: https://github.com/Biometris/isatabr/issues
 LazyData: TRUE
 RoxygenNote: 7.1.1
-Suggests: tinytest

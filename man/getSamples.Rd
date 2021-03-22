@@ -6,6 +6,9 @@
 \usage{
 getSamples(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A character vector containing all sample names.
 }

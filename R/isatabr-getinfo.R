@@ -9,7 +9,7 @@
 #' Identifier use the names() function, e.g.
 #' names(getInvestigationInfo(isaObject)).
 #'
-#' @inheritParams getInvestigationInfo
+#' @param isaObject An object of the \code{\link{ISA-class}}.
 #'
 #' @return A named character vector containing the Investigation File Name and
 #'         the name representing the Investigation Identifier.

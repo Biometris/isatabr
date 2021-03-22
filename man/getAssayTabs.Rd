@@ -6,6 +6,9 @@
 \usage{
 getAssayTabs(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A list of lists of objects of class \code{\link{assayTab}}, where
         each list element, named by the Study Identifier, contains a list

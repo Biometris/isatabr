@@ -6,6 +6,9 @@
 \usage{
 getAssayFileNames(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 An character vector containing the Assay File Name(s).
 }

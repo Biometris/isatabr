@@ -6,6 +6,9 @@
 \usage{
 getAssayMeasurementTypes(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A character vector containing the Study Assay Measurement Types.
 }

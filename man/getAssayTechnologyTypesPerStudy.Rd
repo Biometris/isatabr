@@ -6,6 +6,9 @@
 \usage{
 getAssayTechnologyTypesPerStudy(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A list of Study Identifiers. Each element of the list contains a
         character vector specifying the Study Assay Technology Types

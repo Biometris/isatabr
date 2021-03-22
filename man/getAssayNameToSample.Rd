@@ -6,6 +6,9 @@
 \usage{
 getAssayNameToSample(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A list of data frames, where each list element, named by the Assay
         File Name, contains the unique Assay Names and Sample Names of that

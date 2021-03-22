@@ -6,6 +6,9 @@
 \usage{
 getSamplesPerStudy(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A list of Study Identifiers. Each element of the list, named by the
         Study Identifier, contains a character vector specifying the unique

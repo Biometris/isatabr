@@ -6,6 +6,9 @@
 \usage{
 getAssayFilesPerStudy(isaObject)
 }
+\arguments{
+\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+}
 \value{
 A list of Study Identifiers. Each element of the list, named by a
         Study Identifier, contains a list of data frames consisting of the
