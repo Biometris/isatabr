@@ -61,7 +61,7 @@ technologyTypes <- list(
   fc         = "flow cytometry",
   microarray = "DNA microarray",
   ms         = "mass spectrometry",
-  nmr        = "NMR spectroscopy",
+  NMR        = "NMR spectroscopy",
   seq        = "nucleotide sequencing")
 ### end technologyTypes list ----
 

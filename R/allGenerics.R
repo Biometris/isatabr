@@ -5,8 +5,8 @@
 #' @description
 #' When creating a new object of class \code{ISA} via:
 #' \code{object <- new(Class = "ISA", path)}, the function
-#' \code{initialize(.Object, path)} is called to initialize and create the actual
-#' object. The \code{initiliaze-method} is seldomly used as a function
+#' \code{initialize(.Object, path)} is called to initialize and create the
+#' actual object. The \code{initialize-method} is seldomly used as a function
 #' itself.
 #'
 #' @param .Object character, name of the object of class \code{ISA} to
@@ -37,7 +37,8 @@ setMethod(
                       perl = TRUE)
     ## Check the number of Investigation Files in the specified path
     if (length(iFileName) == 0) {
-      stop("Did not find any investigation file in folder ", normalizePath(path))
+      stop("Did not find any investigation file in folder ",
+           normalizePath(path))
     } else if (length(iFileName) > 1) {
       stop("Found too many possible investigation files: ",
            paste(iFileName, collapse = ", "))
@@ -103,7 +104,8 @@ setMethod(
         file = iFile,
         startRow = SStart[i],
         endRow = SDDStart[i])
-      names(.Object[ISASyntax$study])[i] <- .Object[ISASyntax$study][[i]][[ISASyntax$sidentifier]]
+      names(.Object[ISASyntax$study])[i] <-
+        .Object[ISASyntax$study][[i]][[ISASyntax$sidentifier]]
     }
     ## Create a STUDY DESIGN DESCRIPTORS list of data.frames (one per study)
     for (i in seq_along(SStart)) {
@@ -152,13 +154,15 @@ setMethod(
           file = iFile,
           startRow = SCStart[i],
           endRow = SStart[i + 1])
-        names(.Object[ISASyntax$sContacts])[i] <- names(.Object[ISASyntax$study])[i]
+        names(.Object[ISASyntax$sContacts])[i] <-
+          names(.Object[ISASyntax$study])[i]
       } else {# i == length(SStart)
         .Object[ISASyntax$sContacts][[i]] <- createISASlotDataFrame(
           file = iFile,
           startRow = SCStart[i],
           endRow = (iFileRowEnd + 1))
-        names(.Object[ISASyntax$sContacts])[i] <- names(.Object[ISASyntax$study])[i]
+        names(.Object[ISASyntax$sContacts])[i] <-
+          names(.Object[ISASyntax$study])[i]
       }
     }
     ## END INVESTIGATION FILE ----
@@ -442,3 +446,39 @@ setReplaceMethod(
     return(x)
   }
 )
+
+#' ### Constructor methods ----
+#' #' @title
+#' #' Constructor method of assayTab-class.
+#' #'
+#' #' @description
+#' #' When creating a new object of class \code{assayTab} via:
+#' #' \code{object <- new(Class = "assayTab", path)}, the function
+#' #' \code{initialize(.Object, path)} is called to initialize and create the
+#' #' actual object. The \code{initialize-method} is seldomly used as a function
+#' #' itself.
+#' #'
+#' #' @param .Object character, name of the object of class \code{assayTab} to
+#' #'                be initialized
+#' #' @param path length-one character vector containing the path to the ISA-Tab
+#' #'             files of the dataset.
+#' #'
+#' #' @rdname assayTab-class
+#' #' @aliases assayTab-initialize
+#' #' @importFrom utils read.table read.delim
+#' #' @export
+#' setMethod(
+#'   f = "initialize",
+#'   signature = "assayTab",
+#'   definition = function(.Object, path) {
+#'     ## Assignment of the "path" slot.
+#'     .Object[ISASyntax$path] <- path
+#'
+#'
+#'
+#'     return(.Object)
+#'   }
+#' )
+
+
+

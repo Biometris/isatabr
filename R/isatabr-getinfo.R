@@ -9,7 +9,7 @@
 #' Identifier use the names() function, e.g.
 #' names(getInvestigationInfo(isaObject)).
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A named character vector containing the Investigation File Name and
 #'         the name representing the Investigation Identifier.
@@ -35,7 +35,7 @@ getInvestigationInfo <- function(isaObject) {
 #' To directly access the Study Identifier(s) use the names() function, e.g.
 #' names(getStudyInfo(isaObject)).
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A named character vector containing the Study File Name(s) and the
 #'         name(s) representing the Study Identifier(s).
@@ -60,7 +60,7 @@ getStudyInfo <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Assay File Name(s)
 #' linked to the Study Identifier(s) per Study.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A named character vector of a list containing the Assay File Name(s)
 #'         for each Study Indentifier. The name of the character vector or names
@@ -86,7 +86,7 @@ getAssayInfo <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Assay File
 #' Name(s).
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return An character vector containing the Assay File Name(s).
 #'
@@ -108,7 +108,7 @@ getAssayFileNames <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Assay Name(s) per
 #' Assay File.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of data frames containing the unique Assay Name(s) per Assay
 #'         File.
@@ -134,7 +134,7 @@ getAssayNames <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Assay Files per
 #' Study.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of Study Identifiers. Each element of the list, named by a
 #'         Study Identifier, contains a list of data frames consisting of the
@@ -166,7 +166,7 @@ getAssayFilesPerStudy <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Study Assay
 #' Technology Type(s).
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A character vector containing the Study Assay Technology Types.
 #'
@@ -194,7 +194,7 @@ getAssayTechnologyTypes <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Study Assay
 #' Technology Types per Study.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of Study Identifiers. Each element of the list contains a
 #'         character vector specifying the Study Assay Technology Types
@@ -220,7 +220,7 @@ getAssayTechnologyTypesPerStudy <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the unique Data File
 #' Names per Assay.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of data frames. Each element of the list, named by the Assay
 #'         File name, contains the unique Data File Names as stored in the
@@ -250,7 +250,7 @@ getDataFileNamesPerAssay <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Study Assay
 #' Measurement Type(s).
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A character vector containing the Study Assay Measurement Types.
 #'
@@ -278,7 +278,7 @@ getAssayMeasurementTypes <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Study Assay
 #' Measurement Types per Study.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of Study Identifiers. Each element of the list, named by a
 #'         Study Identifier, contains a character vector specifying the Study
@@ -305,7 +305,7 @@ getAssayMeasurementTypesPerStudy <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the unique Sample
 #' Names per Study.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of Study Identifiers. Each element of the list, named by the
 #'         Study Identifier, contains a character vector specifying the unique
@@ -333,7 +333,7 @@ getSamplesPerStudy <- function(isaObject) {
 #' @description
 #' Retrieve from an object of the \code{\link{ISA-class}} all Sample Names.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A character vector containing all sample names.
 #'
@@ -354,7 +354,7 @@ getSamples <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the unique Sample
 #' Names used in the Assay Files.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of character vectors, where each list element, named by the
 #' Assay File Name, contains the unique Sample Names used in that specific Assay
@@ -381,7 +381,7 @@ getSamplesPerAssayFileName <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Assay File Names
 #' in which a sample (specified by its Sample Name) has been used.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of character vectors, where each list element,(named by the
 #' Sample Name, contains the Assay File Names in which that specific sample has
@@ -422,7 +422,7 @@ getAssayFileNamesPerSample <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Sample Names and
 #' Raw Data File Names for each Assay File Name.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of data frames, where each list element, named by the Assay
 #'         File Name, contains the Sample Names and Raw Data File Names.
@@ -450,7 +450,7 @@ getSampleToRawDataFile <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Sample Names and
 #' Assay Names for each Assay File.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of data frames, where each list element, named by the
 #' Assay File Name, contains the Sample Names and Assay Names.
@@ -480,7 +480,7 @@ getSampleToAssayName <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Raw Data File
 #' Names and Sample Names for each Assay File, specified by its Assay File Name.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of data frames, where each list element, named by the Assay
 #'         File Name, contains the Raw Data File Names and Sample Names of that
@@ -509,7 +509,7 @@ getRawDataFileToSample <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the unique Assay Names
 #' and Sample Names for each Assay File, specified by its Assay File Name.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of data frames, where each list element, named by the Assay
 #'         File Name, contains the unique Assay Names and Sample Names of that
@@ -539,7 +539,7 @@ getAssayNameToSample <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Factor Values for
 #' each Study File.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of factor lists, where each list element, named by the Study
 #'         Identifier, contains a list of  factors specifying the Factor Values
@@ -575,7 +575,7 @@ getFactors <- function(isaObject) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Treatments, as
 #' unique combinations of specific Factor Values, per Study File.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of data frames, where each list element, named by the Study
 #'         Identifier, contains the unique Factor Value combinations of a
@@ -608,7 +608,7 @@ getTreatments <- function(isaObject) {
 #' File. The treaments can be retrieved by the \code{\link{getTreatments}}
 #' function.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @inheritParams getInvestigationInfo
 #'
 #' @return A list of lists, where each list element, named by the Study
 #'         Identifier, contains a list of treatments. Each element in the list
@@ -645,3 +645,54 @@ getTreatmentGroups <- function(isaObject) {
   names(groups) <- names(getStudyInfo(isaObject))
   return(groups)
 }
+
+#' @title
+#' Retrieve Assay Tables from an ISA object.
+#'
+#' @description
+#' Retrieve from an object of the \code{\link{ISA-class}} the Assay Tables.
+#'
+#' @inheritParams getInvestigationInfo
+#'
+#' @return A list of lists of objects of class \code{\link{assayTab}}, where
+#'         each list element, named by the Study Identifier, contains a list
+#'         of objects of class \code{\link{assayTab}}.
+#'
+#' @author
+#' Maikel Verouden
+#'
+#' @family ISAinfo
+#'
+#' @export
+getAssayTabs <- function(isaObject) {
+  ## Get info from isaObject.
+  studyInfo <- getStudyInfo(isaObject)
+  assayInfo <- getAssayInfo(isaObject)
+  assayTechTypes <- getAssayTechnologyTypesPerStudy(isaObject)
+  assayMeasTypes <- getAssayMeasurementTypesPerStudy(isaObject)
+  assayFiles <- getAssayFilesPerStudy(isaObject)
+  assayTabs <- lapply(X = seq_along(assayInfo), FUN = function(i) {
+    assayTabsStudy <- lapply(X = seq_along(assayInfo[[i]]), FUN = function(j) {
+      ## Class is dependent of technology type.
+      ## Returns empty character for 'non-existing' technology.
+      assayTechName <-
+        names(technologyTypes)[technologyTypes == assayTechTypes[[i]][j]]
+      assayClass <- if (nzchar(assayTechName))
+        paste0(assayTechName, "AssayTab") else "assayTab"
+      new(assayClass,
+          path = isaObject[ISASyntax$path],
+          sFilename = studyInfo[i],
+          sIdentifier = names(studyInfo)[i],
+          aFilename = assayInfo[[i]][j],
+          aFile = assayFiles[[i]][[j]],
+          aTechType = assayTechTypes[[i]][j],
+          aMeasType = assayMeasTypes[[i]][j]
+      )
+    })
+    names(assayTabsStudy) <- assayInfo[[i]]
+    return(assayTabsStudy)
+  })
+  names(assayTabs) <- names(studyInfo)
+  return(assayTabs)
+}
+

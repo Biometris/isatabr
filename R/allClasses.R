@@ -132,6 +132,15 @@ assayTab <- setClass(Class = "assayTab",
                        aFile = "data.frame",
                        aTechType = "character",
                        aMeasType = "character"
+                     ),
+                     prototype = list(
+                       path = NA_character_,
+                       sFilename = NA_character_,
+                       sIdentifier = NA_character_,
+                       aFilename = NA_character_,
+                       aFile = data.frame(),
+                       aTechType = NA_character_,
+                       aMeasType = NA_character_
                      )
 )
 
@@ -141,14 +150,20 @@ assayTab <- setClass(Class = "assayTab",
 
 #' @keywords classes
 #' @rdname assayTab-class
-#' @exportClass MSAssayTab
-MSAssayTab <- setClass(Class = "MSAssayTab",
+#' @exportClass msAssayTab
+fcAssayTab <- setClass(Class = "fcAssayTab",
                        contains = "assayTab")
 
 #' @keywords classes
 #' @rdname assayTab-class
-#' @exportClass microArrayAssayTab
-microArrayAssayTab <- setClass(Class = "microArrayAssayTab",
+#' @exportClass msAssayTab
+msAssayTab <- setClass(Class = "msAssayTab",
+                       contains = "assayTab")
+
+#' @keywords classes
+#' @rdname assayTab-class
+#' @exportClass microarrayAssayTab
+microarrayAssayTab <- setClass(Class = "microarrayAssayTab",
                                contains = "assayTab")
 
 #' @keywords classes
