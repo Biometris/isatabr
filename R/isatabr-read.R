@@ -25,33 +25,16 @@
 #' Maikel Verouden
 #'
 #' @examples
-#' \dontrun{
-#' ## Example for mass spectrometry dataset
-#' temp <- tempdir()
-#' datafiles <- c(file.path(system.file("cdf/KO", package = "faahKO"),
-#'                          grep(pattern = "CDF",
-#'                               x = dir(system.file("cdf/KO", package = "faahKO")),
-#'                               ignore.case = TRUE,
-#'                               value = TRUE)),
-#'                file.path(system.file("cdf/WT", package = "faahKO"),
-#'                          grep(pattern = "CDF",
-#'                               x = dir(system.file("cdf/WT", package = "faahKO")),
-#'                               value = TRUE)))
-#' file.copy(datafiles, temp, recursive = TRUE)
-#' isafiles <- file.path(system.file(package = "faahKO"),
-#'                       grep(pattern = "txt",
-#'                            x = dir(system.file(package = "faahKO")),
-#'                            value = TRUE))
-#' file.copy(isafiles, temp, recursive = TRUE)
-#' isaObject1 <- readISATab(path = temp)
+#' ## Example BII data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/BII-I-1",
+#'                                           package = "isatabr")))
 #'
-#' ## Example of readISATab for a mass spectrometry experiment
-#' isazip <- "faahKO-metadata.zip"
+#' ## Example zipped BII data set
+#' isazip <- "BII-I-1.zip"
 #' isaObject2 <- readISATab(path = file.path(system.file("extdata",
-#'                                                       package = "Risa")),
+#'                                                       package = "isatabr")),
 #'                          zipfile = isazip,
 #'                          verbose = TRUE)
-#' }
 #'
 #' @export
 readISATab <- function(path = getwd(),
@@ -59,9 +42,11 @@ readISATab <- function(path = getwd(),
                        verbose = FALSE) {
   checkCharacter(path)
   ## Run file.path to assure trailing / are removed/added when needed.
+  ## This is required to assure specifying path with/without trailing /
+  ## works on all operating systems.
   path <- file.path(path)
   if (!file.exists(path)) {
-    stop(path, " is not an existing folder on this system!")
+    stop(path, " is not an existing folder on this system.\n")
   }
   if (!is.null(zipfile)) {
     checkCharacter(zipfile)
@@ -71,28 +56,43 @@ readISATab <- function(path = getwd(),
   }
 }
 
-### This function only works if the zip file does not contain a directory name
-### (but the ISA-Tab files themselves)
+#'  Helper function for reading zipped isatab files.
+#'
+#' This function only works if the zip file does not contain a directory name
+#' (but the ISA-Tab files themselves)
+#'
+#' @noRd
+#' @keywords internal
 readZippedISATabFiles <- function(path = getwd(),
                                   zipfile,
                                   verbose = FALSE) {
+  ## Create temporary directory for unzipping.
   tmpdir <- normalizePath(tempdir())
   if (verbose) {
-    message("Unzipping file in temporary directory: ", tmpdir)
+    message("Unzipping file in temporary directory: ", tmpdir, "")
   }
+  ## Unzip file.
   unzippedISATabFiles <-
     utils::unzip(zipfile = normalizePath(file.path(path, zipfile)),
                  exdir = tmpdir)
   if (verbose) {
-    message("Unzipped files: ", paste(gsub(pattern = file.path(tmpdir, "/"),
-                                           replacement = "",
-                                           x = unzippedISATabFiles),
-                                      collapse = ", "))
+    message("Unzipped files: ",
+            paste(basename(unzippedISATabFiles), collapse = ", "))
   }
-  isaobj <- readISATabFiles(path = tmpdir, verbose = verbose)
-  return(isaobj)
+  ## Read from temp directory.
+  isaObj <- readISATabFiles(path = tmpdir, verbose = verbose)
+  ## Clean up and remove temp directory.
+  unlink(tmpdir)
+  return(isaObj)
 }
 
+#' Helper function for reading isatab files from a specified directory.
+#'
+#' This function only works if the zip file does not contain a directory name
+#' (but the ISA-Tab files themselves)
+#'
+#' @noRd
+#' @keywords internal
 readISATabFiles <- function(path = getwd(),
                             verbose = FALSE) {
   if (verbose) {

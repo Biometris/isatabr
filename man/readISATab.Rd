@@ -31,33 +31,16 @@ Reads an ISA-Tab dataset, given as a zip file or as a set of files in a
 specific folder, and builds an object of the \code{\link{ISA-class}}.
 }
 \examples{
-\dontrun{
-## Example for mass spectrometry dataset
-temp <- tempdir()
-datafiles <- c(file.path(system.file("cdf/KO", package = "faahKO"),
-                         grep(pattern = "CDF",
-                              x = dir(system.file("cdf/KO", package = "faahKO")),
-                              ignore.case = TRUE,
-                              value = TRUE)),
-               file.path(system.file("cdf/WT", package = "faahKO"),
-                         grep(pattern = "CDF",
-                              x = dir(system.file("cdf/WT", package = "faahKO")),
-                              value = TRUE)))
-file.copy(datafiles, temp, recursive = TRUE)
-isafiles <- file.path(system.file(package = "faahKO"),
-                      grep(pattern = "txt",
-                           x = dir(system.file(package = "faahKO")),
-                           value = TRUE))
-file.copy(isafiles, temp, recursive = TRUE)
-isaObject1 <- readISATab(path = temp)
+## Example BII data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/BII-I-1",
+                                          package = "isatabr")))
 
-## Example of readISATab for a mass spectrometry experiment
-isazip <- "faahKO-metadata.zip"
+## Example zipped BII data set
+isazip <- "BII-I-1.zip"
 isaObject2 <- readISATab(path = file.path(system.file("extdata",
-                                                      package = "Risa")),
+                                                      package = "isatabr")),
                          zipfile = isazip,
                          verbose = TRUE)
-}
 
 }
 \author{
