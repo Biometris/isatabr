@@ -14,7 +14,9 @@ Maintainer: Maikel Verouden <Maikel.Verouden@wur.nl>
 Encoding: UTF-8
 Depends: 
     methods
-Suggests: tinytest
+Suggests: 
+    tinytest,
+    xcms
 License: file LICENSE
 URL: https://github.com/Biometris/isatabr/
 BugReports: https://github.com/Biometris/isatabr/issues
