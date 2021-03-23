@@ -53,7 +53,8 @@ ISASyntax <- list(
   derived.array.data.file = "Derived Array Data File",
   # raw.spectral.data.file = "Raw Spectral Data File",
   hybridization.assay.name = "Hybridization Assay Name",
-  factor.name = "Factor Name")
+  factor.name = "Factor Name"
+)
 ### end ISASyntax list ----
 
 ### start technologyTypes list ----
@@ -74,7 +75,9 @@ checkCharacter <- function(...) {
   }
 }
 
-createISASlotDataFrame <- function(file, startRow, endRow) {
+createISASlotDataFrame <- function(file,
+                                   startRow,
+                                   endRow) {
   tempdf <- as.data.frame(t(file[(startRow + 1):(endRow - 1), ]),
                           stringsAsFactors = FALSE)
   colnames(tempdf) <- tempdf[1, ]
