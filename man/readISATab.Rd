@@ -28,7 +28,7 @@ An object of the \linkS4class{ISA} class.
 }
 \description{
 Reads an ISA-Tab dataset, given as a zip file or as a set of files in a
-specific folder, and builds an object of the \code{\link{ISA-class}}.
+specific folder, and builds an object of the \linkS4class{ISA} class.
 }
 \examples{
 ## Example BII data set.

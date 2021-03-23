@@ -3,7 +3,7 @@
 #'
 #' @description
 #' Reads an ISA-Tab dataset, given as a zip file or as a set of files in a
-#' specific folder, and builds an object of the \code{\link{ISA-class}}.
+#' specific folder, and builds an object of the \linkS4class{ISA} class.
 #'
 #' @param path A character vector with the name of the directory in which the
 #'             ISA-Tab files are located (if the parameter zipfile is not
