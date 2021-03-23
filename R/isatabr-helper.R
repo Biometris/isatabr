@@ -66,15 +66,6 @@ technologyTypes <- list(
 ### end technologyTypes list ----
 
 ### start helper functions ----
-### Remove all excessive fronting and trailing whitespace characters in a string
-trim <- function(x) {
-  gsub(pattern = "^\\s+|\\s+$", replacement = "", x)
-}
-
-### Replace excessive whitespace characters by a single one in a string
-replaceExcess <- function(x) {
-  gsub(pattern = "\\s+", replacement = " ", x)
-}
 
 checkCharacter <- function(...) {
   args <- list(...)
