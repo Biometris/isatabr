@@ -5,8 +5,8 @@
 #' @inheritParams getInvestigationInfo
 #'
 #' @param path A character vector with the name of the directory to which the
-#'             ISA-Tab investigation file should be written. The default
-#'             value is the current working directory.
+#'             file should be written. The default value is the current
+#'             working directory.
 #'
 #' @importFrom utils write.table
 #' @export
@@ -41,19 +41,58 @@ writeInvestigationFile <- function(isaObject,
   }
 }
 
+#' Write study file.
+#'
+#' Write study file.
+#'
+#' @inheritParams writeInvestigationFile
+#'
+#' @param studyFilenames A character vector indicating the study files that
+#'                       should be written.
+#'
+#' @importFrom utils write.table
+#' @export
+writeStudyFiles <- function(isaObject,
+                            studyFilenames = getStudyInfo(isaObject),
+                            path = getwd()){
+  studyFiles <- isaObject[ISASyntax$sFiles]
+  for (studyFilename in studyFilenames) {
+    studyContent <- studyFiles[[studyFilename]]
+    ## Construct full output file name.
+    outFile <- file.path(path, studyFilename)
+    ## Create an empty output file.
+    file.create(outFile)
+    ## Write output to file.
+    write.table(studyContent,
+                file = outFile,
+                row.names = FALSE,
+                col.names = TRUE,
+                quote = TRUE,
+                sep = "\t",
+                na = "\"\"")
+  }
+}
+
 #' Helper function for writing sections
 #'
 #' Helper function for adding a single section to an output file.
 #'
+#' @param section A length-one character vector indicating the section name
+#'                matching a section name in ISASyntax.
+#' @param sectionContent A data.frame with the content of the section that is to
+#'                       be written.
+#' @param outFile A length-one character vector containing the full path to the
+#'                output file.
+#'
 #' @noRd
 #' @keywords internal
-writeSection <- function(section,
+writeSection <- function(section = "",
                          sectionContent,
                          outFile) {
   ## Write section header.
-  cat(paste0(ISASyntax[[section]], "\n"),
-      file = outFile,
-      append = TRUE)
+    cat(paste0(ISASyntax[[section]], "\n"),
+        file = outFile,
+        append = TRUE)
   ## Write section content line by line to allow for unquoted row names.
   for (i in seq_len(nrow(sectionContent))) {
     ## Write row names - unquoted.
@@ -74,16 +113,7 @@ writeSection <- function(section,
 
 
 
-# write.study.file = function(isaObject,
-#                             study.filename,
-#                             path = getwd()){
-#   i <- which(isa["study.filenames"]==study.filename)
-#   study.file <- isa["study.files"][[ i ]]
-#   write.table(study.file,
-#               file=file.path(path,isa["study.filenames"][[i]]),
-#               row.names=FALSE, col.names=TRUE,
-#               quote=TRUE, sep="\t", na="\"\"")
-# }
+
 #
 # write.assay.file = function(isaObject,
 #                             assay.filename,
