@@ -10,7 +10,7 @@ writeInvestigationFile(isaObject, path = getwd())
 \item{isaObject}{An object of the \code{\link{ISA-class}}.}
 
 \item{path}{A character vector with the name of the directory to which the
-file should be written. The default value is the current
+file(s) should be written. The default value is the current
 working directory.}
 }
 \description{

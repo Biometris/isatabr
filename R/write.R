@@ -1,12 +1,28 @@
-#' Write investigation file.
+#' Write ISA-Tab object.
 #'
-#' Write investigation file.
+#' Write ISA-Tab object to files. The investigation file, study files and assay
+#' files are written to the folder specified in \code{path}.
 #'
 #' @inheritParams getInvestigationInfo
 #'
 #' @param path A character vector with the name of the directory to which the
-#'             file should be written. The default value is the current
+#'             file(s) should be written. The default value is the current
 #'             working directory.
+#'
+#' @importFrom utils write.table
+#' @export
+writeISAtab <- function(isaObject,
+                        path = getwd()) {
+  writeInvestigationFile(isaObject = isaObject, path = path)
+  writeStudyFiles(isaObject = isaObject, path = path)
+  writeAssayFiles(isaObject = isaObject, path = path)
+}
+
+#' Write investigation file.
+#'
+#' Write investigation file.
+#'
+#' @inheritParams writeISAtab
 #'
 #' @importFrom utils write.table
 #' @export
@@ -41,14 +57,15 @@ writeInvestigationFile <- function(isaObject,
   }
 }
 
-#' Write study file.
+#' Write study files.
 #'
-#' Write study file.
+#' Write study files.
 #'
-#' @inheritParams writeInvestigationFile
+#' @inheritParams writeISAtab
 #'
 #' @param studyFilenames A character vector indicating the study files that
-#'                       should be written.
+#'                       should be written. Default all study files in isaObject
+#'                       are written.
 #'
 #' @importFrom utils write.table
 #' @export
@@ -64,6 +81,39 @@ writeStudyFiles <- function(isaObject,
     file.create(outFile)
     ## Write output to file.
     write.table(studyContent,
+                file = outFile,
+                row.names = FALSE,
+                col.names = TRUE,
+                quote = TRUE,
+                sep = "\t",
+                na = "\"\"")
+  }
+}
+
+#' Write assay files.
+#'
+#' Write assay files.
+#'
+#' @inheritParams writeISAtab
+#'
+#' @param assayFilenames A character vector indicating the study files that
+#'                       should be written. Default all study files in isaObject
+#'                       are written.
+#'
+#' @importFrom utils write.table
+#' @export
+writeAssayFiles <- function(isaObject,
+                            assayFilenames = getAssayFileNames(isaObject),
+                            path = getwd()){
+  assayFiles <- isaObject[ISASyntax$aFiles]
+  for (assayFilename in assayFilenames) {
+    assayContent <- assayFiles[[assayFilename]]
+    ## Construct full output file name.
+    outFile <- file.path(path, assayFilename)
+    ## Create an empty output file.
+    file.create(outFile)
+    ## Write output to file.
+    write.table(assayContent,
                 file = outFile,
                 row.names = FALSE,
                 col.names = TRUE,
@@ -90,9 +140,9 @@ writeSection <- function(section = "",
                          sectionContent,
                          outFile) {
   ## Write section header.
-    cat(paste0(ISASyntax[[section]], "\n"),
-        file = outFile,
-        append = TRUE)
+  cat(paste0(ISASyntax[[section]], "\n"),
+      file = outFile,
+      append = TRUE)
   ## Write section content line by line to allow for unquoted row names.
   for (i in seq_len(nrow(sectionContent))) {
     ## Write row names - unquoted.
@@ -111,28 +161,3 @@ writeSection <- function(section = "",
   }
 }
 
-
-
-
-#
-# write.assay.file = function(isaObject,
-#                             assay.filename,
-#                             path = getwd()){
-#   i <- which(names(isa["assay.files"])==assay.filename)
-#   assay.file <- isa["assay.files"][[assay.filename ]]
-#   write.table(assay.file,
-#               file=file.path(path,isa["assay.filenames"][[i]]),
-#               row.names=FALSE, col.names=TRUE,
-#               quote=TRUE, sep="\t", na="\"\"")
-# }
-
-# write.ISAtab = function(isaObject,
-#                         path = getwd()){
-#   write.investigation.file(isaObject, path)
-#   for(i in seq_len(length(isaObject["study.filenames"]))){
-#     write.study.file(isaObject, isaObject["study.filenames"][[i]], path)
-#   }
-#   for(i in seq_len(length(isaObject["assay.filenames"]))){
-#     write.assay.file(isaObject, isaObject["assay.filenames"][[i]], path)
-#   }
-# }
