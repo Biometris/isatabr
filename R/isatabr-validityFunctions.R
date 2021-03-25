@@ -16,20 +16,13 @@
 #'
 #' @return TRUE or an error message.
 #'
-#' @seealso
-#' \linkS4class{ISA}, \code{\link{ISA-class}},
-#' \code{\link{initialize,ISA-method}}
+#' @seealso \linkS4class{ISA}
 #'
 #' @examples
-#' \dontrun{
-#'
-#' a <- new("ISA")
-#' print(a)
-#' a <- initialize(a,
-#'                 path = "~/Desktop/ISA-Tab_example/WUR/")
-#' validISAObject(a)
-#' print(a)
-#' }
+#' ## Example BII data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/BII-I-1",
+#'                                           package = "isatabr")))
+#' validISAObject(isaObject1)
 #'
 #' @export
 validISAObject <- function(object) {
@@ -48,7 +41,7 @@ validISAObject <- function(object) {
   } else if (noIFilenames > 1) {
     stop("Found too many possible investigation files: ",
          paste(object["Investigation Filename"], collapse = ", "))
-  } else {# noIFilenames == 1
+  } else { # noIFilenames == 1
     return(TRUE)
   }
   ## Check structure of investigation file name.
@@ -75,4 +68,5 @@ validISAObject <- function(object) {
                 path))
   }
 }
-setValidity(Class = "ISA", method = validISAObject)
+setValidity(Class = "ISA",
+            method = validISAObject)

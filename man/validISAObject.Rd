@@ -24,18 +24,12 @@ valid when:
 }
 }
 \examples{
-\dontrun{
-
-a <- new("ISA")
-print(a)
-a <- initialize(a,
-                path = "~/Desktop/ISA-Tab_example/WUR/")
-validISAObject(a)
-print(a)
-}
+## Example BII data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/BII-I-1",
+                                          package = "isatabr")))
+validISAObject(isaObject1)
 
 }
 \seealso{
-\linkS4class{ISA}, \code{\link{ISA-class}},
-\code{\link{initialize,ISA-method}}
+\linkS4class{ISA}
 }
