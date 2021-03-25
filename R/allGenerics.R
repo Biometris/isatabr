@@ -29,9 +29,9 @@ setMethod(
     ## START INVESTIGATION FILE ----
     ## Locate Investigation Filename(s)
     iFileName <- grep(pattern = paste0("^",
-                                      ISASyntax$iPrefix,
-                                      ".*[a-zA-Z0-9_-]",
-                                      "(\\.txt)$"),
+                                       ISASyntax$iPrefix,
+                                       ".*[a-zA-Z0-9_-]",
+                                       "(\\.txt)$"),
                       x = filenames,
                       value = TRUE,
                       perl = TRUE)
@@ -48,10 +48,10 @@ setMethod(
     }
     ## Read in investigation file
     iNoCols <- max(count.fields(file = file.path(path, iFileName),
-                                       sep = "\t",
-                                       quote = "\"",
-                                       blank.lines.skip = TRUE,
-                                       comment.char = "#"),
+                                sep = "\t",
+                                quote = "\"",
+                                blank.lines.skip = TRUE,
+                                comment.char = "#"),
                    na.rm = TRUE)
     iFile <- read.table(file = file.path(path, iFileName),
                         sep = "\t",
@@ -447,38 +447,53 @@ setReplaceMethod(
   }
 )
 
-#' ### Constructor methods ----
-#' #' @title
-#' #' Constructor method of assayTab-class.
-#' #'
-#' #' @description
-#' #' When creating a new object of class \code{assayTab} via:
-#' #' \code{object <- new(Class = "assayTab", path)}, the function
-#' #' \code{initialize(.Object, path)} is called to initialize and create the
-#' #' actual object. The \code{initialize-method} is seldomly used as a function
-#' #' itself.
-#' #'
-#' #' @param .Object character, name of the object of class \code{assayTab} to
-#' #'                be initialized
-#' #' @param path length-one character vector containing the path to the ISA-Tab
-#' #'             files of the dataset.
-#' #'
-#' #' @rdname assayTab-class
-#' #' @aliases assayTab-initialize
-#' #' @importFrom utils read.table read.delim
-#' #' @export
-#' setMethod(
-#'   f = "initialize",
-#'   signature = "assayTab",
-#'   definition = function(.Object, path) {
-#'     ## Assignment of the "path" slot.
-#'     .Object[ISASyntax$path] <- path
-#'
-#'
-#'
-#'     return(.Object)
-#'   }
-#' )
+#' @exportMethod processAssay
+setGeneric("processAssay",
+           function(isaObject, aTabOject) standardGeneric("processAssay"))
+
+setMethod(f = "processAssay",
+          signature = c(isaObject = "ISA", aTabOject = "assayTab"),
+          definition = function(isaObject, aTabOject) {
+            return(aTabOject)
+          }
+)
+
+setMethod(f = "processAssay",
+          signature = c(isaObject = "ISA", aTabOject = "msAssayTab"),
+          definition = function(isaObject, aTabOject) {
+            if (invisible(suppressPackageStartupMessages(requireNamespace("xcms", quietly = TRUE)))) {
+              assayDat <- slot(aTabOject, "aFile")
+              spectralDatFiles <-
+                file.path(normalizePath(slot(aTabOject, "path"),
+                                        winslash = .Platform$file.sep),
+                          unique(assayDat[[ISASyntax$rawSpecDataFile]]))
+              ## Construct vector of factors in assay.
+              isaFactors <- getFactors(isaObject = isaObject)
+              assayFactors <- names(isaFactors[[slot(aTabOject, "sIdentifier")]])
+
+              if (length(assayFactors) > 0) {
+                ## Construct data.frame with assay factor only.
+                sClass <- assayDat[, assayFactors, drop = FALSE]
+                for (colName in colnames(sClass)) {
+                  if (!is.factor(sClass[[colName]])) {
+                    ## Convert to factor if not a factor already.
+                    sClass[[colName]] <- as.factor(sClass[[colName]])
+                  }
+                }
+                xset <- xcms::xcmsSet(files = spectralDatFiles,
+                                      sclass = sClass)
+              } else {
+                xset = try(xcms::xcmsSet(files = spectralDatFiles,
+                                         phenoData = assayDat))
+              }
+              return(xset)
+            } else {
+              stop("For reading mass spectrometry data the xcms package ",
+                   "should be installed.\n")
+            }
+          }
+)
+
 
 
 
