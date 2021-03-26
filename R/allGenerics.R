@@ -461,18 +461,23 @@ setMethod(f = "processAssay",
 setMethod(f = "processAssay",
           signature = c(isaObject = "ISA", aTabOject = "msAssayTab"),
           definition = function(isaObject, aTabOject) {
-            if (invisible(suppressPackageStartupMessages(requireNamespace("xcms", quietly = TRUE)))) {
+            if (requireNamespace("xcms", quietly = TRUE)) {
               assayDat <- slot(aTabOject, "aFile")
               spectralDatFiles <-
                 file.path(normalizePath(slot(aTabOject, "path"),
                                         winslash = .Platform$file.sep),
                           unique(assayDat[[ISASyntax$rawSpecDataFile]]))
+              ## Check that files exist.
+              missFiles <- spectralDatFiles[!file.exists(spectralDatFiles)]
+              if (length(missFiles) > 0) {
+                stop("The following files are not found:\n",
+                     paste(missFiles, collapse = ", "))
+              }
               ## Construct vector of factors in assay.
               isaFactors <- getFactors(isaObject = isaObject)
               assayFactors <- names(isaFactors[[slot(aTabOject, "sIdentifier")]])
-
               if (length(assayFactors) > 0) {
-                ## Construct data.frame with assay factor only.
+                ## Construct data.frame with assay factors only.
                 sClass <- assayDat[, assayFactors, drop = FALSE]
                 for (colName in colnames(sClass)) {
                   if (!is.factor(sClass[[colName]])) {
