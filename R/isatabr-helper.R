@@ -58,12 +58,14 @@ ISASyntax <- list(
 ### end ISASyntax list ----
 
 ### start technologyTypes list ----
+## Only include technology types that have an associated assayTab class.
 technologyTypes <- list(
-  fc         = "flow cytometry",
-  microarray = "DNA microarray",
-  ms         = "mass spectrometry",
-  NMR        = "NMR spectroscopy",
-  seq        = "nucleotide sequencing")
+  # fc         = "flow cytometry",
+  # microarray = "DNA microarray",
+  ms         = "mass spectrometry"
+  # NMR        = "NMR spectroscopy",
+  # seq        = "nucleotide sequencing"
+)
 ### end technologyTypes list ----
 
 ### start helper functions ----

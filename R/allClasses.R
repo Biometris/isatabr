@@ -151,30 +151,9 @@ assayTab <- setClass(Class = "assayTab",
 #' @keywords classes
 #' @rdname assayTab-class
 #' @exportClass msAssayTab
-fcAssayTab <- setClass(Class = "fcAssayTab",
-                       contains = "assayTab")
-
-#' @keywords classes
-#' @rdname assayTab-class
-#' @exportClass msAssayTab
 msAssayTab <- setClass(Class = "msAssayTab",
-                       contains = "assayTab")
+                       contains = "assayTab",
+                       prototype = prototype(aTechType = "mass spectrometry"))
 
-#' @keywords classes
-#' @rdname assayTab-class
-#' @exportClass microarrayAssayTab
-microarrayAssayTab <- setClass(Class = "microarrayAssayTab",
-                               contains = "assayTab")
 
-#' @keywords classes
-#' @rdname assayTab-class
-#' @exportClass seqAssayTab
-seqAssayTab <- setClass(Class = "seqAssayTab",
-                        contains = "assayTab")
-
-#' @keywords classes
-#' @rdname assayTab-class
-#' @exportClass NMRAssayTab
-NMRAssayTab <- setClass(Class = "NMRAssayTab",
-                        contains = "assayTab")
 

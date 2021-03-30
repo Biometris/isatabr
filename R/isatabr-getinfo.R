@@ -677,7 +677,7 @@ getAssayTabs <- function(isaObject) {
       ## Returns empty character for 'non-existing' technology.
       assayTechName <-
         names(technologyTypes)[technologyTypes == assayTechTypes[[i]][j]]
-      assayClass <- if (nzchar(assayTechName))
+      assayClass <- if (isTRUE(nzchar(assayTechName)))
         paste0(assayTechName, "AssayTab") else "assayTab"
       new(assayClass,
           path = isaObject[ISASyntax$path],
