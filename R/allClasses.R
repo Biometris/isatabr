@@ -109,8 +109,8 @@ ISA <- setClass(Class = "ISA",
 #' @slot sFileName A length-one character vector containing the study
 #'                 filename (by definition starting with \strong{\emph{s_}} and
 #'                 ending at \strong{\emph{.txt}}).
-#' @slot sIndentifier A length-one character vector containing the study
-#'                    identifier.
+#' @slot sIdentifier A length-one character vector containing the study
+#'                   identifier.
 #' @slot aFileName A length-one character vector containing the assay
 #'                 filename (by definition starting with \strong{\emph{a_}} and
 #'                 ending at \strong{\emph{.txt}}).

@@ -1,6 +1,6 @@
 ## Get/Retrieve information from an ISA-class object
 #' @title
-#' Retrieve the Investigation Indentifier and Investigation File Name from an
+#' Retrieve the Investigation Identifier and Investigation File Name from an
 #' ISA object.
 #'
 #' @description
@@ -27,7 +27,7 @@ getInvestigationInfo <- function(isaObject) {
 }
 
 #' @title
-#' Retrieve the Study Indentifier(s) and Study File Name(s) from an ISA object.
+#' Retrieve the Study Identifier(s) and Study File Name(s) from an ISA object.
 #'
 #' @description
 #' Retrieve from an object of the \code{\link{ISA-class}} the Study
@@ -63,7 +63,7 @@ getStudyInfo <- function(isaObject) {
 #' @inheritParams getInvestigationInfo
 #'
 #' @return A named character vector of a list containing the Assay File Name(s)
-#'         for each Study Indentifier. The name of the character vector or names
+#'         for each Study Identifier. The name of the character vector or names
 #'         of the list elements represent(s) the Study Identifier(s).
 #'
 #' @author

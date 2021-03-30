@@ -2,7 +2,7 @@
 % Please edit documentation in R/isatabr-getinfo.R
 \name{getStudyInfo}
 \alias{getStudyInfo}
-\title{Retrieve the Study Indentifier(s) and Study File Name(s) from an ISA object.}
+\title{Retrieve the Study Identifier(s) and Study File Name(s) from an ISA object.}
 \usage{
 getStudyInfo(isaObject)
 }

@@ -447,7 +447,6 @@ setReplaceMethod(
   }
 )
 
-
 #' Process assay tab data
 #'
 #' Process data from assay tab files

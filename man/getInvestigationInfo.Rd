@@ -2,7 +2,7 @@
 % Please edit documentation in R/isatabr-getinfo.R
 \name{getInvestigationInfo}
 \alias{getInvestigationInfo}
-\title{Retrieve the Investigation Indentifier and Investigation File Name from an
+\title{Retrieve the Investigation Identifier and Investigation File Name from an
 ISA object.}
 \usage{
 getInvestigationInfo(isaObject)

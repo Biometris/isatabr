@@ -32,8 +32,7 @@
 #' Maikel Verouden
 #'
 #' @import methods
-#' @importFrom stats na.omit
-#' @importFrom utils count.fields data read.csv read.table write.table
+#' @importFrom utils count.fields read.table write.table
 #'
 #' @docType package
 #' @name isatabr-package

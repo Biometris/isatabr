@@ -28,7 +28,7 @@ dataset.}
 filename (by definition starting with \strong{\emph{s_}} and
 ending at \strong{\emph{.txt}}).}
 
-\item{\code{sIndentifier}}{A length-one character vector containing the study
+\item{\code{sIdentifier}}{A length-one character vector containing the study
 identifier.}
 
 \item{\code{aFileName}}{A length-one character vector containing the assay
