@@ -34,14 +34,17 @@ writeInvestigationFile <- function(isaObject,
   ## Construct full output file name.
   outFile <- file.path(path, isaObject[ISASyntax$iFileName])
   ## Create an empty output file.
+  ## This requires that the file directory to exists.
   file.create(outFile)
+  ## Open the file.
+  openFile <- file(outFile, open = "w")
   for (section in iSections) {
     ## Get section content.
     sectionContent <- t(isaObject[ISASyntax[[section]]])
     ## Add content to output file.
     writeSection(section = section,
                  sectionContent = sectionContent,
-                 outFile = outFile)
+                 outFile = openFile)
   }
   studies <- names(getStudyInfo(isaObject))
   ## Study content in investigation file is added per study.
@@ -52,9 +55,10 @@ writeInvestigationFile <- function(isaObject,
       ## Add content to output file.
       writeSection(section = section,
                    sectionContent = sectionContent,
-                   outFile = outFile)
+                   outFile = openFile)
     }
   }
+  close(openFile)
 }
 
 #' Write study files.
