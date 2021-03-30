@@ -3,13 +3,13 @@
 #' Constructor method of ISA-class.
 #'
 #' @description
-#' When creating a new object of class \code{ISA} via:
+#' When creating a new object of class \linkS4class{ISA} via:
 #' \code{object <- new(Class = "ISA", path)}, the function
 #' \code{initialize(.Object, path)} is called to initialize and create the
 #' actual object. The \code{initialize-method} is seldomly used as a function
 #' itself.
 #'
-#' @param .Object character, name of the object of class \code{ISA} to
+#' @param .Object character, name of the object of class \linkS4class{ISA} to
 #'                be initialized
 #' @param path length-one character vector containing the path to the ISA-Tab
 #'             files of the dataset.
@@ -217,16 +217,16 @@ setMethod(
 ### Extract slots of an ISA-class object ----
 #' @title Extract and replace methods for S4 ISA-class object
 #'
-#' @param x S4 object of class \code{ISA}.
+#' @param x S4 object of class \linkS4class{ISA}.
 #' @param i character, name of a slot to extract or replace.
 #'
 #' @details
 #' \code{x[i]} defines a method to extract the information in the slot of an S4
-#' object of class \code{ISA} by using a character vector specifying the name of
-#' the slot. Via \code{x[i] <- value} the value(s) in a slot of an S4 class
-#' object of class \code{ISA} can be replaced by means of specifying the name of
-#' the slot as a character vector. Below in the slot descriptions the character
-#' vectors to access specific slots are given.
+#' object of class \\linkS4class{ISA} by using a character vector specifying the
+#' name of the slot. Via \code{x[i] <- value} the value(s) in a slot of an S4
+#' class object of class \linkS4class{ISA} can be replaced by means of
+#' specifying the name of the slot as a character vector. Below in the slot
+#' descriptions the character vectors to access specific slots are given.
 #'
 #' @docType methods
 #' @rdname ISA-class
@@ -447,10 +447,23 @@ setReplaceMethod(
   }
 )
 
-#' @exportMethod processAssay
+
+#' Process assay tab data
+#'
+#' Process data from assay tab files
+#'
+#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @param aTabOject An object of the \code{\link{assayTab-class}}.
+#'
+#' @docType methods
+#' @rdname processAssay-methods
+#' @export
 setGeneric("processAssay",
            function(isaObject, aTabOject) standardGeneric("processAssay"))
 
+
+#' @rdname processAssay-methods
+#' @aliases processAssay,ISA,assayTab-method
 setMethod(f = "processAssay",
           signature = c(isaObject = "ISA", aTabOject = "assayTab"),
           definition = function(isaObject, aTabOject) {
@@ -458,6 +471,16 @@ setMethod(f = "processAssay",
           }
 )
 
+#' Process assay tab data for mass spectrometry
+#'
+#' Process data from assay tab files with technology type mass spectrometry
+#' (ms). Processing those files requires the xcms package to be installed.
+#'
+#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @param aTabOject An object of the \code{\link{msAssayTab-class}}.
+#'
+#' @rdname processAssay-methods
+#' @aliases processAssay,ISA,msAssayTab-method
 setMethod(f = "processAssay",
           signature = c(isaObject = "ISA", aTabOject = "msAssayTab"),
           definition = function(isaObject, aTabOject) {
@@ -498,7 +521,4 @@ setMethod(f = "processAssay",
             }
           }
 )
-
-
-
 

@@ -18,13 +18,13 @@
 \S4method{[}{ISA,character}(x, i) <- value
 }
 \arguments{
-\item{.Object}{character, name of the object of class \code{ISA} to
+\item{.Object}{character, name of the object of class \linkS4class{ISA} to
 be initialized}
 
 \item{path}{length-one character vector containing the path to the ISA-Tab
 files of the dataset.}
 
-\item{x}{S4 object of class \code{ISA}.}
+\item{x}{S4 object of class \linkS4class{ISA}.}
 
 \item{i}{character, name of a slot to extract or replace.}
 
@@ -35,7 +35,7 @@ An S4 class to store information from an ISA-Tab dataset, including an
 investigation file, one or more study files, and one or more assay files for
 each study file.
 
-When creating a new object of class \code{ISA} via:
+When creating a new object of class \linkS4class{ISA} via:
 \code{object <- new(Class = "ISA", path)}, the function
 \code{initialize(.Object, path)} is called to initialize and create the
 actual object. The \code{initialize-method} is seldomly used as a function
@@ -43,11 +43,11 @@ itself.
 }
 \details{
 \code{x[i]} defines a method to extract the information in the slot of an S4
-object of class \code{ISA} by using a character vector specifying the name of
-the slot. Via \code{x[i] <- value} the value(s) in a slot of an S4 class
-object of class \code{ISA} can be replaced by means of specifying the name of
-the slot as a character vector. Below in the slot descriptions the character
-vectors to access specific slots are given.
+object of class \\linkS4class{ISA} by using a character vector specifying the
+name of the slot. Via \code{x[i] <- value} the value(s) in a slot of an S4
+class object of class \linkS4class{ISA} can be replaced by means of
+specifying the name of the slot as a character vector. Below in the slot
+descriptions the character vectors to access specific slots are given.
 }
 \section{Slots}{
 
