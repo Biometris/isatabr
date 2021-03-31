@@ -60,7 +60,7 @@ ISASyntax <- list(
   # sample.name = "Sample Name",
   # raw.data.file = "Raw Data File",
   # free.induction.decay.data.file = "Free Induction Decay Data File",
-  # array.data.file = "Array Data File",
+  arrayDataFile = "Array Data File",
   # derived.array.data.file = "Derived Array Data File",
   rawSpecDataFile = "Raw Spectral Data File"
   # hybridization.assay.name = "Hybridization Assay Name",

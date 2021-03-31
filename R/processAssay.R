@@ -72,17 +72,47 @@ setMethod(f = "processAssay",
           }
 )
 
-
-
-
-
-
-
-
-
-
-
-
+#' Process assay tab data for DNA microarray
+#'
+#' Process data from assay tab files with technology type DNA microarray
+#' (ms). Processing those files requires the Biobase and affy packages to be
+#' installed.
+#'
+#' @param isaObject An object of the \code{\link{ISA-class}}.
+#' @param aTabObject An object of the \code{\link{microarrayAssayTab-class}}.
+#'
+#' @rdname processAssay-methods
+#' @aliases processAssay,ISA,msAssayTab-method
+setMethod(f = "processAssay",
+          signature = c(isaObject = "ISA", aTabObject = "msAssayTab"),
+          definition = function(isaObject, aTabObject) {
+            if (requireNamespace("affy", quietly = TRUE)) {
+              ## Get microarray files for assay.
+              assayDat <- slot(aTabObject, "aFile")
+              microarrayDatFiles <-
+                file.path(normalizePath(slot(aTabObject, "path"),
+                                        winslash = .Platform$file.sep),
+                          unique(assayDat[[ISASyntax$arrayDataFile]]))
+              ## Check that files exist.
+              missFiles <- microarrayDatFiles[!file.exists(microarrayDatFiles)]
+              if (length(missFiles) > 0) {
+                stop("The following files are not found:\n",
+                     paste(missFiles, collapse = ", "))
+              }
+              ## Construct meta data.
+              aTabMIAME <- constructMIAMEMetadata(isaObject = isaObject,
+                                                  aTabObject = aTabObject)
+              ## Get expression set.
+              xset <- affy::justRMA(filenames = microarrayDatFiles,
+                                    phenoData = assayDat,
+                                    description = aTabMIAME)
+              return(xset)
+            } else {
+              stop("For reading DNA microarray data the affy package ",
+                   "should be installed.\n")
+            }
+          }
+)
 
 #' Helper function for construction MIAME meta data
 #'

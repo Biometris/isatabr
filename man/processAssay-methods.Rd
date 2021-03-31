@@ -12,15 +12,21 @@ processAssay(isaObject, aTabObject)
 \S4method{processAssay}{ISA,assayTab}(isaObject, aTabObject)
 
 \S4method{processAssay}{ISA,msAssayTab}(isaObject, aTabObject)
+
+\S4method{processAssay}{ISA,msAssayTab}(isaObject, aTabObject)
 }
 \arguments{
 \item{isaObject}{An object of the \code{\link{ISA-class}}.}
 
-\item{aTabObject}{An object of the \code{\link{msAssayTab-class}}.}
+\item{aTabObject}{An object of the \code{\link{microarrayAssayTab-class}}.}
 }
 \description{
 Process data from assay tab files
 
 Process data from assay tab files with technology type mass spectrometry
 (ms). Processing those files requires the xcms package to be installed.
+
+Process data from assay tab files with technology type DNA microarray
+(ms). Processing those files requires the Biobase and affy packages to be
+installed.
 }
