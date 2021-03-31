@@ -92,7 +92,6 @@ setMethod(f = "processAssay",
 #'
 #' @return An object of class \code{MIAME}.
 #'
-#'
 #' @noRd
 #' @keywords internal
 #' @importFrom utils person
@@ -104,14 +103,14 @@ constructMIAMEMetadata <- function(isaObject,
       sIdentifier <- names(slot(aTabObject, "sFilename"))
       sInfo <- slot(isaObject, "study")[[sIdentifier]]
       sContacts <- isaObject[ISASyntax$sContacts][[sIdentifier]]
-      ## Get corresponding author.
+      ## Get corresponding author details.
       sCorr <- sContacts[sContacts[[ISASyntax$sPersonRoles]] == "corresponding author", ]
-      sCorr <- as.character(person(given = paste(sCorr[[ISASyntax$sPersonFirst]],
-                                                 sCorr[[ISASyntax$sPersonMid]]),
-                                   family = sCorr[[ISASyntax$sPersonLast]]))
+      sCorrPers <- as.character(person(given = paste(sCorr[[ISASyntax$sPersonFirst]],
+                                                     sCorr[[ISASyntax$sPersonMid]]),
+                                       family = sCorr[[ISASyntax$sPersonLast]]))
       aTabMIAME <- Biobase::MIAME(name = sIdentifier,
-                                  lab = sContacts[[ISASyntax$sPersonAff]],
-                                  contact = sCorr,
+                                  lab = sCorr[[ISASyntax$sPersonAff]],
+                                  contact = sCorrPers,
                                   title = sInfo[[ISASyntax$sTitle]],
                                   abstract = sInfo[[ISASyntax$sDescription]],
                                   samples = as.list(assayDat["Sample Name"])
