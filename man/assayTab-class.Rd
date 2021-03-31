@@ -6,6 +6,8 @@
 \alias{assayTab}
 \alias{msAssayTab-class}
 \alias{msAssayTab}
+\alias{microarrayAssayTab-class}
+\alias{microarrayAssayTab}
 \title{S4 Class assayTab, initialization, extract- and replace-methods}
 \description{
 An S4 class to store information from an assay files.

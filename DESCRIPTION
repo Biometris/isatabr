@@ -16,7 +16,8 @@ Depends:
     methods
 Suggests: 
     tinytest,
-    xcms
+    xcms,
+    Biobase
 License: file LICENSE
 URL: https://github.com/Biometris/isatabr/
 BugReports: https://github.com/Biometris/isatabr/issues

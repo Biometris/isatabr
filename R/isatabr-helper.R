@@ -39,13 +39,24 @@ ISASyntax <- list(
   dataFile   = "Data File",
   sampleName = "Sample Name",
   fctrValue  = "Factor Value",
+  ## Column names study info.
+  sTitle = "Study Title",
+  sDescription = "Study Description",
+  sPersonLast = "Study Person Last Name",
+  sPersonFirst = "Study Person First Name",
+  sPersonMid = "Study Person Mid Initials",
+  sPersonAff = "Study Person Affiliation",
+  sPersonRoles = "Study Person Roles",
+  ## Column names study publication info.
+  sPubMedId = "Study PubMed ID",
+  sPubDOI = "Study Publication DOI",
+  sPubAuthList = "Study Publication Author List",
+  sPubTitle = "Study Publication Title",
+  sPubStatus = "Study Publication Status",
+  sPubstatusTermAccNum = "Study Publication Status Term Accession Number",
+  sPubStatusTermSrcREF = "Study Publication Status Term Source REF",
+
   ### CONTINUE HERE!! ###
-  # study.title = "Study Title",
-  # study.description = "Study Description",
-  # study.person.last.name = "Study Person Last Name",
-  # study.person.first.name = "Study Person First Name",
-  # study.person.mid.initial = "Study Person Mid Initial",
-  # study.person.affiliation = "Study Person Affiliation",
   # sample.name = "Sample Name",
   # raw.data.file = "Raw Data File",
   # free.induction.decay.data.file = "Free Induction Decay Data File",
@@ -61,7 +72,7 @@ ISASyntax <- list(
 ## Only include technology types that have an associated assayTab class.
 technologyTypes <- list(
   # fc         = "flow cytometry",
-  # microarray = "DNA microarray",
+  microarray = "DNA microarray",
   ms         = "mass spectrometry"
   # NMR        = "NMR spectroscopy",
   # seq        = "nucleotide sequencing"

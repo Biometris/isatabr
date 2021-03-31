@@ -155,5 +155,11 @@ msAssayTab <- setClass(Class = "msAssayTab",
                        contains = "assayTab",
                        prototype = prototype(aTechType = "mass spectrometry"))
 
+#' @keywords classes
+#' @rdname assayTab-class
+#' @exportClass microarrayAssayTab
+microarrayAssayTab <- setClass(Class = "microarrayAssayTab",
+                       contains = "assayTab",
+                       prototype = prototype(aTechType = "DNA microarray"))
 
 
