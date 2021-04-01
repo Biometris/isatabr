@@ -84,15 +84,12 @@ setMethod(f = "processAssay",
 #' @rdname processAssay-methods
 #' @aliases processAssay,ISA,msAssayTab-method
 setMethod(f = "processAssay",
-          signature = c(isaObject = "ISA", aTabObject = "msAssayTab"),
+          signature = c(isaObject = "ISA", aTabObject = "microarrayAssayTab"),
           definition = function(isaObject, aTabObject) {
             if (requireNamespace("affy", quietly = TRUE)) {
               ## Get microarray files for assay.
               assayDat <- slot(aTabObject, "aFile")
-              microarrayDatFiles <-
-                file.path(normalizePath(slot(aTabObject, "path"),
-                                        winslash = .Platform$file.sep),
-                          unique(assayDat[[ISASyntax$arrayDataFile]]))
+              microarrayDatFiles <- unique(assayDat[[ISASyntax$arrayDataFile]])
               ## Check that files exist.
               missFiles <- microarrayDatFiles[!file.exists(microarrayDatFiles)]
               if (length(missFiles) > 0) {
@@ -103,8 +100,13 @@ setMethod(f = "processAssay",
               aTabMIAME <- constructMIAMEMetadata(isaObject = isaObject,
                                                   aTabObject = aTabObject)
               ## Get expression set.
+              ## justRMA only reads files from working directory.
+              ## So change to that and reset when exiting function.
+              wd <- getwd()
+              on.exit(setwd(wd), add = TRUE)
+              setwd(slot(aTabObject, "path"))
               xset <- affy::justRMA(filenames = microarrayDatFiles,
-                                    phenoData = assayDat,
+                                    #phenoData = assayDat,
                                     description = aTabMIAME)
               return(xset)
             } else {

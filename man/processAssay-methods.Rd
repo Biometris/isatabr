@@ -5,6 +5,7 @@
 \alias{processAssay}
 \alias{processAssay,ISA,assayTab-method}
 \alias{processAssay,ISA,msAssayTab-method}
+\alias{processAssay,ISA,microarrayAssayTab-method}
 \title{Process assay tab data}
 \usage{
 processAssay(isaObject, aTabObject)
@@ -13,7 +14,7 @@ processAssay(isaObject, aTabObject)
 
 \S4method{processAssay}{ISA,msAssayTab}(isaObject, aTabObject)
 
-\S4method{processAssay}{ISA,msAssayTab}(isaObject, aTabObject)
+\S4method{processAssay}{ISA,microarrayAssayTab}(isaObject, aTabObject)
 }
 \arguments{
 \item{isaObject}{An object of the \code{\link{ISA-class}}.}
