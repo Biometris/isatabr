@@ -170,15 +170,12 @@ setMethod(
     ## START STUDY FILES ----
     sFileName <- getStudyInfo(isaObject = .Object)
     for (i in seq_along(sFileName)) {
-      tempdf <- read.delim(file = paste(.Object["path"],
-                                        sFileName[i],
-                                        sep = "/"),
+      sFilePath <- file.path(.Object["path"], sFileName[i])
+      tempdf <- read.delim(file = sFilePath,
                            header = TRUE,
                            sep = "\t",
                            stringsAsFactors = FALSE)
-      columnNames <- as.character(read.table(file = paste(.Object["path"],
-                                                          sFileName[i],
-                                                          sep = "/"),
+      columnNames <- as.character(read.table(file = sFilePath,
                                              header = FALSE,
                                              sep = "\t",
                                              nrows = 1,
@@ -192,15 +189,12 @@ setMethod(
     ## START ASSAY FILES ----
     aFileName <- getAssayFileNames(isaObject = .Object)
     for (i in seq_along(aFileName)) {
-      tempdf <- read.delim(file = paste(.Object["path"],
-                                        aFileName[i],
-                                        sep = "/"),
+      aFilePath <- file.path(.Object["path"], aFileName[i])
+      tempdf <- read.delim(file = aFilePath,
                            header = TRUE,
                            sep = "\t",
                            stringsAsFactors = FALSE)
-      columnNames <- as.character(read.table(file = paste(.Object["path"],
-                                                          aFileName[i],
-                                                          sep = "/"),
+      columnNames <- as.character(read.table(file = aFilePath,
                                              header = FALSE,
                                              sep = "\t",
                                              nrows = 1,
