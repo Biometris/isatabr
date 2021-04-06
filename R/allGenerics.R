@@ -208,6 +208,27 @@ setMethod(
   }
 )
 
+#' Get and set the file path for an object of the \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return The path to the folder for the object of the \code{\link{ISA-class}}.
+#' @rdname path
+#' @export
+setGeneric("path", function(x) standardGeneric("path"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A length-one character vector indicating the path to an
+#' accessible directory on the system.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname path
+#' @export
+setGeneric("path<-", function(x, value) standardGeneric("path<-"))
+
+
+
+
 ### Extract slots of an ISA-class object ----
 #' @title Extract and replace methods for S4 ISA-class object
 #'
