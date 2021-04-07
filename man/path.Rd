@@ -5,6 +5,8 @@
 \alias{path<-}
 \alias{path,ISA-method}
 \alias{path<-,ISA-method}
+\alias{iFileName<-,ISA-method}
+\alias{oSR<-,ISA-method}
 \title{Get and set the file path for an object of the \code{\link{ISA-class}}.}
 \usage{
 path(x)
@@ -14,6 +16,10 @@ path(x) <- value
 \S4method{path}{ISA}(x)
 
 \S4method{path}{ISA}(x) <- value
+
+\S4method{iFileName}{ISA}(x) <- value
+
+\S4method{oSR}{ISA}(x) <- value
 }
 \arguments{
 \item{x}{An object of the \code{\link{ISA-class}}.}

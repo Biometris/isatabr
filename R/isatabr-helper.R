@@ -55,18 +55,16 @@ ISASyntax <- list(
   sPubStatus = "Study Publication Status",
   sPubstatusTermAccNum = "Study Publication Status Term Accession Number",
   sPubStatusTermSrcREF = "Study Publication Status Term Source REF",
-
-  ### CONTINUE HERE!! ###
-  # sample.name = "Sample Name",
-  # raw.data.file = "Raw Data File",
-  # free.induction.decay.data.file = "Free Induction Decay Data File",
   arrayDataFile = "Array Data File",
-  # derived.array.data.file = "Derived Array Data File",
   rawSpecDataFile = "Raw Spectral Data File"
-  # hybridization.assay.name = "Hybridization Assay Name",
-  # factor.name = "Factor Name"
 )
 ### end ISASyntax list ----
+
+### Required columns for oSR data.frame.
+oSRCols <- c("Term Source Name",
+             "Term Source File",
+             "Term Source Version",
+             "Term Source Description")
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.

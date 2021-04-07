@@ -1,4 +1,7 @@
-## Set information for an ISA-class object
+### Get and set information for an ISA-class object
+
+### Path.
+
 #' @rdname path
 setMethod("path", "ISA", function(x) x@path)
 
@@ -11,7 +14,29 @@ setMethod("path<-", "ISA", function(x, value) {
   return(x)
 })
 
+### iFileName.
 
+#' @rdname iFileName
+setMethod("iFileName", "ISA", function(x) x@iFileName)
+
+#' @rdname path
+setMethod("iFileName<-", "ISA", function(x, value) {
+  x@iFileName <- value
+  validISAObject(x)
+  return(x)
+})
+
+### oSR
+
+#' @rdname oSR
+setMethod("oSR", "ISA", function(x) x@oSR)
+
+#' @rdname path
+setMethod("oSR<-", "ISA", function(x, value) {
+  x@oSR <- value
+  validISAObject(x)
+  return(x)
+})
 
 
 

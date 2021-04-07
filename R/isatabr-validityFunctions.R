@@ -26,23 +26,21 @@
 #'
 #' @export
 validISAObject <- function(object) {
-  ## Check that path point to an existing folder.
-  path <- object["path"]
+  ## Check that path points to an existing folder.
+  path <- path(object)
   if (!file.exists(path)) {
-    stop(path, " is not an existing folder on this system!")
+    stop(path, " is not an existing folder on this system.\n")
   } else {
     path <- normalizePath(path)
   }
   ## Check number of investigation files - should be 1.
-  iFileName <- object[ISASyntax$iFileName]
+  iFileName <- iFileName(object)
   noIFilenames <- length(iFileName)
   if (noIFilenames == 0) {
-    stop("Did not find any investigation file at folder ", path)
+    stop("Did not find any investigation file at folder ", path, ".\n")
   } else if (noIFilenames > 1) {
     stop("Found too many possible investigation files: ",
-         paste(object["Investigation Filename"], collapse = ", "))
-  } else { # noIFilenames == 1
-    return(TRUE)
+         paste(object["Investigation Filename"], collapse = ", "), "\n")
   }
   ## Check structure of investigation file name.
   if (!grepl(pattern = paste0("^",
@@ -56,17 +54,15 @@ validISAObject <- function(object) {
                 "\" for the \"",
                 ISASyntax$iFileName,
                 "\" slot does not match the requirements (start with ",
-                "\"i_\" and end with \".txt\")."))
+                "\"i_\" and end with \".txt\").\n"))
   }
-  ## Check that investigation file is found in path.
-  if (!iFileName %in% list.files(path)) {
-    stop(paste0("The \"",
-                ISASyntax$iFileName,
-                "\": \"",
-                iFileName,
-                "\" is not present in the folder: ",
-                path))
+  ## Check column names in ontology source reference.
+  oSR <- oSR(object)
+  if (!setequal(colnames(oSR), oSRCols)) {
+    stop("The column names for the oSR data.frame don't match the required ",
+         "column names: ", paste(oSRCols, collapse = ", "), "\n")
   }
+
 }
 setValidity(Class = "ISA",
             method = validISAObject)

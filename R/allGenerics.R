@@ -208,6 +208,8 @@ setMethod(
   }
 )
 
+### Path standard generics.
+
 #' Get and set the file path for an object of the \code{\link{ISA-class}}.
 #'
 #' @param x An object of the \code{\link{ISA-class}}.
@@ -226,6 +228,47 @@ setGeneric("path", function(x) standardGeneric("path"))
 #' @export
 setGeneric("path<-", function(x, value) standardGeneric("path<-"))
 
+### iFileName standard generics.
+
+#' Get and set the file name for the investigation file in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return The file name of the investigation file.
+#' @rdname iFileName
+#' @export
+setGeneric("iFileName", function(x) standardGeneric("iFileName"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A length-one character vector indicating the name of the
+#' investigation file, a string starting with "i_" and ending in ".txt"
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname iFileName
+#' @export
+setGeneric("iFileName<-", function(x, value) standardGeneric("iFileName<-"))
+
+### oSR standard generics.
+
+#' Get and set the ontology Source Reference in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A data.frame containing the ontology Source Reference information.
+#' @rdname oSR
+#' @export
+setGeneric("oSR", function(x) standardGeneric("oSR"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A data.frame containing the ontology Source Reference
+#' information. A data.frame with the columns
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname oSR
+#' @export
+setGeneric("oSR<-", function(x, value) standardGeneric("oSR<-"))
 
 
 
