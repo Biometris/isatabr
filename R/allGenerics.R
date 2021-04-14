@@ -402,7 +402,29 @@ setGeneric("sDD", function(x) standardGeneric("sDD"))
 setGeneric("sDD<-", function(x, value) standardGeneric("sDD<-"))
 
 
+### sPubs standard generics.
 
+#' Get and set sPubs.
+#'
+#' Get and set the list of sPubs data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A list of data.frames containing the study publications.
+#' @rdname sPubs
+#' @export
+setGeneric("sPubs", function(x) standardGeneric("sPubs"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A list of data.frames containing the study publications..
+#' In each data.frame at least the following columns are present:
+#' `r paste0("``", sPubsCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname sPubs
+#' @export
+setGeneric("sPubs<-", function(x, value) standardGeneric("sPubs<-"))
 
 
 

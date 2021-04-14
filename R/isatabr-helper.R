@@ -97,6 +97,13 @@ studyCols <- c("Study Identifier",
 sDDCols <- c("Study Design Type",
              "Study Design Type Term Accession Number",
              "Study Design Type Term Source REF")
+sPubsCols <- c("Study PubMed ID",
+               "Study Publication DOI",
+               "Study Publication Author List",
+               "Study Publication Title",
+               "Study Publication Status",
+               "Study Publication Status Term Accession Number",
+               "Study Publication Status Term Source REF")
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.

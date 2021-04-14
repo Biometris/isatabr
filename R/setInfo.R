@@ -100,6 +100,18 @@ setMethod("sDD<-", "ISA", function(x, value) {
   return(x)
 })
 
+### sPubs
+
+#' @rdname sPubs
+setMethod("sPubs", "ISA", function(x) x@sPubs)
+
+#' @rdname sPubs
+setMethod("sPubs<-", "ISA", function(x, value) {
+  x@sPubs <- value
+  validISAObject(x)
+  return(x)
+})
+
 
 
 #' #' @title
