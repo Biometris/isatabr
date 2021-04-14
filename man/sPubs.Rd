@@ -18,7 +18,7 @@ sPubs(x) <- value
 \arguments{
 \item{x}{An object of the \code{\link{ISA-class}}.}
 
-\item{value}{A list of data.frames containing the study publications..
+\item{value}{A list of data.frames containing the study publications.
 In each data.frame at least the following columns are present:
 \verb{Study PubMed ID}, \verb{Study Publication DOI}, \verb{Study Publication Author List}, \verb{Study Publication Title}, \verb{Study Publication Status}, \verb{Study Publication Status Term Accession Number}, \verb{Study Publication Status Term Source REF}.}
 }

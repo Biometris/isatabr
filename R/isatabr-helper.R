@@ -104,6 +104,10 @@ sPubsCols <- c("Study PubMed ID",
                "Study Publication Status",
                "Study Publication Status Term Accession Number",
                "Study Publication Status Term Source REF")
+sFactsCols <- c("Study Factor Name",
+                "Study Factor Type",
+                "Study Factor Type Term Accession Number",
+                "Study Factor Type Term Source REF")
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.

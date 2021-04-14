@@ -417,7 +417,7 @@ setGeneric("sDD<-", function(x, value) standardGeneric("sDD<-"))
 setGeneric("sPubs", function(x) standardGeneric("sPubs"))
 
 #' @param x An object of the \code{\link{ISA-class}}.
-#' @param value A list of data.frames containing the study publications..
+#' @param value A list of data.frames containing the study publications.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", sPubsCols, "``", collapse = ", ")`.
 #'
@@ -427,7 +427,29 @@ setGeneric("sPubs", function(x) standardGeneric("sPubs"))
 setGeneric("sPubs<-", function(x, value) standardGeneric("sPubs<-"))
 
 
+### sFacts standard generics.
 
+#' Get and set sFacts.
+#'
+#' Get and set the list of sFacts data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A list of data.frames containing the study factors.
+#' @rdname sFacts
+#' @export
+setGeneric("sFacts", function(x) standardGeneric("sFacts"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A list of data.frames containing the study factors.
+#' In each data.frame at least the following columns are present:
+#' `r paste0("``", sFactsCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname sFacts
+#' @export
+setGeneric("sFacts<-", function(x, value) standardGeneric("sFacts<-"))
 
 
 

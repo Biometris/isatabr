@@ -112,6 +112,18 @@ setMethod("sPubs<-", "ISA", function(x, value) {
   return(x)
 })
 
+### sFacts
+
+#' @rdname sFacts
+setMethod("sFacts", "ISA", function(x) x@sFacts)
+
+#' @rdname sFacts
+setMethod("sFacts<-", "ISA", function(x, value) {
+  x@sFacts <- value
+  validISAObject(x)
+  return(x)
+})
+
 
 
 #' #' @title
