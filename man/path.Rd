@@ -9,6 +9,7 @@
 \alias{oSR<-,ISA-method}
 \alias{invest<-,ISA-method}
 \alias{iPubs<-,ISA-method}
+\alias{iContacts<-,ISA-method}
 \title{Get and set path}
 \usage{
 path(x)
@@ -26,6 +27,8 @@ path(x) <- value
 \S4method{invest}{ISA}(x) <- value
 
 \S4method{iPubs}{ISA}(x) <- value
+
+\S4method{iContacts}{ISA}(x) <- value
 }
 \arguments{
 \item{x}{An object of the \code{\link{ISA-class}}.}

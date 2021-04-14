@@ -269,7 +269,7 @@ setGeneric("oSR", function(x) standardGeneric("oSR"))
 
 #' @param x An object of the \code{\link{ISA-class}}.
 #' @param value A data.frame containing the ontology Source Reference
-#' information. A data.frame with the columns
+#' information. data.frame in which at least the following columns are present:
 #' `r paste0("``", oSRCols, "``", collapse = ", ")`.
 #'
 #' @return The updated object of the \code{\link{ISA-class}}.
@@ -293,7 +293,7 @@ setGeneric("invest", function(x) standardGeneric("invest"))
 
 #' @param x An object of the \code{\link{ISA-class}}.
 #' @param value A data.frame containing the investigation information. A
-#' data.frame with the columns
+#' data.frame in which at least the following columns are present:
 #' `r paste0("``", investCols, "``", collapse = ", ")`.
 #'
 #' @return The updated object of the \code{\link{ISA-class}}.
@@ -317,7 +317,7 @@ setGeneric("iPubs", function(x) standardGeneric("iPubs"))
 
 #' @param x An object of the \code{\link{ISA-class}}.
 #' @param value A data.frame containing the investigation publications
-#' information. A data.frame with the columns
+#' information. data.frame in which at least the following columns are present:
 #' `r paste0("``", iPubsCols, "``", collapse = ", ")`.
 #'
 #' @return The updated object of the \code{\link{ISA-class}}.
@@ -325,7 +325,29 @@ setGeneric("iPubs", function(x) standardGeneric("iPubs"))
 #' @export
 setGeneric("iPubs<-", function(x, value) standardGeneric("iPubs<-"))
 
+### iContacts standard generics.
 
+#' Get and set iContacts.
+#'
+#' Get and set the iContacts data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A data.frame containing the investigation contacts information.
+#' @rdname iContacts
+#' @export
+setGeneric("iContacts", function(x) standardGeneric("iContacts"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A data.frame containing the investigation contacts
+#' information. A data.frame with the columns
+#' `r paste0("``", iContactsCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname iContacts
+#' @export
+setGeneric("iContacts<-", function(x, value) standardGeneric("iContacts<-"))
 
 
 

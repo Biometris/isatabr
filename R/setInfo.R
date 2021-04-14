@@ -64,6 +64,20 @@ setMethod("iPubs<-", "ISA", function(x, value) {
 })
 
 
+### iContacts
+
+#' @rdname iContacts
+setMethod("iContacts", "ISA", function(x) x@iContacts)
+
+#' @rdname path
+setMethod("iContacts<-", "ISA", function(x, value) {
+  x@iContacts <- value
+  validISAObject(x)
+  return(x)
+})
+
+
+
 #' #' @title
 #' #' Set the Investigation Identifier and Investigation File Name for an
 #' #' ISA object.

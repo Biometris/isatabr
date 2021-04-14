@@ -16,8 +16,8 @@ invest(x) <- value
 \item{x}{An object of the \code{\link{ISA-class}}.}
 
 \item{value}{A data.frame containing the investigation information. A
-data.frame with the columns
-\verb{Investigation Identifier}, \verb{Investigation Title}, \verb{Investigation Description}, \verb{Investigation Submission Date}, \verb{Investigation Public Release Date}, \verb{Created With Configuration}, \verb{Last Opened With Configuration}.}
+data.frame in which at least the following columns are present:
+\verb{Investigation Identifier}, \verb{Investigation Title}, \verb{Investigation Description}, \verb{Investigation Submission Date}, \verb{Investigation Public Release Date}.}
 }
 \value{
 A data.frame containing the investigation information.

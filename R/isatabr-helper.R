@@ -60,7 +60,7 @@ ISASyntax <- list(
 )
 ### end ISASyntax list ----
 
-### Required columns for oSR data.frame.
+### Minium required columns for data.frames.
 oSRCols <- c("Term Source Name",
              "Term Source File",
              "Term Source Version",
@@ -69,9 +69,7 @@ investCols <- c("Investigation Identifier",
                 "Investigation Title",
                 "Investigation Description",
                 "Investigation Submission Date",
-                "Investigation Public Release Date",
-                "Created With Configuration",
-                "Last Opened With Configuration")
+                "Investigation Public Release Date")
 iPubsCols <- c("Investigation PubMed ID",
                "Investigation Publication DOI",
                "Investigation Publication Author List",
@@ -79,6 +77,17 @@ iPubsCols <- c("Investigation PubMed ID",
                "Investigation Publication Status",
                "Investigation Publication Status Term Accession Number",
                "Investigation Publication Status Term Source REF")
+iContactsCols <- c("Investigation Person Last Name",
+                   "Investigation Person First Name",
+                   "Investigation Person Mid Initials",
+                   "Investigation Person Email",
+                   "Investigation Person Phone",
+                   "Investigation Person Fax",
+                   "Investigation Person Address",
+                   "Investigation Person Affiliation",
+                   "Investigation Person Roles",
+                   "Investigation Person Roles Term Accession Number",
+                   "Investigation Person Roles Term Source REF")
 
 
 ### start technologyTypes list ----
@@ -100,6 +109,30 @@ checkCharacter <- function(...) {
     stop("The provided arguments must be of class character.")
   }
 }
+
+#' Check required columns
+#'
+#' Helper function for checking that the minimum required columns in a
+#' data.frame are present.
+#'
+#' @noRd
+#' @keywords internal
+checkMinCols <- function(isaObject,
+                         section) {
+  ## Get the data.frame from the ISA object.
+  df <- do.call(section, list(isaObject))
+  ## Get the required columns.
+  reqCols <- get(paste0(section, "Cols"))
+  ## Check for missing columns.
+  missCols <- reqCols[!hasName(df, reqCols)]
+  if (length(missCols) > 0) {
+    stop("Not all minimal required columns are present for ", section, ".",
+         "The following columns are missing",
+         paste(missCols, collapse = ", "), "\n")
+  }
+}
+
+
 
 createISASlotDataFrame <- function(file,
                                    startRow,

@@ -57,37 +57,13 @@ validISAObject <- function(object) {
                 "\"i_\" and end with \".txt\").\n"))
   }
   ## Check column names in ontology source reference.
-  objoSR <- oSR(object)
-  if (!setequal(colnames(objoSR), oSRCols)) {
-    stop("The column names for the oSR data.frame don't match the required ",
-         "column names: ", paste(oSRCols, collapse = ", "), "\n")
-  }
+  checkMinCols(object, "oSR")
   ## Check column names in investigation info.
-  objInvest <- invest(object)
-  ## Match columns.
-  ## Names might include Comment[]. So no direct matching possible.
-  investColMatch <- vapply(X = investCols, FUN = grepl,
-                           FUN.VALUE = logical(length(investCols)),
-                           x = colnames(objInvest))
-  ## There might be duplicate matches because of colnames being substrings.
-  ## Checking if each full colname is matched at least once is enough.
-  if (!all(rowSums(investColMatch) >= 1)) {
-    stop("The column names for the invest data.frame don't match the required ",
-         "column names: ", paste(investCols, collapse = ", "), "\n")
-  }
+  checkMinCols(object, "invest")
   ## Check column names in investigation publications info.
-  objiPubs <- iPubs(object)
-  ## Match columns.
-  ## Names might include Comment[]. So no direct matching possible.
-  iPubsColMatch <- vapply(X = iPubsCols, FUN = grepl,
-                           FUN.VALUE = logical(length(iPubsCols)),
-                           x = colnames(objiPubs))
-  ## There might be duplicate matches because of colnames being substrings.
-  ## Checking if each full colname is matched at least once is enough.
-  if (!all(rowSums(iPubsColMatch) >= 1)) {
-    stop("The column names for the iPubs data.frame don't match the required ",
-         "column names: ", paste(iPubsCols, collapse = ", "), "\n")
-  }
+  checkMinCols(object, "iPubs")
+  ## Check column names in investigation contacts info.
+  checkMinCols(object, "iContacts")
 }
 setValidity(Class = "ISA",
             method = validISAObject)
