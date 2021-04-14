@@ -27,15 +27,15 @@
 #' @export
 validISAObject <- function(object) {
   ## Check that path points to an existing folder.
-  path <- path(object)
-  if (!file.exists(path)) {
-    stop(path, " is not an existing folder on this system.\n")
+  objPath <- path(object)
+  if (!file.exists(objPath)) {
+    stop(objPath, " is not an existing folder on this system.\n")
   } else {
-    path <- normalizePath(path)
+    objPath <- normalizePath(objPath)
   }
   ## Check number of investigation files - should be 1.
-  iFileName <- iFileName(object)
-  noIFilenames <- length(iFileName)
+  objiFileName <- iFileName(object)
+  noIFilenames <- length(objiFileName)
   if (noIFilenames == 0) {
     stop("Did not find any investigation file at folder ", path, ".\n")
   } else if (noIFilenames > 1) {
@@ -47,22 +47,47 @@ validISAObject <- function(object) {
                               ISASyntax$iPrefix,
                               ".*[a-zA-Z0-9_-]",
                               "(\\.txt)$"),
-             x = iFileName,
+             x = objiFileName,
              perl = TRUE)) {
     stop(paste0("The investigation file: \"",
-                iFileName,
+                objiFileName,
                 "\" for the \"",
-                ISASyntax$iFileName,
+                ISASyntax$objiFileName,
                 "\" slot does not match the requirements (start with ",
                 "\"i_\" and end with \".txt\").\n"))
   }
   ## Check column names in ontology source reference.
-  oSR <- oSR(object)
-  if (!setequal(colnames(oSR), oSRCols)) {
+  objoSR <- oSR(object)
+  if (!setequal(colnames(objoSR), oSRCols)) {
     stop("The column names for the oSR data.frame don't match the required ",
          "column names: ", paste(oSRCols, collapse = ", "), "\n")
   }
-
+  ## Check column names in investigation info.
+  objInvest <- invest(object)
+  ## Match columns.
+  ## Names might include Comment[]. So no direct matching possible.
+  investColMatch <- vapply(X = investCols, FUN = grepl,
+                           FUN.VALUE = logical(length(investCols)),
+                           x = colnames(objInvest))
+  ## There might be duplicate matches because of colnames being substrings.
+  ## Checking if each full colname is matched at least once is enough.
+  if (!all(rowSums(investColMatch) >= 1)) {
+    stop("The column names for the invest data.frame don't match the required ",
+         "column names: ", paste(investCols, collapse = ", "), "\n")
+  }
+  ## Check column names in investigation publications info.
+  objiPubs <- iPubs(object)
+  ## Match columns.
+  ## Names might include Comment[]. So no direct matching possible.
+  iPubsColMatch <- vapply(X = iPubsCols, FUN = grepl,
+                           FUN.VALUE = logical(length(iPubsCols)),
+                           x = colnames(objiPubs))
+  ## There might be duplicate matches because of colnames being substrings.
+  ## Checking if each full colname is matched at least once is enough.
+  if (!all(rowSums(iPubsColMatch) >= 1)) {
+    stop("The column names for the iPubs data.frame don't match the required ",
+         "column names: ", paste(iPubsCols, collapse = ", "), "\n")
+  }
 }
 setValidity(Class = "ISA",
             method = validISAObject)

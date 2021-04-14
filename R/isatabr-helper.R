@@ -65,6 +65,21 @@ oSRCols <- c("Term Source Name",
              "Term Source File",
              "Term Source Version",
              "Term Source Description")
+investCols <- c("Investigation Identifier",
+                "Investigation Title",
+                "Investigation Description",
+                "Investigation Submission Date",
+                "Investigation Public Release Date",
+                "Created With Configuration",
+                "Last Opened With Configuration")
+iPubsCols <- c("Investigation PubMed ID",
+               "Investigation Publication DOI",
+               "Investigation Publication Author List",
+               "Investigation Publication Title",
+               "Investigation Publication Status",
+               "Investigation Publication Status Term Accession Number",
+               "Investigation Publication Status Term Source REF")
+
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.

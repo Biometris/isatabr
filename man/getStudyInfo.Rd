@@ -11,7 +11,7 @@ getStudyInfo(isaObject)
 }
 \value{
 A named character vector containing the Study File Name(s) and the
-        name(s) representing the Study Identifier(s).
+name(s) representing the Study Identifier(s).
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Study

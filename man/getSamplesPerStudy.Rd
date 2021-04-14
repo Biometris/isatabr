@@ -11,8 +11,8 @@ getSamplesPerStudy(isaObject)
 }
 \value{
 A list of Study Identifiers. Each element of the list, named by the
-        Study Identifier, contains a character vector specifying the unique
-        Sample Names belonging to that specific study.
+Study Identifier, contains a character vector specifying the unique
+Sample Names belonging to that specific study.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the unique Sample

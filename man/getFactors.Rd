@@ -11,8 +11,8 @@ getFactors(isaObject)
 }
 \value{
 A list of factor lists, where each list element, named by the Study
-        Identifier, contains a list of  factors specifying the Factor Values
-        used in a specific Study File linked to the Study Identifier.
+Identifier, contains a list of  factors specifying the Factor Values
+used in a specific Study File linked to the Study Identifier.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Factor Values for

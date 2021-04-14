@@ -11,8 +11,8 @@ getAssayTechnologyTypesPerStudy(isaObject)
 }
 \value{
 A list of Study Identifiers. Each element of the list contains a
-        character vector specifying the Study Assay Technology Types
-        belonging to that specific study (marked by its Study Identifier).
+character vector specifying the Study Assay Technology Types
+belonging to that specific study (marked by its Study Identifier).
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Study Assay

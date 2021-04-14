@@ -11,8 +11,8 @@ getDataFileNamesPerAssay(isaObject)
 }
 \value{
 A list of data frames. Each element of the list, named by the Assay
-        File name, contains the unique Data File Names as stored in the
-        Assay File.
+File name, contains the unique Data File Names as stored in the
+Assay File.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the unique Data File

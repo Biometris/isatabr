@@ -11,8 +11,8 @@ getAssayFilesPerStudy(isaObject)
 }
 \value{
 A list of Study Identifiers. Each element of the list, named by a
-        Study Identifier, contains a list of data frames consisting of the
-        Assay Files belonging to that specific study.
+Study Identifier, contains a list of data frames consisting of the
+Assay Files belonging to that specific study.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Assay Files per

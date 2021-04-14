@@ -38,7 +38,30 @@ setMethod("oSR<-", "ISA", function(x, value) {
   return(x)
 })
 
+### invest
 
+#' @rdname invest
+setMethod("invest", "ISA", function(x) x@invest)
+
+#' @rdname path
+setMethod("invest<-", "ISA", function(x, value) {
+  x@invest <- value
+  validISAObject(x)
+  return(x)
+})
+
+
+### iPubs
+
+#' @rdname iPubs
+setMethod("iPubs", "ISA", function(x) x@iPubs)
+
+#' @rdname path
+setMethod("iPubs<-", "ISA", function(x, value) {
+  x@iPubs <- value
+  validISAObject(x)
+  return(x)
+})
 
 
 #' #' @title

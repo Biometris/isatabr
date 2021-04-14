@@ -12,7 +12,7 @@ getSampleToRawDataFile(isaObject)
 }
 \value{
 A list of data frames, where each list element, named by the Assay
-        File Name, contains the Sample Names and Raw Data File Names.
+File Name, contains the Sample Names and Raw Data File Names.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Sample Names and

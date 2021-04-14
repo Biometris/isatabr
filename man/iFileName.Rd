@@ -4,8 +4,7 @@
 \alias{iFileName}
 \alias{iFileName<-}
 \alias{iFileName,ISA-method}
-\title{Get and set the file name for the investigation file in an object of
-\code{\link{ISA-class}}.}
+\title{Get and set iFileName}
 \usage{
 iFileName(x)
 

@@ -25,10 +25,10 @@ ISA-Tab files are tab separated values files stored with a
 }
 \references{
 \itemize{
-  \item \href{https://isa-tools.org/}{ISA framework}
-  \item \href{https://isa-specs.readthedocs.io/en/stable/}{ISA Model and
-  Serialization Specifications}
-  \item \href{https://www.isacommons.org}{ISA users community}
+\item \href{https://isa-tools.org/}{ISA framework}
+\item \href{https://isa-specs.readthedocs.io/en/stable/}{ISA Model and
+Serialization Specifications}
+\item \href{https://www.isacommons.org}{ISA users community}
 }
 }
 \author{

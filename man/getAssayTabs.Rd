@@ -11,8 +11,8 @@ getAssayTabs(isaObject)
 }
 \value{
 A list of lists of objects of class \code{\link{assayTab}}, where
-        each list element, named by the Study Identifier, contains a list
-        of objects of class \code{\link{assayTab}}.
+each list element, named by the Study Identifier, contains a list
+of objects of class \code{\link{assayTab}}.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Assay Tables.

@@ -12,7 +12,7 @@ getInvestigationInfo(isaObject)
 }
 \value{
 A named character vector containing the Investigation File Name and
-        the name representing the Investigation Identifier.
+the name representing the Investigation Identifier.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Investigation

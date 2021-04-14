@@ -11,9 +11,9 @@ getTreatmentGroups(isaObject)
 }
 \value{
 A list of lists, where each list element, named by the Study
-        Identifier, contains a list of treatments. Each element in the list
-        of treatments contains the Sample Names used in that specific Study
-        using a specific treatment, i.e. combination of Factor Values.
+Identifier, contains a list of treatments. Each element in the list
+of treatments contains the Sample Names used in that specific Study
+using a specific treatment, i.e. combination of Factor Values.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Sample Names for

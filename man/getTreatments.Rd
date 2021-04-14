@@ -11,8 +11,8 @@ getTreatments(isaObject)
 }
 \value{
 A list of data frames, where each list element, named by the Study
-        Identifier, contains the unique Factor Value combinations of a
-        specific Study File linked to the Study Identifier.
+Identifier, contains the unique Factor Value combinations of a
+specific Study File linked to the Study Identifier.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Treatments, as

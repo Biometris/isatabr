@@ -11,7 +11,7 @@ getAssayNames(isaObject)
 }
 \value{
 A list of data frames containing the unique Assay Name(s) per Assay
-        File.
+File.
 }
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Assay Name(s) per

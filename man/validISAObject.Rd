@@ -18,9 +18,9 @@ The \code{validISAObject} function checks whether an object of class
 an error message will appear). An object of the \code{\link{ISA-class}} is
 valid when:
 \itemize{
- \item There is only one investigation file, which name starts with
-       \strong{\emph{i_}} and ends with \strong{\emph{.txt}}, present in the
-       folder containing the ISA-Tab files.
+\item There is only one investigation file, which name starts with
+\strong{\emph{i_}} and ends with \strong{\emph{.txt}}, present in the
+folder containing the ISA-Tab files.
 }
 }
 \examples{

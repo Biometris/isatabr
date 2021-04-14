@@ -4,8 +4,7 @@
 \alias{oSR}
 \alias{oSR<-}
 \alias{oSR,ISA-method}
-\title{Get and set the ontology Source Reference in an object of
-\code{\link{ISA-class}}.}
+\title{Get and set oSR}
 \usage{
 oSR(x)
 
@@ -17,7 +16,8 @@ oSR(x) <- value
 \item{x}{An object of the \code{\link{ISA-class}}.}
 
 \item{value}{A data.frame containing the ontology Source Reference
-information. A data.frame with the columns}
+information. A data.frame with the columns
+\verb{Term Source Name}, \verb{Term Source File}, \verb{Term Source Version}, \verb{Term Source Description}.}
 }
 \value{
 A data.frame containing the ontology Source Reference information.
@@ -25,6 +25,6 @@ A data.frame containing the ontology Source Reference information.
 The updated object of the \code{\link{ISA-class}}.
 }
 \description{
-Get and set the ontology Source Reference in an object of
+Get and set the ontology Source Reference (oSR) data.frame in an object of
 \code{\link{ISA-class}}.
 }

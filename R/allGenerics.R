@@ -210,6 +210,8 @@ setMethod(
 
 ### Path standard generics.
 
+#' Get and set path
+#'
 #' Get and set the file path for an object of the \code{\link{ISA-class}}.
 #'
 #' @param x An object of the \code{\link{ISA-class}}.
@@ -230,6 +232,8 @@ setGeneric("path<-", function(x, value) standardGeneric("path<-"))
 
 ### iFileName standard generics.
 
+#' Get and set iFileName
+#'
 #' Get and set the file name for the investigation file in an object of
 #' \code{\link{ISA-class}}.
 #'
@@ -251,7 +255,9 @@ setGeneric("iFileName<-", function(x, value) standardGeneric("iFileName<-"))
 
 ### oSR standard generics.
 
-#' Get and set the ontology Source Reference in an object of
+#' Get and set oSR
+#'
+#' Get and set the ontology Source Reference (oSR) data.frame in an object of
 #' \code{\link{ISA-class}}.
 #'
 #' @param x An object of the \code{\link{ISA-class}}.
@@ -264,11 +270,75 @@ setGeneric("oSR", function(x) standardGeneric("oSR"))
 #' @param x An object of the \code{\link{ISA-class}}.
 #' @param value A data.frame containing the ontology Source Reference
 #' information. A data.frame with the columns
+#' `r paste0("``", oSRCols, "``", collapse = ", ")`.
 #'
 #' @return The updated object of the \code{\link{ISA-class}}.
 #' @rdname oSR
 #' @export
 setGeneric("oSR<-", function(x, value) standardGeneric("oSR<-"))
+
+### invest standard generics.
+
+#' Get and set invest.
+#'
+#' Get and set the investigation data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A data.frame containing the investigation information.
+#' @rdname invest
+#' @export
+setGeneric("invest", function(x) standardGeneric("invest"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A data.frame containing the investigation information. A
+#' data.frame with the columns
+#' `r paste0("``", investCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname invest
+#' @export
+setGeneric("invest<-", function(x, value) standardGeneric("invest<-"))
+
+### iPubs standard generics.
+
+#' Get and set iPubs.
+#'
+#' Get and set the iPubs data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A data.frame containing the investigation publications information.
+#' @rdname iPubs
+#' @export
+setGeneric("iPubs", function(x) standardGeneric("iPubs"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A data.frame containing the investigation publications
+#' information. A data.frame with the columns
+#' `r paste0("``", iPubsCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname iPubs
+#' @export
+setGeneric("iPubs<-", function(x, value) standardGeneric("iPubs<-"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
