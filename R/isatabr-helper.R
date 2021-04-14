@@ -116,6 +116,20 @@ sAssaysCols <- c("Study Assay Measurement Type",
                  "Study Assay Technology Type Term Source REF",
                  "Study Assay Technology Platform",
                  "Study Assay File Name")
+sProtsCols <- c("Study Protocol Name",
+                "Study Protocol Type",
+                "Study Protocol Type Term Accession Number",
+                "Study Protocol Type Term Source REF",
+                "Study Protocol Description",
+                "Study Protocol URI",
+                "Study Protocol Version",
+                "Study Protocol Parameters Name",
+                "Study Protocol Parameters Name Term Accession Number",
+                "Study Protocol Parameters Name Term Source REF",
+                "Study Protocol Components Name",
+                "Study Protocol Components Type",
+                "Study Protocol Components Type Term Accession Number",
+                "Study Protocol Components Type Term Source REF")
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.

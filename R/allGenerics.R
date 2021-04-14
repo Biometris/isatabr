@@ -477,6 +477,30 @@ setGeneric("sAssays", function(x) standardGeneric("sAssays"))
 setGeneric("sAssays<-", function(x, value) standardGeneric("sAssays<-"))
 
 
+### sProts standard generics.
+
+#' Get and set sProts.
+#'
+#' Get and set the list of sProts data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A list of data.frames containing the study protocols.
+#' @rdname sProts
+#' @export
+setGeneric("sProts", function(x) standardGeneric("sProts"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A list of data.frames containing the study protocols.
+#' In each data.frame at least the following columns are present:
+#' `r paste0("``", sProtsCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname sProts
+#' @export
+setGeneric("sProts<-", function(x, value) standardGeneric("sProts<-"))
+
 
 
 
