@@ -136,6 +136,7 @@ sContactsCols <- c("Study Person Last Name",
 sFilesCols <- c("Source Name",
                 "Term Source REF",
                 "Sample Name")
+aFilesCols <- c()
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.

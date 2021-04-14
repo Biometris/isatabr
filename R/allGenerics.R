@@ -553,6 +553,31 @@ setGeneric("sFiles", function(x) standardGeneric("sFiles"))
 setGeneric("sFiles<-", function(x, value) standardGeneric("sFiles<-"))
 
 
+### aFiles standard generics.
+
+#' Get and set aFiles.
+#'
+#' Get and set the list of aFiles data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A list of data.frames containing the assay files.
+#' @rdname aFiles
+#' @export
+setGeneric("aFiles", function(x) standardGeneric("aFiles"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A list of data.frames containing the assay files.
+#' In each data.frame at least the following columns are present:
+#' `r paste0("``", aFilesCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname aFiles
+#' @export
+setGeneric("aFiles<-", function(x, value) standardGeneric("aFiles<-"))
+
+
 
 
 ### Extract slots of an ISA-class object ----

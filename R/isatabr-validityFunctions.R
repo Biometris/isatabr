@@ -80,6 +80,8 @@ validISAObject <- function(object) {
   checkMinColsStudy(object, "sContacts")
   ## Check columns names for study files.
   checkMinColsStudy(object, "sFiles")
+  ## Check columns names for assay files.
+  checkMinColsStudy(object, "aFiles")
 
 }
 setValidity(Class = "ISA",

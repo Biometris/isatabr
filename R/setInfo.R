@@ -172,6 +172,20 @@ setMethod("sFiles<-", "ISA", function(x, value) {
   return(x)
 })
 
+### aFiles
+
+#' @rdname aFiles
+setMethod("aFiles", "ISA", function(x) x@aFiles)
+
+#' @rdname aFiles
+setMethod("aFiles<-", "ISA", function(x, value) {
+  x@aFiles <- value
+  validISAObject(x)
+  return(x)
+})
+
+
+
 #' #' @title
 #' #' Set the Investigation Identifier and Investigation File Name for an
 #' #' ISA object.
