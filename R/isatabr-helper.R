@@ -88,7 +88,12 @@ iContactsCols <- c("Investigation Person Last Name",
                    "Investigation Person Roles",
                    "Investigation Person Roles Term Accession Number",
                    "Investigation Person Roles Term Source REF")
-
+studyCols <- c("Study Identifier",
+               "Study Title",
+               "Study Description",
+               "Study Submission Date",
+               "Study Public Release Date",
+               "Study File Name")
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.
@@ -120,7 +125,7 @@ checkCharacter <- function(...) {
 checkMinCols <- function(isaObject,
                          section) {
   ## Get the data.frame from the ISA object.
-  df <- do.call(section, list(isaObject))
+  df <- do.call(section, list(isaObject = isaObject))
   ## Get the required columns.
   reqCols <- get(paste0(section, "Cols"))
   ## Check for missing columns.
@@ -129,6 +134,31 @@ checkMinCols <- function(isaObject,
     stop("Not all minimal required columns are present for ", section, ".",
          "The following columns are missing",
          paste(missCols, collapse = ", "), "\n")
+  }
+}
+
+#' Check required columns per study
+#'
+#' Helper function for checking that the minimum required columns in a list
+#' of data.frames, one per study, are present.
+#'
+#' @noRd
+#' @keywords internal
+checkMinColsStudy <- function(isaObject,
+                              section) {
+  ## Get the data.frame from the ISA object.
+  lst <- do.call(section, list(isaObject = isaObject))
+  ## Get the required columns.
+  reqCols <- get(paste0(section, "Cols"))
+  ## Check for missing columns.
+  for (study in names(lst)) {
+    missCols <- reqCols[!hasName(lst[[study]], reqCols)]
+    if (length(missCols) > 0) {
+      stop("Not all minimal required columns are present for study ", study,
+           " in ", section, ".",
+           "The following columns are missing",
+           paste(missCols, collapse = ", "), "\n")
+    }
   }
 }
 
