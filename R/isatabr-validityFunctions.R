@@ -72,6 +72,8 @@ validISAObject <- function(object) {
   checkMinColsStudy(object, "sPubs")
   ## Check columns names for study factors.
   checkMinColsStudy(object, "sFacts")
+  ## Check columns names for study assays.
+  checkMinColsStudy(object, "sAssays")
 
 }
 setValidity(Class = "ISA",

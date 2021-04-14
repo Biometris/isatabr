@@ -108,6 +108,14 @@ sFactsCols <- c("Study Factor Name",
                 "Study Factor Type",
                 "Study Factor Type Term Accession Number",
                 "Study Factor Type Term Source REF")
+sAssaysCols <- c("Study Assay Measurement Type",
+                 "Study Assay Measurement Type Term Accession Number",
+                 "Study Assay Measurement Type Term Source REF",
+                 "Study Assay Technology Type",
+                 "Study Assay Technology Type Term Accession Number",
+                 "Study Assay Technology Type Term Source REF",
+                 "Study Assay Technology Platform",
+                 "Study Assay File Name")
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.

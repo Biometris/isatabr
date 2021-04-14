@@ -124,6 +124,17 @@ setMethod("sFacts<-", "ISA", function(x, value) {
   return(x)
 })
 
+### sAssays
+
+#' @rdname sAssays
+setMethod("sAssays", "ISA", function(x) x@sAssays)
+
+#' @rdname sAssays
+setMethod("sAssays<-", "ISA", function(x, value) {
+  x@sAssays <- value
+  validISAObject(x)
+  return(x)
+})
 
 
 #' #' @title

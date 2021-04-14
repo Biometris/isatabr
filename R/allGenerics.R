@@ -452,6 +452,33 @@ setGeneric("sFacts", function(x) standardGeneric("sFacts"))
 setGeneric("sFacts<-", function(x, value) standardGeneric("sFacts<-"))
 
 
+### sAssays standard generics.
+
+#' Get and set sAssays.
+#'
+#' Get and set the list of sAssays data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A list of data.frames containing the study assays.
+#' @rdname sAssays
+#' @export
+setGeneric("sAssays", function(x) standardGeneric("sAssays"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A list of data.frames containing the study assays.
+#' In each data.frame at least the following columns are present:
+#' `r paste0("``", sAssaysCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname sAssays
+#' @export
+setGeneric("sAssays<-", function(x, value) standardGeneric("sAssays<-"))
+
+
+
+
 
 
 
