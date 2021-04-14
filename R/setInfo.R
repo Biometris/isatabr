@@ -148,7 +148,6 @@ setMethod("sProts<-", "ISA", function(x, value) {
   return(x)
 })
 
-
 ### sContacts
 
 #' @rdname sContacts
@@ -161,7 +160,17 @@ setMethod("sContacts<-", "ISA", function(x, value) {
   return(x)
 })
 
+### sFiles
 
+#' @rdname sFiles
+setMethod("sFiles", "ISA", function(x) x@sFiles)
+
+#' @rdname sFiles
+setMethod("sFiles<-", "ISA", function(x, value) {
+  x@sFiles <- value
+  validISAObject(x)
+  return(x)
+})
 
 #' #' @title
 #' #' Set the Investigation Identifier and Investigation File Name for an

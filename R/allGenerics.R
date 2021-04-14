@@ -528,6 +528,33 @@ setGeneric("sContacts<-", function(x, value) standardGeneric("sContacts<-"))
 
 
 
+### sFiles standard generics.
+
+#' Get and set sFiles.
+#'
+#' Get and set the list of sFiles data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A list of data.frames containing the study files.
+#' @rdname sFiles
+#' @export
+setGeneric("sFiles", function(x) standardGeneric("sFiles"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A list of data.frames containing the study files.
+#' In each data.frame at least the following columns are present:
+#' `r paste0("``", sFilesCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname sFiles
+#' @export
+setGeneric("sFiles<-", function(x, value) standardGeneric("sFiles<-"))
+
+
+
+
 ### Extract slots of an ISA-class object ----
 #' @title Extract and replace methods for S4 ISA-class object
 #'
