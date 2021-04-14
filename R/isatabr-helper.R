@@ -47,14 +47,6 @@ ISASyntax <- list(
   sPersonMid = "Study Person Mid Initials",
   sPersonAff = "Study Person Affiliation",
   sPersonRoles = "Study Person Roles",
-  ## Column names study publication info.
-  sPubMedId = "Study PubMed ID",
-  sPubDOI = "Study Publication DOI",
-  sPubAuthList = "Study Publication Author List",
-  sPubTitle = "Study Publication Title",
-  sPubStatus = "Study Publication Status",
-  sPubstatusTermAccNum = "Study Publication Status Term Accession Number",
-  sPubStatusTermSrcREF = "Study Publication Status Term Source REF",
   arrayDataFile = "Array Data File",
   rawSpecDataFile = "Raw Spectral Data File"
 )
@@ -130,6 +122,17 @@ sProtsCols <- c("Study Protocol Name",
                 "Study Protocol Components Type",
                 "Study Protocol Components Type Term Accession Number",
                 "Study Protocol Components Type Term Source REF")
+sContactsCols <- c("Study Person Last Name",
+                   "Study Person First Name",
+                   "Study Person Mid Initials",
+                   "Study Person Email",
+                   "Study Person Phone",
+                   "Study Person Fax",
+                   "Study Person Address",
+                   "Study Person Affiliation",
+                   "Study Person Roles",
+                   "Study Person Roles Term Accession Number",
+                   "Study Person Roles Term Source REF")
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.
