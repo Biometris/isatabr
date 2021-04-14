@@ -4,6 +4,7 @@
 \alias{invest}
 \alias{invest<-}
 \alias{invest,ISA-method}
+\alias{invest<-,ISA-method}
 \title{Get and set invest.}
 \usage{
 invest(x)
@@ -11,6 +12,8 @@ invest(x)
 invest(x) <- value
 
 \S4method{invest}{ISA}(x)
+
+\S4method{invest}{ISA}(x) <- value
 }
 \arguments{
 \item{x}{An object of the \code{\link{ISA-class}}.}

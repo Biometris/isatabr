@@ -4,6 +4,7 @@
 \alias{oSR}
 \alias{oSR<-}
 \alias{oSR,ISA-method}
+\alias{oSR<-,ISA-method}
 \title{Get and set oSR}
 \usage{
 oSR(x)
@@ -11,6 +12,8 @@ oSR(x)
 oSR(x) <- value
 
 \S4method{oSR}{ISA}(x)
+
+\S4method{oSR}{ISA}(x) <- value
 }
 \arguments{
 \item{x}{An object of the \code{\link{ISA-class}}.}

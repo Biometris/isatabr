@@ -94,6 +94,9 @@ studyCols <- c("Study Identifier",
                "Study Submission Date",
                "Study Public Release Date",
                "Study File Name")
+sDDCols <- c("Study Design Type",
+             "Study Design Type Term Accession Number",
+             "Study Design Type Term Source REF")
 
 ### start technologyTypes list ----
 ## Only include technology types that have an associated assayTab class.
@@ -125,14 +128,14 @@ checkCharacter <- function(...) {
 checkMinCols <- function(isaObject,
                          section) {
   ## Get the data.frame from the ISA object.
-  df <- do.call(section, list(isaObject = isaObject))
+  df <- do.call(section, list(isaObject))
   ## Get the required columns.
   reqCols <- get(paste0(section, "Cols"))
   ## Check for missing columns.
   missCols <- reqCols[!hasName(df, reqCols)]
   if (length(missCols) > 0) {
-    stop("Not all minimal required columns are present for ", section, ".",
-         "The following columns are missing",
+    stop("Not all minimal required columns are present for ", section, ". ",
+         "The following columns are missing: ",
          paste(missCols, collapse = ", "), "\n")
   }
 }
@@ -147,7 +150,7 @@ checkMinCols <- function(isaObject,
 checkMinColsStudy <- function(isaObject,
                               section) {
   ## Get the data.frame from the ISA object.
-  lst <- do.call(section, list(isaObject = isaObject))
+  lst <- do.call(section, list(isaObject))
   ## Get the required columns.
   reqCols <- get(paste0(section, "Cols"))
   ## Check for missing columns.
@@ -155,8 +158,8 @@ checkMinColsStudy <- function(isaObject,
     missCols <- reqCols[!hasName(lst[[study]], reqCols)]
     if (length(missCols) > 0) {
       stop("Not all minimal required columns are present for study ", study,
-           " in ", section, ".",
-           "The following columns are missing",
+           " in ", section, ". ",
+           "The following columns are missing: ",
            paste(missCols, collapse = ", "), "\n")
     }
   }

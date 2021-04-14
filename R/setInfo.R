@@ -19,7 +19,7 @@ setMethod("path<-", "ISA", function(x, value) {
 #' @rdname iFileName
 setMethod("iFileName", "ISA", function(x) x@iFileName)
 
-#' @rdname path
+#' @rdname iFileName
 setMethod("iFileName<-", "ISA", function(x, value) {
   x@iFileName <- value
   validISAObject(x)
@@ -31,7 +31,7 @@ setMethod("iFileName<-", "ISA", function(x, value) {
 #' @rdname oSR
 setMethod("oSR", "ISA", function(x) x@oSR)
 
-#' @rdname path
+#' @rdname oSR
 setMethod("oSR<-", "ISA", function(x, value) {
   x@oSR <- value
   validISAObject(x)
@@ -43,7 +43,7 @@ setMethod("oSR<-", "ISA", function(x, value) {
 #' @rdname invest
 setMethod("invest", "ISA", function(x) x@invest)
 
-#' @rdname path
+#' @rdname invest
 setMethod("invest<-", "ISA", function(x, value) {
   x@invest <- value
   validISAObject(x)
@@ -56,7 +56,7 @@ setMethod("invest<-", "ISA", function(x, value) {
 #' @rdname iPubs
 setMethod("iPubs", "ISA", function(x) x@iPubs)
 
-#' @rdname path
+#' @rdname iPubs
 setMethod("iPubs<-", "ISA", function(x, value) {
   x@iPubs <- value
   validISAObject(x)
@@ -69,9 +69,33 @@ setMethod("iPubs<-", "ISA", function(x, value) {
 #' @rdname iContacts
 setMethod("iContacts", "ISA", function(x) x@iContacts)
 
-#' @rdname path
+#' @rdname iContacts
 setMethod("iContacts<-", "ISA", function(x, value) {
   x@iContacts <- value
+  validISAObject(x)
+  return(x)
+})
+
+### study
+
+#' @rdname study
+setMethod("study", "ISA", function(x) x@study)
+
+#' @rdname study
+setMethod("study<-", "ISA", function(x, value) {
+  x@study <- value
+  validISAObject(x)
+  return(x)
+})
+
+### sDD
+
+#' @rdname sDD
+setMethod("sDD", "ISA", function(x) x@sDD)
+
+#' @rdname sDD
+setMethod("sDD<-", "ISA", function(x, value) {
+  x@sDD <- value
   validISAObject(x)
   return(x)
 })

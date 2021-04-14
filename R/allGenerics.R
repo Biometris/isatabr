@@ -317,7 +317,8 @@ setGeneric("iPubs", function(x) standardGeneric("iPubs"))
 
 #' @param x An object of the \code{\link{ISA-class}}.
 #' @param value A data.frame containing the investigation publications
-#' information. data.frame in which at least the following columns are present:
+#' information. A data.frame in which at least the following columns are
+#' present:
 #' `r paste0("``", iPubsCols, "``", collapse = ", ")`.
 #'
 #' @return The updated object of the \code{\link{ISA-class}}.
@@ -341,7 +342,8 @@ setGeneric("iContacts", function(x) standardGeneric("iContacts"))
 
 #' @param x An object of the \code{\link{ISA-class}}.
 #' @param value A data.frame containing the investigation contacts
-#' information. A data.frame with the columns
+#' information. A data.frame in which at least the following columns are
+#' present:
 #' `r paste0("``", iContactsCols, "``", collapse = ", ")`.
 #'
 #' @return The updated object of the \code{\link{ISA-class}}.
@@ -350,9 +352,54 @@ setGeneric("iContacts", function(x) standardGeneric("iContacts"))
 setGeneric("iContacts<-", function(x, value) standardGeneric("iContacts<-"))
 
 
+### study standard generics.
+
+#' Get and set study.
+#'
+#' Get and set the list of study data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A list of data.frames containing the study information.
+#' @rdname study
+#' @export
+setGeneric("study", function(x) standardGeneric("study"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A list of data.frames containing the study information.
+#' In each data.frame at least the following columns are present:
+#' `r paste0("``", studyCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname study
+#' @export
+setGeneric("study<-", function(x, value) standardGeneric("study<-"))
 
 
+### sDD standard generics.
 
+#' Get and set sDD.
+#'
+#' Get and set the list of sDD data.frame in an object of
+#' \code{\link{ISA-class}}.
+#'
+#' @param x An object of the \code{\link{ISA-class}}.
+#'
+#' @return A list of data.frames containing the study design descriptors.
+#' @rdname sDD
+#' @export
+setGeneric("sDD", function(x) standardGeneric("sDD"))
+
+#' @param x An object of the \code{\link{ISA-class}}.
+#' @param value A list of data.frames containing the study design descriptors.
+#' In each data.frame at least the following columns are present:
+#' `r paste0("``", sDDCols, "``", collapse = ", ")`.
+#'
+#' @return The updated object of the \code{\link{ISA-class}}.
+#' @rdname sDD
+#' @export
+setGeneric("sDD<-", function(x, value) standardGeneric("sDD<-"))
 
 
 

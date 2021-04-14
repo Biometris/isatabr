@@ -4,6 +4,7 @@
 \alias{iFileName}
 \alias{iFileName<-}
 \alias{iFileName,ISA-method}
+\alias{iFileName<-,ISA-method}
 \title{Get and set iFileName}
 \usage{
 iFileName(x)
@@ -11,6 +12,8 @@ iFileName(x)
 iFileName(x) <- value
 
 \S4method{iFileName}{ISA}(x)
+
+\S4method{iFileName}{ISA}(x) <- value
 }
 \arguments{
 \item{x}{An object of the \code{\link{ISA-class}}.}

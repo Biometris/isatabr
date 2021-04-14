@@ -4,6 +4,7 @@
 \alias{iPubs}
 \alias{iPubs<-}
 \alias{iPubs,ISA-method}
+\alias{iPubs<-,ISA-method}
 \title{Get and set iPubs.}
 \usage{
 iPubs(x)
@@ -11,12 +12,15 @@ iPubs(x)
 iPubs(x) <- value
 
 \S4method{iPubs}{ISA}(x)
+
+\S4method{iPubs}{ISA}(x) <- value
 }
 \arguments{
 \item{x}{An object of the \code{\link{ISA-class}}.}
 
 \item{value}{A data.frame containing the investigation publications
-information. data.frame in which at least the following columns are present:
+information. A data.frame in which at least the following columns are
+present:
 \verb{Investigation PubMed ID}, \verb{Investigation Publication DOI}, \verb{Investigation Publication Author List}, \verb{Investigation Publication Title}, \verb{Investigation Publication Status}, \verb{Investigation Publication Status Term Accession Number}, \verb{Investigation Publication Status Term Source REF}.}
 }
 \value{

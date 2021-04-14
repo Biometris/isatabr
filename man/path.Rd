@@ -5,11 +5,6 @@
 \alias{path<-}
 \alias{path,ISA-method}
 \alias{path<-,ISA-method}
-\alias{iFileName<-,ISA-method}
-\alias{oSR<-,ISA-method}
-\alias{invest<-,ISA-method}
-\alias{iPubs<-,ISA-method}
-\alias{iContacts<-,ISA-method}
 \title{Get and set path}
 \usage{
 path(x)
@@ -19,16 +14,6 @@ path(x) <- value
 \S4method{path}{ISA}(x)
 
 \S4method{path}{ISA}(x) <- value
-
-\S4method{iFileName}{ISA}(x) <- value
-
-\S4method{oSR}{ISA}(x) <- value
-
-\S4method{invest}{ISA}(x) <- value
-
-\S4method{iPubs}{ISA}(x) <- value
-
-\S4method{iContacts}{ISA}(x) <- value
 }
 \arguments{
 \item{x}{An object of the \code{\link{ISA-class}}.}

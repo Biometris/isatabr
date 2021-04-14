@@ -4,6 +4,7 @@
 \alias{iContacts}
 \alias{iContacts<-}
 \alias{iContacts,ISA-method}
+\alias{iContacts<-,ISA-method}
 \title{Get and set iContacts.}
 \usage{
 iContacts(x)
@@ -11,12 +12,15 @@ iContacts(x)
 iContacts(x) <- value
 
 \S4method{iContacts}{ISA}(x)
+
+\S4method{iContacts}{ISA}(x) <- value
 }
 \arguments{
 \item{x}{An object of the \code{\link{ISA-class}}.}
 
 \item{value}{A data.frame containing the investigation contacts
-information. A data.frame with the columns
+information. A data.frame in which at least the following columns are
+present:
 \verb{Investigation Person Last Name}, \verb{Investigation Person First Name}, \verb{Investigation Person Mid Initials}, \verb{Investigation Person Email}, \verb{Investigation Person Phone}, \verb{Investigation Person Fax}, \verb{Investigation Person Address}, \verb{Investigation Person Affiliation}, \verb{Investigation Person Roles}, \verb{Investigation Person Roles Term Accession Number}, \verb{Investigation Person Roles Term Source REF}.}
 }
 \value{
