@@ -4,20 +4,47 @@
 #'
 #' @param isaObject An object of the \code{\link{ISA-class}}.
 #' @param aTabObject An object of the \code{\link{assayTab-class}}.
+#' @param type A character string indicating which data files should be
+#' processed, either "raw" for raw data files, or "derived" for derived data
+#' files. The file names are taken from the corresponding column in the
+#' \code{aTabObject}.
 #'
 #' @docType methods
 #' @rdname processAssay-methods
 #' @exportMethod processAssay
 setGeneric("processAssay",
-           function(isaObject, aTabObject) standardGeneric("processAssay"))
+           function(isaObject,
+                    aTabObject,
+                    type = c("raw", "derived")) standardGeneric("processAssay"))
 
 
 #' @rdname processAssay-methods
 #' @aliases processAssay,ISA,assayTab-method
 setMethod(f = "processAssay",
-          signature = c(isaObject = "ISA", aTabObject = "assayTab"),
-          definition = function(isaObject, aTabObject) {
-            return(aTabObject)
+          signature = c(isaObject = "ISA", aTabObject = "assayTab", type = "character"),
+          definition = function(isaObject, aTabObject, type) {
+            type <- match.arg(type)
+            assayDat <- slot(aTabObject, "aFile")
+            ## Construct column name containing files.
+            fileCol <- ISASyntax[[paste0(type, "DataFile")]]["base"]
+            ## Get file names.
+            datFiles <- file.path(normalizePath(slot(aTabObject, "path"),
+                                                winslash = .Platform$file.sep),
+                                  unique(assayDat[[fileCol]]))
+            ## Check that files exist.
+            missFiles <- datFiles[!file.exists(datFiles)]
+            if (length(missFiles) > 0) {
+              stop("The following files are not found:\n",
+                   paste(missFiles, collapse = ", "))
+            }
+            ## Read file contents.
+            assayContLst <- lapply(X = datFiles, FUN = function(datFile) {
+              read.delim(datFile,
+                         header = TRUE,
+                         row.names = 1)
+            })
+            assayCont <- do.call(rbind, assayContLst)
+            return(assayCont)
           }
 )
 
@@ -32,14 +59,17 @@ setMethod(f = "processAssay",
 #' @rdname processAssay-methods
 #' @aliases processAssay,ISA,msAssayTab-method
 setMethod(f = "processAssay",
-          signature = c(isaObject = "ISA", aTabObject = "msAssayTab"),
-          definition = function(isaObject, aTabObject) {
+          signature = c(isaObject = "ISA", aTabObject = "msAssayTab", type = "character"),
+          definition = function(isaObject, aTabObject, type) {
             if (requireNamespace("xcms", quietly = TRUE)) {
+              type <- match.arg(type)
               assayDat <- slot(aTabObject, "aFile")
+              ## Construct column name containing files.
+              fileCol <- ISASyntax[[paste0(type, "DataFile")]]["ms"]
               spectralDatFiles <-
                 file.path(normalizePath(slot(aTabObject, "path"),
                                         winslash = .Platform$file.sep),
-                          unique(assayDat[[ISASyntax$rawSpecDataFile]]))
+                          unique(assayDat[[fileCol]]))
               ## Check that files exist.
               missFiles <- spectralDatFiles[!file.exists(spectralDatFiles)]
               if (length(missFiles) > 0) {
@@ -84,12 +114,15 @@ setMethod(f = "processAssay",
 #' @rdname processAssay-methods
 #' @aliases processAssay,ISA,msAssayTab-method
 setMethod(f = "processAssay",
-          signature = c(isaObject = "ISA", aTabObject = "microarrayAssayTab"),
-          definition = function(isaObject, aTabObject) {
+          signature = c(isaObject = "ISA", aTabObject = "microarrayAssayTab", type = "character"),
+          definition = function(isaObject, aTabObject, type) {
             if (requireNamespace("affy", quietly = TRUE)) {
-              ## Get microarray files for assay.
+              type <- match.arg(type)
               assayDat <- slot(aTabObject, "aFile")
-              microarrayDatFiles <- unique(assayDat[[ISASyntax$arrayDataFile]])
+              ## Construct column name containing files.
+              fileCol <- ISASyntax[[paste0(type, "DataFile")]]["microarray"]
+              ## Get microarray files for assay.
+              microarrayDatFiles <- unique(assayDat[[fileCol]])
               ## Check that files exist.
               missFiles <- microarrayDatFiles[!file.exists(microarrayDatFiles)]
               if (length(missFiles) > 0) {

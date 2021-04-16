@@ -3,23 +3,30 @@
 \docType{methods}
 \name{processAssay}
 \alias{processAssay}
+\alias{processAssay,ISA,assayTab,character-method}
 \alias{processAssay,ISA,assayTab-method}
+\alias{processAssay,ISA,msAssayTab,character-method}
 \alias{processAssay,ISA,msAssayTab-method}
-\alias{processAssay,ISA,microarrayAssayTab-method}
+\alias{processAssay,ISA,microarrayAssayTab,character-method}
 \title{Process assay tab data}
 \usage{
-processAssay(isaObject, aTabObject)
+processAssay(isaObject, aTabObject, type = c("raw", "derived"))
 
-\S4method{processAssay}{ISA,assayTab}(isaObject, aTabObject)
+\S4method{processAssay}{ISA,assayTab,character}(isaObject, aTabObject, type = c("raw", "derived"))
 
-\S4method{processAssay}{ISA,msAssayTab}(isaObject, aTabObject)
+\S4method{processAssay}{ISA,msAssayTab,character}(isaObject, aTabObject, type = c("raw", "derived"))
 
-\S4method{processAssay}{ISA,microarrayAssayTab}(isaObject, aTabObject)
+\S4method{processAssay}{ISA,microarrayAssayTab,character}(isaObject, aTabObject, type = c("raw", "derived"))
 }
 \arguments{
 \item{isaObject}{An object of the \code{\link{ISA-class}}.}
 
 \item{aTabObject}{An object of the \code{\link{microarrayAssayTab-class}}.}
+
+\item{type}{A character string indicating which data files should be
+processed, either "raw" for raw data files, or "derived" for derived data
+files. The file names are taken from the corresponding column in the
+\code{aTabObject}.}
 }
 \description{
 Process data from assay tab files

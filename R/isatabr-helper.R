@@ -31,10 +31,15 @@ ISASyntax <- list(
   assayName      = "Assay Name",
   sAssayTechType = "Study Assay Technology Type",
   sAssayMeasType = "Study Assay Measurement Type",
-  rawDataFile    = c("Raw Data File",
-                     "Array Data File",
-                     "Raw Spectral Data File",
+  ## Raw Data File Column Names - depend on technology type.
+  rawDataFile    = c(base       = "Raw Data File",
+                     microarray = "Array Data File",
+                     ms         = "Raw Spectral Data File",
                      "Free Induction Decay Data File"),
+  ## Derived Data File Column Names - depend on technology type.
+  derivedDataFile = c(base       ="Derived Data File",
+                      microarray = "Derived Array Data File",
+                      ms         = "Derived Spectral Data File"),
   ## ISA-Tab: Data Frame Column Names grep pattern
   dataFile   = "Data File",
   sampleName = "Sample Name",
@@ -139,13 +144,16 @@ sFilesCols <- c("Source Name",
 aFilesCols <- c()
 
 ### start technologyTypes list ----
-## Only include technology types that have an associated assayTab class.
+## Technology types is a free field.
+## Some technologies may have different/additional defined columns.
+## Those technologies are specified here
 technologyTypes <- list(
-  # fc         = "flow cytometry",
   microarray = "DNA microarray",
-  ms         = "mass spectrometry"
-  # NMR        = "NMR spectroscopy",
-  # seq        = "nucleotide sequencing"
+  gelelecto  = "Gel electrophoresis",
+  fc         = "flow cytometry",
+  ms         = "mass spectrometry",
+  NMR        = "NMR spectroscopy",
+  seq        = "nucleotide sequencing"
 )
 ### end technologyTypes list ----
 
@@ -163,6 +171,7 @@ checkCharacter <- function(...) {
 #' Helper function for checking that the minimum required columns in a
 #' data.frame are present.
 #'
+#' @importFrom utils hasName
 #' @noRd
 #' @keywords internal
 checkMinCols <- function(isaObject,
@@ -185,6 +194,7 @@ checkMinCols <- function(isaObject,
 #' Helper function for checking that the minimum required columns in a list
 #' of data.frames, one per study, are present.
 #'
+#' @importFrom utils hasName
 #' @noRd
 #' @keywords internal
 checkMinColsStudy <- function(isaObject,
