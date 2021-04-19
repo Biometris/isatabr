@@ -208,6 +208,8 @@ setMethod(
       colnames(tempdf) <- columnNames
       ## Remove empty rows.
       tempdf <- tempdf[apply(tempdf, 1, function(x) all(nzchar(x))), ]
+      ## Remove empty columns.
+      tempdf <- tempdf[, columnNames != "NA"]
       .Object[ISASyntax$aFiles][[i]] <- tempdf
       names(.Object[ISASyntax$aFiles])[i] <- aFileName[i]
     }
