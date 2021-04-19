@@ -58,7 +58,7 @@ setMethod(
                         fill = TRUE,
                         na.strings = "",
                         comment.char = "#",
-                        blank.lines.skip = TRUE ,
+                        blank.lines.skip = TRUE,
                         stringsAsFactors = FALSE,
                         col.names = paste0("V", seq_len(iNoCols)))
     iRownames <- iFile[, 1]
@@ -174,13 +174,17 @@ setMethod(
       tempdf <- read.delim(file = sFilePath,
                            header = TRUE,
                            sep = "\t",
+                           blank.lines.skip = TRUE,
                            stringsAsFactors = FALSE)
       columnNames <- as.character(read.table(file = sFilePath,
                                              header = FALSE,
                                              sep = "\t",
                                              nrows = 1,
+                                             blank.lines.skip = TRUE,
                                              stringsAsFactors = FALSE))
       colnames(tempdf) <- columnNames
+      ## Remove empty rows.
+      tempdf <- tempdf[apply(tempdf, 1, function(x) all(nzchar(x))), ]
       .Object[ISASyntax$sFiles][[i]] <- unique(tempdf)
       names(.Object[ISASyntax$sFiles])[i] <- sFileName[i]
     }
@@ -193,13 +197,17 @@ setMethod(
       tempdf <- read.delim(file = aFilePath,
                            header = TRUE,
                            sep = "\t",
+                           blank.lines.skip = TRUE,
                            stringsAsFactors = FALSE)
       columnNames <- as.character(read.table(file = aFilePath,
                                              header = FALSE,
                                              sep = "\t",
                                              nrows = 1,
+                                             blank.lines.skip = TRUE,
                                              stringsAsFactors = FALSE))
       colnames(tempdf) <- columnNames
+      ## Remove empty rows.
+      tempdf <- tempdf[apply(tempdf, 1, function(x) all(nzchar(x))), ]
       .Object[ISASyntax$aFiles][[i]] <- tempdf
       names(.Object[ISASyntax$aFiles])[i] <- aFileName[i]
     }
