@@ -168,9 +168,9 @@ setMethod(
     ## END INVESTIGATION FILE ----
 
     ## START STUDY FILES ----
-    sFileName <- getStudyInfo(isaObject = .Object)
-    for (i in seq_along(sFileName)) {
-      sFilePath <- file.path(.Object["path"], sFileName[i])
+    sFileNames <- getStudyFileNames(isaObject = .Object)
+    for (i in seq_along(sFileNames)) {
+      sFilePath <- file.path(.Object["path"], sFileNames[i])
       tempdf <- read.delim(file = sFilePath,
                            header = TRUE,
                            sep = "\t",
@@ -186,14 +186,14 @@ setMethod(
       ## Remove empty rows.
       tempdf <- tempdf[apply(tempdf, 1, function(x) all(nzchar(x))), ]
       .Object[ISASyntax$sFiles][[i]] <- unique(tempdf)
-      names(.Object[ISASyntax$sFiles])[i] <- sFileName[i]
+      names(.Object[ISASyntax$sFiles])[i] <- sFileNames[i]
     }
     ## END STUDY FILES ----
 
     ## START ASSAY FILES ----
-    aFileName <- getAssayFileNames(isaObject = .Object)
-    for (i in seq_along(aFileName)) {
-      aFilePath <- file.path(.Object["path"], aFileName[i])
+    aFileNames <- unlist(getAssayFileNames(isaObject = .Object))
+    for (i in seq_along(aFileNames)) {
+      aFilePath <- file.path(.Object["path"], aFileNames[i])
       tempdf <- read.delim(file = aFilePath,
                            header = TRUE,
                            sep = "\t",
@@ -211,7 +211,7 @@ setMethod(
       ## Remove empty columns.
       tempdf <- tempdf[, columnNames != "NA"]
       .Object[ISASyntax$aFiles][[i]] <- tempdf
-      names(.Object[ISASyntax$aFiles])[i] <- aFileName[i]
+      names(.Object[ISASyntax$aFiles])[i] <- aFileNames[i]
     }
     ## END ASSAY FILES ----
     return(.Object)

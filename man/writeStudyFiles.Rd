@@ -6,7 +6,7 @@
 \usage{
 writeStudyFiles(
   isaObject,
-  studyFilenames = getStudyInfo(isaObject),
+  studyFilenames = getStudyFileNames(isaObject),
   path = getwd()
 )
 }

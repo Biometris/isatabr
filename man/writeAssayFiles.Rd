@@ -6,7 +6,7 @@
 \usage{
 writeAssayFiles(
   isaObject,
-  assayFilenames = getAssayFileNames(isaObject),
+  assayFilenames = unlist(getAssayFileNames(isaObject)),
   path = getwd()
 )
 }

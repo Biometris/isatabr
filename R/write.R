@@ -3,8 +3,7 @@
 #' Write ISA-Tab object to files. The investigation file, study files and assay
 #' files are written to the folder specified in \code{path}.
 #'
-#' @inheritParams getInvestigationInfo
-#'
+#' @param isaObject An object of the \code{\link{ISA-class}}.
 #' @param path A character vector with the name of the directory to which the
 #'             file(s) should be written. The default value is the current
 #'             working directory.
@@ -46,7 +45,7 @@ writeInvestigationFile <- function(isaObject,
                  sectionContent = sectionContent,
                  outFile = openFile)
   }
-  studies <- names(getStudyInfo(isaObject))
+  studies <- names(getStudyFileNames(isaObject))
   ## Study content in investigation file is added per study.
   for (study in studies) {
     for (section in sSections) {
@@ -74,7 +73,7 @@ writeInvestigationFile <- function(isaObject,
 #' @importFrom utils write.table
 #' @export
 writeStudyFiles <- function(isaObject,
-                            studyFilenames = getStudyInfo(isaObject),
+                            studyFilenames = getStudyFileNames(isaObject),
                             path = getwd()){
   studyFiles <- isaObject[ISASyntax$sFiles]
   for (studyFilename in studyFilenames) {
@@ -107,7 +106,7 @@ writeStudyFiles <- function(isaObject,
 #' @importFrom utils write.table
 #' @export
 writeAssayFiles <- function(isaObject,
-                            assayFilenames = getAssayFileNames(isaObject),
+                            assayFilenames = unlist(getAssayFileNames(isaObject)),
                             path = getwd()){
   assayFiles <- isaObject[ISASyntax$aFiles]
   for (assayFilename in assayFilenames) {
