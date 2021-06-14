@@ -39,12 +39,12 @@ setMethod(f = "processAssay",
             }
             ## Read file contents.
             assayContLst <- lapply(X = datFiles, FUN = function(datFile) {
-              tempdf <- read.delim(datFile,
-                         header = TRUE,
-                         row.names = 1,
-                         check.names = FALSE,
-                         blank.lines.skip = TRUE,
-                         stringsAsFactors = FALSE)
+              tempdf <- read.table(datFile,
+                                   header = TRUE,
+                                   row.names = 1,
+                                   check.names = FALSE,
+                                   blank.lines.skip = TRUE,
+                                   stringsAsFactors = FALSE)
               ## Remove empty rows.
               tempdf <- tempdf[apply(tempdf, 1, function(x) all(nzchar(x))), ]
               ## Remove empty columns.
