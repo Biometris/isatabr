@@ -107,7 +107,7 @@ writeStudyFiles <- function(isaObject,
 #' @export
 writeAssayFiles <- function(isaObject,
                             assayFilenames = unlist(getAssayFileNames(isaObject)),
-                            path = getwd()){
+                            path = getwd()) {
   assayFiles <- isaObject[ISASyntax$aFiles]
   for (assayFilename in assayFilenames) {
     assayContent <- assayFiles[[assayFilename]]

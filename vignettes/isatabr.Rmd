@@ -1,0 +1,92 @@
+---
+title: "An introduction to the isatabr package"
+author: "Bart-Jan van Rossum"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: false
+    number_sections: true
+bibliography: bibliography.bib
+vignette: >
+  %\VignetteIndexEntry{An introduction to the isatabr package}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+  
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.dim = c(7, 4)
+)
+library(isatabr)
+op <- options(width = 90)
+```
+
+# The isatabr package {-}
+
+The isatabr package is developed as a easy-to-use package for reading, modifying and writing files in the Investigation/Study/Assay (ISA) Abstract Model of the metadata framework using the ISA tab-delimited (TAB) format.
+
+# The ISA tab structure
+
+The ISA-Tab structure is described in full detail on https://isa-specs.readthedocs.io/en/latest/isatab.html. The description below is mostly taken from there and slightly condensed when appropriate.    
+
+ISA-Tab uses three types of file to capture the experimental metadata:
+
+- Investigation file
+- Study file
+- Assay file (with associated data files)
+
+The Investigation file contains all the information needed to understand the overall goals and means used in an experiment; experimental steps (or sequences of events) are described in the Study and in the Assay file(s). For each Investigation file there may be one or more Studies defined with a corresponding Study file; for each Study there may be one or more Assays defined with corresponding Assay files.
+
+In order to facilitate identification of ISA-Tab component files, specific naming patterns should be followed:
+
+- i_*.txt for identifying the Investigation file, e.g. i_investigation.txt
+- s_*.txt for identifying Study file(s), e.g. s_gene_survey.txt
+- a_*.txt for identifying Assay file(s), e.g. a_transcription.txt
+
+## The Investigation file
+
+The Investigation file fulfils four needs:
+
+- to declare key entities, such as factors, protocols, which may be
+referenced in the other files
+- to track provenance of the terminologies (controlled vocabularies or ontologies) there are used, where applicable
+- to relate Assay files to Studies
+- to relate each Study file to an Investigation (this only becomes necessary when two or more Study files need to be grouped).
+
+An Investigation file is structured as a table with vertical headings along the first column, and corresponding values in the subsequent columns. The following section headings must appear in the Investigation file (in order), and the study block (headings from STUDY to STUDY CONTACTS) can be repeated, one block per study associated with the investigation.
+
+- ONTOLOGY SOURCE REFERENCE
+- INVESTIGATION
+- INVESTIGATION PUBLICATIONS
+- INVESTIGATION CONTACTS
+- STUDY
+- STUDY DESIGN DESCRIPTORS
+- STUDY PUBLICATIONS
+- STUDY FACTORS
+- STUDY ASSAYS
+- STUDY PROTOCOLS
+- STUDY CONTACTS
+
+For a full description of all sections see the aforementioned [site]( https://isa-specs.readthedocs.io/en/latest/isatab.html).
+
+## The Study file
+
+The Study file contains contextualizing information for one or more assays, for example; the subjects studied; their source(s); the sampling methodology; their characteristics; and any treatments or manipulations performed to prepare the specimens.
+
+## The Assay file
+
+The Assay file represents a portion of the experimental graph (i.e., one part of the overall structure of the workflow); each Assay file must contain assays of the same type, defined by the type of measurement (e.g. gene expression) and the technology employed (e.g. DNA microarray). Assay-related information includes protocols, additional information relating to the execution of those protocols and references to data files (whether raw or derived).
+
+# Example
+
+
+
+```{r winddown, include = FALSE}
+options(op)
+```
+
+----
+
+## References
