@@ -31,7 +31,7 @@ files of the dataset.}
 \item{value}{ANY, replacement value for the slotname specified by \code{i}.}
 }
 \description{
-An S4 class to store information from an ISA-Tab dataset, including an
+An S4 class to store information from an ISA-Tab data set, including an
 investigation file, one or more study files, and one or more assay files for
 each study file.
 
@@ -53,86 +53,60 @@ descriptions the character vectors to access specific slots are given.
 
 \describe{
 \item{\code{path}}{A length-one character vector containing the path to the ISA-Tab
-dataset. The character vector to extract or replace this slot is
-"path".}
+dataset.}
 
 \item{\code{iFileName}}{A length-one character vector containing the investigation
-filename (by definition starting with \strong{\emph{i_}} and
-ending at \strong{\emph{.txt}}). The character vector to
-extract or replace this slot is "Investigation File Name".}
+filename (by definition starting with \strong{\emph{i_}} and ending at
+\strong{\emph{.txt}}).}
 
 \item{\code{oSR}}{A data.frame containing the "ONTOLOGY SOURCE REFERENCE" section of
-the investigation file. The character vector to extract or replace
-this slot is "ONTOLOGY SOURCE REFERENCE".}
+the investigation file.}
 
 \item{\code{invest}}{A data.frame containing the "INVESTIGATION" section of
-the investigation file. The character vector to extract or
-replace this slot is "INVESTIGATION".}
+the investigation file.}
 
 \item{\code{iPubs}}{A data.frame containing the "INVESTIGATION PUBLICATIONS" section
-of the investigation file. The character vector to extract or
-replace this slot is "INVESTIGATION PUBLICATIONS".}
+of the investigation file.}
 
 \item{\code{iContacts}}{A data.frame containing the "INVESTIGATION CONTACTS" section
-of the investigation file. The character vector to extract or
-replace this slot is "INVESTIGATION CONTACTS".}
+of the investigation file.}
 
 \item{\code{study}}{A list of data.frames containing the "STUDY" sections of the
-investigation file. Each study has its own section and the study
-identifier is used to name each element in the list. The character
-vector to extract or replace this slot is "STUDY".}
+investigation file. Each study has its own section and the study identifier
+is used to name each element in the list.}
 
 \item{\code{sDD}}{A list of data.frames containing the "STUDY DESIGN DESCRIPTORS"
-sections of the investigation file. Each study has its own section
-and the study identifier is used to name each element in the list.
-The character vector to extract or replace this slot is "STUDY
-DESIGN DESCRIPTORS".}
+sections of the investigation file. Each study has its own section and the
+study identifier is used to name each element in the list.}
 
 \item{\code{sPubs}}{A list of data.frames containing the "STUDY PUBLICATIONS"
-sections of the investigation file. Each study has its own
-section and the study identifier is used to name each element in
-the list. The character vector to extract or replace this slot is
-"STUDY PUBLICATIONS".}
+sections of the investigation file. Each study has its own section and the
+study identifier is used to name each element in the list.}
 
 \item{\code{sFacts}}{A list of data.frames containing the "STUDY FACTORS" sections of
-the investigation file. Each study has its own section and the
-study identifier is used to name each element in the list. The
-character vector to extract or replace this slot is "STUDY
-FACTORS".}
+the investigation file. Each study has its own section and the study
+identifier is used to name each element in the list.}
 
 \item{\code{sAssays}}{A list of data.frames containing the "STUDY ASSAYS" sections of
-the investigation file. Each study has its own section and the
-study identifier is used to name each element in the list. The
-character vector to extract or replace this slot is "STUDY
-ASSAYS".}
+the investigation file. Each study has its own section and the study
+identifier is used to name each element in the list.}
 
 \item{\code{sProts}}{A list of data.frames containing the "STUDY PROTOCOLS" sections
-of the investigation file. Each study has its own section and
-the study identifier is used to name each element in the list.
-The character vector to extract or replace this slot is "STUDY
-PROTOCOLS".}
+of the investigation file. Each study has its own section and he study
+identifier is used to name each element in the list.}
 
 \item{\code{sContacts}}{A list of data.frames containing the "STUDY CONTACTS"
-sections of the investigation file. Each study has its own
-section and the study identifier is used to name each element
-in the list. The character vector to extract or replace this
-slot is "STUDY CONTACTS".}
+sections of the investigation file. Each study has its own section and the
+study identifier is used to name each element in the list.}
 
 \item{\code{sFiles}}{A list of data.frames containing the "Study Files", containing
-the contents of the Study Table files belonging to the studies
-in the investigation. Each study has one Study Table file. The
-character vector to extract or replace this slot is "Study
-Files".}
+the contents of the Study Table files belonging to the studies in the
+investigation. Each study has one Study Table file.}
 
 \item{\code{aFiles}}{A list of data.frames containing the "Assay Files", containing
-the contents of the Assay Table files belonging to the studies
-in the investigation. Each study can have multiple Assay Table
-files. Each element of the list is named by the Assay File Name.
-The character vector to extract or replace this slot is "Assay
-Files".}
+the contents of the Assay Table files belonging to the studies in the
+investigation. Each study can have multiple Assay Table files. Each element
+of the list is named by the Assay File Name.}
 }}
 
-\author{
-Maikel Verouden
-}
 \keyword{classes}

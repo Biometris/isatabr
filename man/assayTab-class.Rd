@@ -16,18 +16,18 @@ An S4 class to store information from an assay files.
 
 \describe{
 \item{\code{path}}{A length-one character vector containing the path to the ISA-Tab
-dataset.}
+data set.}
 
 \item{\code{sFileName}}{A length-one character vector containing the study
-filename (by definition starting with \strong{\emph{s_}} and
-ending at \strong{\emph{.txt}}).}
+file name (by definition starting with \strong{\emph{s_}} and ending at
+\strong{\emph{.txt}}).}
 
 \item{\code{sIdentifier}}{A length-one character vector containing the study
 identifier.}
 
 \item{\code{aFileName}}{A length-one character vector containing the assay
-filename (by definition starting with \strong{\emph{a_}} and
-ending at \strong{\emph{.txt}}).}
+file name (by definition starting with \strong{\emph{a_}} and ending at
+\strong{\emph{.txt}}).}
 
 \item{\code{aFile}}{A data.frame containing the contents of the Assay Table file.}
 

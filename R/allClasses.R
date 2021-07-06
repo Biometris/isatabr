@@ -1,78 +1,51 @@
 ### ISA Class ----
-#' @title
 #' S4 Class ISA, initialization, extract- and replace-methods
 #'
-#' @description
-#' An S4 class to store information from an ISA-Tab dataset, including an
+#' An S4 class to store information from an ISA-Tab data set, including an
 #' investigation file, one or more study files, and one or more assay files for
 #' each study file.
 #'
 #' @slot path A length-one character vector containing the path to the ISA-Tab
-#'            dataset. The character vector to extract or replace this slot is
-#'            "path".
+#' dataset.
 #' @slot iFileName A length-one character vector containing the investigation
-#'                 filename (by definition starting with \strong{\emph{i_}} and
-#'                 ending at \strong{\emph{.txt}}). The character vector to
-#'                 extract or replace this slot is "Investigation File Name".
+#' filename (by definition starting with \strong{\emph{i_}} and ending at
+#' \strong{\emph{.txt}}).
 #' @slot oSR A data.frame containing the "ONTOLOGY SOURCE REFERENCE" section of
-#'           the investigation file. The character vector to extract or replace
-#'           this slot is "ONTOLOGY SOURCE REFERENCE".
+#' the investigation file.
 #' @slot invest A data.frame containing the "INVESTIGATION" section of
-#'              the investigation file. The character vector to extract or
-#'              replace this slot is "INVESTIGATION".
+#' the investigation file.
 #' @slot iPubs A data.frame containing the "INVESTIGATION PUBLICATIONS" section
-#'             of the investigation file. The character vector to extract or
-#'             replace this slot is "INVESTIGATION PUBLICATIONS".
+#' of the investigation file.
 #' @slot iContacts A data.frame containing the "INVESTIGATION CONTACTS" section
-#'                 of the investigation file. The character vector to extract or
-#'                 replace this slot is "INVESTIGATION CONTACTS".
+#' of the investigation file.
 #' @slot study A list of data.frames containing the "STUDY" sections of the
-#'             investigation file. Each study has its own section and the study
-#'             identifier is used to name each element in the list. The character
-#'             vector to extract or replace this slot is "STUDY".
+#' investigation file. Each study has its own section and the study identifier
+#' is used to name each element in the list.
 #' @slot sDD A list of data.frames containing the "STUDY DESIGN DESCRIPTORS"
-#'           sections of the investigation file. Each study has its own section
-#'           and the study identifier is used to name each element in the list.
-#'           The character vector to extract or replace this slot is "STUDY
-#'           DESIGN DESCRIPTORS".
+#' sections of the investigation file. Each study has its own section and the
+#' study identifier is used to name each element in the list.
 #' @slot sPubs A list of data.frames containing the "STUDY PUBLICATIONS"
-#'             sections of the investigation file. Each study has its own
-#'             section and the study identifier is used to name each element in
-#'             the list. The character vector to extract or replace this slot is
-#'             "STUDY PUBLICATIONS".
+#' sections of the investigation file. Each study has its own section and the
+#' study identifier is used to name each element in the list.
 #' @slot sFacts A list of data.frames containing the "STUDY FACTORS" sections of
-#'              the investigation file. Each study has its own section and the
-#'              study identifier is used to name each element in the list. The
-#'              character vector to extract or replace this slot is "STUDY
-#'              FACTORS".
+#' the investigation file. Each study has its own section and the study
+#' identifier is used to name each element in the list.
 #' @slot sAssays A list of data.frames containing the "STUDY ASSAYS" sections of
-#'               the investigation file. Each study has its own section and the
-#'               study identifier is used to name each element in the list. The
-#'               character vector to extract or replace this slot is "STUDY
-#'               ASSAYS".
+#' the investigation file. Each study has its own section and the study
+#' identifier is used to name each element in the list.
 #' @slot sProts A list of data.frames containing the "STUDY PROTOCOLS" sections
-#'              of the investigation file. Each study has its own section and
-#'              the study identifier is used to name each element in the list.
-#'              The character vector to extract or replace this slot is "STUDY
-#'              PROTOCOLS".
+#' of the investigation file. Each study has its own section and he study
+#' identifier is used to name each element in the list.
 #' @slot sContacts A list of data.frames containing the "STUDY CONTACTS"
-#'                 sections of the investigation file. Each study has its own
-#'                 section and the study identifier is used to name each element
-#'                 in the list. The character vector to extract or replace this
-#'                 slot is "STUDY CONTACTS".
+#' sections of the investigation file. Each study has its own section and the
+#' study identifier is used to name each element in the list.
 #' @slot sFiles A list of data.frames containing the "Study Files", containing
-#'              the contents of the Study Table files belonging to the studies
-#'              in the investigation. Each study has one Study Table file. The
-#'              character vector to extract or replace this slot is "Study
-#'              Files".
+#' the contents of the Study Table files belonging to the studies in the
+#' investigation. Each study has one Study Table file.
 #' @slot aFiles A list of data.frames containing the "Assay Files", containing
-#'              the contents of the Assay Table files belonging to the studies
-#'              in the investigation. Each study can have multiple Assay Table
-#'              files. Each element of the list is named by the Assay File Name.
-#'              The character vector to extract or replace this slot is "Assay
-#'              Files".
-#'
-#' @author Maikel Verouden
+#' the contents of the Assay Table files belonging to the studies in the
+#' investigation. Each study can have multiple Assay Table files. Each element
+#' of the list is named by the Assay File Name.
 #'
 #' @keywords classes
 #' @rdname ISA-class
@@ -98,27 +71,25 @@ ISA <- setClass(Class = "ISA",
 )
 
 ### assayTab Class ----
-#' @title
 #' S4 Class assayTab, initialization, extract- and replace-methods
 #'
-#' @description
 #' An S4 class to store information from an assay files.
 #'
 #' @slot path A length-one character vector containing the path to the ISA-Tab
-#'            dataset.
+#' data set.
 #' @slot sFileName A length-one character vector containing the study
-#'                 filename (by definition starting with \strong{\emph{s_}} and
-#'                 ending at \strong{\emph{.txt}}).
+#' file name (by definition starting with \strong{\emph{s_}} and ending at
+#' \strong{\emph{.txt}}).
 #' @slot sIdentifier A length-one character vector containing the study
-#'                   identifier.
+#' identifier.
 #' @slot aFileName A length-one character vector containing the assay
-#'                 filename (by definition starting with \strong{\emph{a_}} and
-#'                 ending at \strong{\emph{.txt}}).
+#' file name (by definition starting with \strong{\emph{a_}} and ending at
+#' \strong{\emph{.txt}}).
 #' @slot aFile A data.frame containing the contents of the Assay Table file.
 #' @slot aTechType A length-one character vector containing the assay
-#'                 technology type.
+#' technology type.
 #' @slot aMeasType A length-one character vector containing the assay
-#'                 measurement type.
+#' measurement type.
 #'
 #' @keywords classes
 #' @rdname assayTab-class

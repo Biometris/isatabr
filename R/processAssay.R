@@ -1,3 +1,47 @@
+#' Retrieve Assay Tables from an ISA object.
+#'
+#' Retrieve from an object of the \code{\link{ISA-class}} the Assay Tables.
+#'
+#' @inheritParams writeISAtab
+#'
+#' @return A list of lists of objects of class \code{\link{assayTab}}, where
+#' each list element, named by the Study Identifier, contains a list of
+#' objects of class \code{\link{assayTab}}.
+#'
+#' @export
+getAssayTabs <- function(isaObject) {
+  ## Get info from isaObject.
+  studyFileNames <- names(sFiles(isaObject))
+  assayInfo <- sAssays(isaObject)
+  assayFiles <- aFiles(isaObject)
+  assayTabs <- lapply(X = seq_along(studyFileNames), FUN = function(i) {
+    studyId <- names(assayInfo)[i]
+    studyAssay <- assayInfo[[studyId]]
+    assayTabsStudy <- lapply(X = 1:nrow(studyAssay), FUN = function(j) {
+      ## Class is dependent of technology type.
+      ## Returns empty character for 'non-existing' technology.
+      assayTechType <- studyAssay[j, ISASyntax$sAssayTechType]
+      assayTechName <- names(technologyTypes)[technologyTypes == assayTechType]
+      assayClass <- if (isTRUE(nzchar(assayTechName)))
+        paste0(assayTechName, "AssayTab") else "assayTab"
+      assayMeasType <- studyAssay[j, ISASyntax$sAssayMeasType]
+      new(assayClass,
+          path = isaObject[ISASyntax$path],
+          sFilename = studyFileNames[i],
+          sIdentifier = studyId,
+          aFilename = studyAssay[j, ISASyntax$aFileName],
+          aFile = assayFiles[[studyAssay[j, ISASyntax$aFileName]]],
+          aTechType = assayTechType,
+          aMeasType = assayMeasType
+      )
+    })
+    names(assayTabsStudy) <- studyAssay[[ISASyntax$aFileName]]
+    return(assayTabsStudy)
+  })
+  names(assayTabs) <- studyFileNames
+  return(assayTabs)
+}
+
 #' Process assay tab data
 #'
 #' Process data from assay tab files
@@ -21,7 +65,9 @@ setGeneric("processAssay",
 #' @rdname processAssay-methods
 #' @aliases processAssay,ISA,assayTab-method
 setMethod(f = "processAssay",
-          signature = c(isaObject = "ISA", aTabObject = "assayTab", type = "character"),
+          signature = c(isaObject = "ISA",
+                        aTabObject = "assayTab",
+                        type = "character"),
           definition = function(isaObject, aTabObject, type) {
             type <- match.arg(type)
             assayDat <- slot(aTabObject, "aFile")
@@ -131,8 +177,12 @@ setMethod(f = "processAssay",
               fileCol <- ISASyntax[[paste0(type, "DataFile")]]["microarray"]
               ## Get microarray files for assay.
               microarrayDatFiles <- unique(assayDat[[fileCol]])
+              microarrayDatFilesFull <-
+                file.path(normalizePath(slot(aTabObject, "path"),
+                                        winslash = .Platform$file.sep),
+                          microarrayDatFiles)
               ## Check that files exist.
-              missFiles <- microarrayDatFiles[!file.exists(microarrayDatFiles)]
+              missFiles <- microarrayDatFilesFull[!file.exists(microarrayDatFilesFull)]
               if (length(missFiles) > 0) {
                 stop("The following files are not found:\n",
                      paste(missFiles, collapse = ", "))

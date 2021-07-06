@@ -175,16 +175,10 @@ setMethod(
                            header = TRUE,
                            sep = "\t",
                            blank.lines.skip = TRUE,
+                           check.names = FALSE,
                            stringsAsFactors = FALSE)
-      columnNames <- as.character(read.table(file = sFilePath,
-                                             header = FALSE,
-                                             sep = "\t",
-                                             nrows = 1,
-                                             blank.lines.skip = TRUE,
-                                             stringsAsFactors = FALSE))
-      colnames(tempdf) <- columnNames
       ## Remove empty rows.
-      tempdf <- tempdf[apply(tempdf, 1, function(x) all(nzchar(x))), ]
+      tempdf <- tempdf[apply(tempdf, 1, function(x) any(nzchar(x))), ]
       .Object[ISASyntax$sFiles][[i]] <- unique(tempdf)
       names(.Object[ISASyntax$sFiles])[i] <- sFileNames[i]
     }
@@ -198,18 +192,14 @@ setMethod(
                            header = TRUE,
                            sep = "\t",
                            blank.lines.skip = TRUE,
+                           check.names = FALSE,
                            stringsAsFactors = FALSE)
-      columnNames <- as.character(read.table(file = aFilePath,
-                                             header = FALSE,
-                                             sep = "\t",
-                                             nrows = 1,
-                                             blank.lines.skip = TRUE,
-                                             stringsAsFactors = FALSE))
-      colnames(tempdf) <- columnNames
       ## Remove empty rows.
-      tempdf <- tempdf[apply(tempdf, 1, function(x) all(nzchar(x))), ]
+      tempdf <- tempdf[apply(tempdf, 1, function(x) any(nzchar(x))), ]
+      colNames <- colnames(tempdf)
       ## Remove empty columns.
-      tempdf <- tempdf[, columnNames != "NA"]
+      tempdf <- tempdf[, colnames(tempdf) != "NA"]
+      colnames(tempdf) <- colNames[!colNames == "NA"]
       .Object[ISASyntax$aFiles][[i]] <- tempdf
       names(.Object[ISASyntax$aFiles])[i] <- aFileNames[i]
     }

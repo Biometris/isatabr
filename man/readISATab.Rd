@@ -15,7 +15,7 @@ located (if the parameter zipfile is not NULL). The default
 value is the current working directory.}
 
 \item{zipfile}{A character vector with the name of the zip archive containing
-ISA-Ttab files themselves (without a directory name in the zip
+ISA-Tab files themselves (without a directory name in the zip
 archive). The default value is NULL (specifying that the ISA-
 Tab files have not been archived in one zipped file).}
 
