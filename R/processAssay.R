@@ -85,16 +85,18 @@ setMethod(f = "processAssay",
             }
             ## Read file contents.
             assayContLst <- lapply(X = datFiles, FUN = function(datFile) {
-              tempdf <- read.table(datFile,
+              tempdf <- read.delim(datFile,
                                    header = TRUE,
-                                   row.names = 1,
                                    check.names = FALSE,
                                    blank.lines.skip = TRUE,
                                    stringsAsFactors = FALSE)
               ## Remove empty rows.
-              tempdf <- tempdf[apply(tempdf, 1, function(x) all(nzchar(x))), ]
+              tempdf <- tempdf[apply(tempdf, 1, function(x) any(nzchar(x))), ]
               ## Remove empty columns.
+              # Save and re-add colnames to assure duplicate names are not removed.
+              colNames <- colnames(tempdf)
               tempdf <- tempdf[, nzchar(colnames(tempdf))]
+              colnames(tempdf) <- colNames[nzchar(colnames(tempdf))]
               return(tempdf)
             })
             assayCont <- do.call(rbind, assayContLst)

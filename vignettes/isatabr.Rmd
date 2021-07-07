@@ -12,7 +12,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
-  
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -23,53 +23,52 @@ library(isatabr)
 op <- options(width = 90)
 ```
 
-# The isatabr package {-}
+# The isatabr package {.unnumbered}
 
 The isatabr package is developed as a easy-to-use package for reading, modifying and writing files in the Investigation/Study/Assay (ISA) Abstract Model of the metadata framework using the ISA tab-delimited (TAB) format.
 
 # The ISA tab structure
 
-The ISA-Tab structure is described in full detail on https://isa-specs.readthedocs.io/en/latest/isatab.html. The description below is mostly taken from there and slightly condensed when appropriate.    
+The ISA-Tab structure is described in full detail on <https://isa-specs.readthedocs.io/en/latest/isatab.html>. The description below is mostly taken from there and slightly condensed when appropriate.
 
 ISA-Tab uses three types of file to capture the experimental metadata:
 
-- Investigation file
-- Study file
-- Assay file (with associated data files)
+-   Investigation file
+-   Study file
+-   Assay file (with associated data files)
 
 The Investigation file contains all the information needed to understand the overall goals and means used in an experiment; experimental steps (or sequences of events) are described in the Study and in the Assay file(s). For each Investigation file there may be one or more Studies defined with a corresponding Study file; for each Study there may be one or more Assays defined with corresponding Assay files.
 
 In order to facilitate identification of ISA-Tab component files, specific naming patterns should be followed:
 
-- i_*.txt for identifying the Investigation file, e.g. i_investigation.txt
-- s_*.txt for identifying Study file(s), e.g. s_gene_survey.txt
-- a_*.txt for identifying Assay file(s), e.g. a_transcription.txt
+-   i\_\*.txt for identifying the Investigation file, e.g. i_investigation.txt
+-   s\_\*.txt for identifying Study file(s), e.g. s_gene_survey.txt
+-   a\_\*.txt for identifying Assay file(s), e.g. a_transcription.txt
 
 ## The Investigation file
 
-The Investigation file fulfils four needs:
+The Investigation file fulfills four needs:
 
-- to declare key entities, such as factors, protocols, which may be
-referenced in the other files
-- to track provenance of the terminologies (controlled vocabularies or ontologies) there are used, where applicable
-- to relate Assay files to Studies
-- to relate each Study file to an Investigation (this only becomes necessary when two or more Study files need to be grouped).
+-   to declare key entities, such as factors, protocols, which may be referenced in the other files
+-   to track provenance of the terminologies (controlled vocabularies or ontologies) there are used, where applicable
+-   to relate Assay files to Studies
+-   to relate each Study file to an Investigation (this only becomes necessary when two or more Study files need to be grouped).
 
 An Investigation file is structured as a table with vertical headings along the first column, and corresponding values in the subsequent columns. The following section headings must appear in the Investigation file (in order), and the study block (headings from STUDY to STUDY CONTACTS) can be repeated, one block per study associated with the investigation.
 
-- ONTOLOGY SOURCE REFERENCE
-- INVESTIGATION
-- INVESTIGATION PUBLICATIONS
-- INVESTIGATION CONTACTS
-- STUDY
-- STUDY DESIGN DESCRIPTORS
-- STUDY PUBLICATIONS
-- STUDY FACTORS
-- STUDY ASSAYS
-- STUDY PROTOCOLS
-- STUDY CONTACTS
+-   ONTOLOGY SOURCE REFERENCE
+-   INVESTIGATION
+-   INVESTIGATION PUBLICATIONS
+-   INVESTIGATION CONTACTS
+-   STUDY
+-   STUDY DESIGN DESCRIPTORS
+-   STUDY PUBLICATIONS
+-   STUDY FACTORS
+-   STUDY ASSAYS
+-   STUDY PROTOCOLS
+-   STUDY CONTACTS
 
-For a full description of all sections see the aforementioned [site]( https://isa-specs.readthedocs.io/en/latest/isatab.html).
+For a full description of all sections see the aforementioned [site](https://isa-specs.readthedocs.io/en/latest/isatab.html).
 
 ## The Study file
 
@@ -79,14 +78,129 @@ The Study file contains contextualizing information for one or more assays, for 
 
 The Assay file represents a portion of the experimental graph (i.e., one part of the overall structure of the workflow); each Assay file must contain assays of the same type, defined by the type of measurement (e.g. gene expression) and the technology employed (e.g. DNA microarray). Assay-related information includes protocols, additional information relating to the execution of those protocols and references to data files (whether raw or derived).
 
-# Example
+## Example data
 
+As an example for working with the `isatabr` package we will use the data set that accompanies [@Atwell2010]. The associated files are included in the package.
 
+## Reading files in the ISA-Tab format
+
+ISA-Tab files can be stored in two different ways, either as separate files in a directory, or as .zip file containing the files. The example data is included in both ways in the package. Both formats can be read into `R` using the `readISATab` function.
+
+When reading ISA-Tab files from a directory, only the name of the directory where the ISA-TAB files are located needs to be specified.
+
+```{r read}
+## Read ISA-Tab files from directory.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell", package = "isatabr")))
+```
+
+When reading zipped files, both the directory where the zip-file is located and the name of the file need to be specified.
+
+```{r readZip}
+## Read ISA-Tab files from directory.
+isaObject2 <- readISATab(path = file.path(system.file("extdata", package = "isatabr")),
+                         zipfile = "Atwell.zip")
+```
+
+In both cases `readISATab` will automatically detect the Investigation, Study and Assay files assuming the naming conventions described in the previous section are followed. If this is not the case the function will give an error indicating the problem. The imported ISA-Tab files are stored in an object of the S4 class `ISA`. Since the information is almost identical for reading files from a directory and zipped-files the following sections will show the example for the files read from a directory only.
+
+## Accessing and updating ISA objects.
+
+All information from the ISA-Tab files is stored within slots in the `ISA` object. The table below gives an overview of the different slots and a brief description of the information stored in the slot. For a more exhaustive description see `help("ISA")`. Note that an investigation may have multiple studies and data concerning studies is therefore stored in a `list` where one element in the `list` corresponds to one study. Likewise a study may consist of multiple assays and assay data is stored in a `list` where one element in the `list` corresponds to one assay.
+
+| Slot      | Type                    | Description                                              |
+|-----------|-------------------------|----------------------------------------------------------|
+| path      | `character`             | path to the ISA-Tab files                                |
+| iFileName | `character`             | name of the investigation file                           |
+| oSR       | `data.frame`            | ontology source reference section of investigation file  |
+| invest    | `data.frame`            | investigation section of investigation file              |
+| iPubs     | `data.frame`            | investigation publications section of investigation file |
+| iContacts | `data.frame`            | investigation contacts section of investigation file     |
+| study     | `list` of `data.frames` | study sections of investigation file                     |
+| sDD       | `list` of `data.frames` | study design descriptors sections of investigation file  |
+| sPubs     | `list` of `data.frames` | study publications sections of investigation file        |
+| sFacts    | `list` of `data.frames` | study factors sections of investigation file             |
+| sAssays   | `list` of `data.frames` | study assays sections of investigation file              |
+| sProts    | `list` of `data.frames` | study protocols sections of investigation file           |
+| sContacts | `list` of `data.frames` | study contacts sections of investigation file            |
+| sFiles    | `list` of `data.frames` | content of study files                                   |
+| aFiles    | `list` of `data.frames` | content of assay files                                   |
+
+All slots have corresponding functions for accessing and modifying information. The names of these access functions are the same as the slots they refer to, e.g. accessing the path slot in an `ISA` object can be done using the `path` function.
+
+```{r pathAccess}
+## Access path for isaObjects
+path(isaObject1)
+path(isaObject2)
+```
+
+The path for `isaObject1` shows the directory from which the files where read. As `isaObject2` was read directly for a zipped archive, the files where first extracted into a temporary folder and that read from there. This temporary folder is shown as the path.
+
+The different slots are accessible in a similar way. Some more examples are shown below.
+
+```{r studyAccess}
+## Access studies.
+isaStudies <- study(isaObject1)
+
+## Print study names.
+names(isaStudies)
+
+## Access study descriptors.
+isaSDD <- sDD(isaObject1)
+
+## Shows study descriptors for study GMI_Atwell_study.
+isaSDD$GMI_Atwell_study
+```
+
+It is not only possible to access the different slots in an `ISA` object, the slots can also be updated. As the access function, the functions that allow to do this have the same name as the slots they refer to. As an example, let's assume an error sneaked into the ontology source reference section and we want to update one of the source versions.
+
+First have a look at the current content of the ontology source reference section.
+
+```{r osrAccess}
+(isaOSR <- oSR(isaObject1))
+```
+
+Now we update the version of the OBI ontology source from 23 to 24. Then we update the modified ontology source `data.frame` in the `ISA` object.
+
+```{r osrUpdate}
+## Update version number.
+isaOSR[1, "Term Source Version"] <- 24
+
+## Update oSR in ISA object.
+oSR(isaObject1) <- isaOSR
+
+## Check the updated oSR.
+oSR(isaObject1)
+```
+
+In a similar way all slots in an `ISA` object can be accessed and updated.
+
+## Processing assay files
+
+```{r}
+## Get assay tab.
+aTabObjects <- getAssayTabs(isaObject1)
+
+processAssay(isaObject = isaObject1,
+             aTabObject = aTabObjects$s_study1.txt$a_study1.txt,
+             type = "derived")
+```
+
+## Writing files in the ISA-Tab format.
+
+After updating an `ISA` object it can be written back to a directory using the `writeISAtab` function. All content of the `ISA` object will be written to investigation, study and assay files following the ISA-Tab standard for file specification. By default the files are written to the current working directory, but the directory can be specified using the `path` argument.
+
+```{r write}
+## Write content of ISA object to a temporary directory.
+writeISAtab(isaObject = isaObject1, 
+            path = tempdir())
+```
+
+Note that existing files are always overwritten. So writing files to the directory where the original files were read from will result in the original files being overwritten.
 
 ```{r winddown, include = FALSE}
 options(op)
 ```
 
-----
+------------------------------------------------------------------------
 
 ## References

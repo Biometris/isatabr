@@ -24,8 +24,8 @@ folder containing the ISA-Tab files.
 }
 }
 \examples{
-## Example BII data set.
-isaObject1 <- readISATab(path = file.path(system.file("extdata/BII-I-1",
+## Example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
                                           package = "isatabr")))
 validISAObject(isaObject1)
 

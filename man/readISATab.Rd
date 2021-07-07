@@ -31,12 +31,12 @@ Reads an ISA-Tab dataset, given as a zip file or as a set of files in a
 specific folder, and builds an object of the \linkS4class{ISA} class.
 }
 \examples{
-## Example BII data set.
-isaObject1 <- readISATab(path = file.path(system.file("extdata/BII-I-1",
+## Example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
                                           package = "isatabr")))
 
-## Example zipped BII data set
-isazip <- "BII-I-1.zip"
+## Example zipped Atwell data set
+isazip <- "Atwell.zip"
 isaObject2 <- readISATab(path = file.path(system.file("extdata",
                                                       package = "isatabr")),
                          zipfile = isazip,
