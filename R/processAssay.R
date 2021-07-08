@@ -26,7 +26,7 @@ getAssayTabs <- function(isaObject) {
         paste0(assayTechName, "AssayTab") else "assayTab"
       assayMeasType <- studyAssay[j, ISASyntax$sAssayMeasType]
       new(assayClass,
-          path = isaObject[ISASyntax$path],
+          path = path(isaObject),
           sFilename = studyFileNames[i],
           sIdentifier = studyId,
           aFilename = studyAssay[j, ISASyntax$aFileName],
@@ -46,8 +46,8 @@ getAssayTabs <- function(isaObject) {
 #'
 #' Process data from assay tab files
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
-#' @param aTabObject An object of the \code{\link{assayTab-class}}.
+#' @param isaObject An object of the \linkS4class{ISA}.
+#' @param aTabObject An object of the \linkS4class{assayTab}.
 #' @param type A character string indicating which data files should be
 #' processed, either "raw" for raw data files, or "derived" for derived data
 #' files. The file names are taken from the corresponding column in the
@@ -109,8 +109,8 @@ setMethod(f = "processAssay",
 #' Process data from assay tab files with technology type mass spectrometry
 #' (ms). Processing those files requires the xcms package to be installed.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
-#' @param aTabObject An object of the \code{\link{msAssayTab-class}}.
+#' @param isaObject An object of the \linkS4class{ISA}.
+#' @param aTabObject An object of the \linkS4class{msAssayTab}.
 #'
 #' @rdname processAssay-methods
 #' @aliases processAssay,ISA,msAssayTab-method
@@ -164,8 +164,8 @@ setMethod(f = "processAssay",
 #' (ms). Processing those files requires the Biobase and affy packages to be
 #' installed.
 #'
-#' @param isaObject An object of the \code{\link{ISA-class}}.
-#' @param aTabObject An object of the \code{\link{microarrayAssayTab-class}}.
+#' @param isaObject An object of the \linkS4class{ISA}.
+#' @param aTabObject An object of the \linkS4class{microarrayAssayTab}.
 #'
 #' @rdname processAssay-methods
 #' @aliases processAssay,ISA,msAssayTab-method
@@ -227,7 +227,7 @@ constructMIAMEMetadata <- function(isaObject,
       assayDat <- slot(aTabObject, "aFile")
       sIdentifier <- names(slot(aTabObject, "sFilename"))
       sInfo <- slot(isaObject, "study")[[sIdentifier]]
-      sContacts <- isaObject[ISASyntax$sContacts][[sIdentifier]]
+      sContacts <- isaObject@sContacts[[sIdentifier]]
       ## Get corresponding author details.
       sCorr <- sContacts[sContacts[[ISASyntax$sPersonRoles]] == "corresponding author", ]
       sCorrPers <- as.character(person(given = paste(sCorr[[ISASyntax$sPersonFirst]],

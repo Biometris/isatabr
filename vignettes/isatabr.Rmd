@@ -88,6 +88,8 @@ ISA-Tab files can be stored in two different ways, either as separate files in a
 
 When reading ISA-Tab files from a directory, only the name of the directory where the ISA-TAB files are located needs to be specified.
 
+isaObject1 \<- readISATab(path = file.path(system.file("extdata/Atwell", package = "isatabr")))
+
 ```{r read}
 ## Read ISA-Tab files from directory.
 isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell", package = "isatabr")))

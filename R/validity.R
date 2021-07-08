@@ -1,16 +1,15 @@
-#' @title
 #' Check the validity of an object of class ISA.
 #'
-#' @description
 #' The \code{validISAObject} function checks whether an object of class
-#' \linkS4class{ISA} is a valid object (in this case TRUE is returned, otherwise
-#' an error message will appear). An object of the \code{\link{ISA-class}} is
-#' valid when:
-#' \itemize{
-#'  \item There is only one investigation file, which name starts with
-#'        \strong{\emph{i_}} and ends with \strong{\emph{.txt}}, present in the
-#'        folder containing the ISA-Tab files.
-#' }
+#' \linkS4class{ISA} is a valid object. An object of the \linkS4class{ISA} is
+#' considered valid when:
+#' * There is only one investigation file, which name starts with **i_**
+#' and ends with **.txt**, present in the folder containing the ISA-Tab files.
+#' * All sections in the investigation file contain at least the columns
+#' specified for that specific section at
+#' https://isa-specs.readthedocs.io/en/latest/isatab.html
+#' * The study and assay files contain at least the columns specified at
+#' https://isa-specs.readthedocs.io/en/latest/isatab.html
 #'
 #' @param object An object of class \linkS4class{ISA}.
 #'
@@ -19,9 +18,11 @@
 #' @seealso \linkS4class{ISA}
 #'
 #' @examples
-#' ## Example Atwell data set.
+#' ## Read example Atwell data set.
 #' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
 #'                                           package = "isatabr")))
+#'
+#' ## Check validity of the object.
 #' validISAObject(isaObject1)
 #'
 #' @export

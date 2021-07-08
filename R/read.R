@@ -1,32 +1,27 @@
-#' @title
 #' Read an ISA-Tab dataset into an R object.
 #'
-#' @description
 #' Reads an ISA-Tab dataset, given as a zip file or as a set of files in a
 #' specific folder, and builds an object of the \linkS4class{ISA} class.
 #'
 #' @param path A character vector with the name of the directory in which the
-#'             ISA-Tab files are located (if the parameter zipfile is not
-#'             provided or if it is equal to NULL), or the name of the
-#'             directory where the zip archive containing the ISA-Tab files is
-#'             located (if the parameter zipfile is not NULL). The default
-#'             value is the current working directory.
+#' ISA-Tab files are located (if the parameter zipfile is not provided or if it
+#' is equal to \code{NULL}), or the name of the directory where the zip archive
+#' containing the ISA-Tab files is located (if the parameter zipfile is not
+#' \code{NULL}). The default value is the current working directory.
 #' @param zipfile A character vector with the name of the zip archive containing
-#'                ISA-Tab files themselves (without a directory name in the zip
-#'                archive). The default value is NULL (specifying that the ISA-
-#'                Tab files have not been archived in one zipped file).
-#' @param verbose A logical vector indicating to show messages for the different
-#'                steps, if TRUE, or not to show them, if FALSE (the default
-#'                value).
+#' ISA-Tab files themselves (without a directory name in the zip archive). The
+#' default value is \code{NULL} (specifying that the ISA-Tab files have not
+#' been archived in one zipped file).
+#' @param verbose Should the messages for the different reading steps be shown?
 #'
 #' @return An object of the \linkS4class{ISA} class.
 #'
 #' @examples
-#' ## Example Atwell data set.
+#' ## Read example Atwell data set.
 #' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
 #'                                           package = "isatabr")))
 #'
-#' ## Example zipped Atwell data set
+#' ## Read example zipped Atwell data set.
 #' isazip <- "Atwell.zip"
 #' isaObject2 <- readISATab(path = file.path(system.file("extdata",
 #'                                                       package = "isatabr")),

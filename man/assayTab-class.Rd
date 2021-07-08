@@ -8,7 +8,7 @@
 \alias{msAssayTab}
 \alias{microarrayAssayTab-class}
 \alias{microarrayAssayTab}
-\title{S4 Class assayTab, initialization, extract- and replace-methods}
+\title{S4 Class assayTab, initialization methods}
 \description{
 An S4 class to store information from an assay files.
 }
@@ -19,15 +19,13 @@ An S4 class to store information from an assay files.
 data set.}
 
 \item{\code{sFileName}}{A length-one character vector containing the study
-file name (by definition starting with \strong{\emph{s_}} and ending at
-\strong{\emph{.txt}}).}
+file name (by definition starting with \strong{s_} and ending at \strong{.txt}).}
 
 \item{\code{sIdentifier}}{A length-one character vector containing the study
 identifier.}
 
 \item{\code{aFileName}}{A length-one character vector containing the assay
-file name (by definition starting with \strong{\emph{a_}} and ending at
-\strong{\emph{.txt}}).}
+file name (by definition starting with \strong{a_} and ending at \strong{.txt}).}
 
 \item{\code{aFile}}{A data.frame containing the contents of the Assay Table file.}
 

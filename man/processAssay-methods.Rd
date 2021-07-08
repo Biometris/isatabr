@@ -19,9 +19,9 @@ processAssay(isaObject, aTabObject, type = c("raw", "derived"))
 \S4method{processAssay}{ISA,microarrayAssayTab,character}(isaObject, aTabObject, type = c("raw", "derived"))
 }
 \arguments{
-\item{isaObject}{An object of the \code{\link{ISA-class}}.}
+\item{isaObject}{An object of the \linkS4class{ISA}.}
 
-\item{aTabObject}{An object of the \code{\link{microarrayAssayTab-class}}.}
+\item{aTabObject}{An object of the \linkS4class{microarrayAssayTab}.}
 
 \item{type}{A character string indicating which data files should be
 processed, either "raw" for raw data files, or "derived" for derived data

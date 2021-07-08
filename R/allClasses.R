@@ -1,5 +1,5 @@
 ### ISA Class ----
-#' S4 Class ISA, initialization, extract- and replace-methods
+#' S4 Class ISA, initialization method
 #'
 #' An S4 class to store information from an ISA-Tab data set, including an
 #' investigation file, one or more study files, and one or more assay files for
@@ -8,8 +8,7 @@
 #' @slot path A length-one character vector containing the path to the ISA-Tab
 #' dataset.
 #' @slot iFileName A length-one character vector containing the investigation
-#' filename (by definition starting with \strong{\emph{i_}} and ending at
-#' \strong{\emph{.txt}}).
+#' filename (by definition starting with **i_** and ending at **.txt**).
 #' @slot oSR A data.frame containing the "ONTOLOGY SOURCE REFERENCE" section of
 #' the investigation file.
 #' @slot invest A data.frame containing the "INVESTIGATION" section of
@@ -71,20 +70,18 @@ ISA <- setClass(Class = "ISA",
 )
 
 ### assayTab Class ----
-#' S4 Class assayTab, initialization, extract- and replace-methods
+#' S4 Class assayTab, initialization methods
 #'
 #' An S4 class to store information from an assay files.
 #'
 #' @slot path A length-one character vector containing the path to the ISA-Tab
 #' data set.
 #' @slot sFileName A length-one character vector containing the study
-#' file name (by definition starting with \strong{\emph{s_}} and ending at
-#' \strong{\emph{.txt}}).
+#' file name (by definition starting with **s_** and ending at **.txt**).
 #' @slot sIdentifier A length-one character vector containing the study
 #' identifier.
 #' @slot aFileName A length-one character vector containing the assay
-#' file name (by definition starting with \strong{\emph{a_}} and ending at
-#' \strong{\emph{.txt}}).
+#' file name (by definition starting with **a_** and ending at **.txt**).
 #' @slot aFile A data.frame containing the contents of the Assay Table file.
 #' @slot aTechType A length-one character vector containing the assay
 #' technology type.

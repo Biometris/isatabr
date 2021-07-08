@@ -235,7 +235,7 @@ getAssayFileNames <- function(isaObject) {
 #' @noRd
 #' @keywords internal
 getFactors <- function(isaObject) {
-  tmplist <- lapply(X = isaObject[ISASyntax$sFiles], FUN = function(df) {
+  tmplist <- lapply(X = isaObject@sFiles, FUN = function(df) {
     tmplist <- lapply(X = grep(pattern = ISASyntax$fctrValue,
                                x = colnames(df),
                                value = TRUE),

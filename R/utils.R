@@ -57,7 +57,7 @@ ISASyntax <- list(
 )
 ### end ISASyntax list ----
 
-### Minium required columns for data.frames.
+### Minimum required columns for data.frames.
 oSRCols <- c("Term Source Name",
              "Term Source File",
              "Term Source Version",
@@ -215,8 +215,10 @@ checkMinColsStudy <- function(isaObject,
   }
 }
 
-
-
+#' Helper function for creating data frames for slots in ISA object.
+#'
+#' @noRd
+#' @keywords internal
 createISASlotDataFrame <- function(file,
                                    startRow,
                                    endRow) {

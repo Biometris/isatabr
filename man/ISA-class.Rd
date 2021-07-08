@@ -6,16 +6,9 @@
 \alias{ISA}
 \alias{initialize,ISA-method}
 \alias{ISA-initialize}
-\alias{[,ISA,character-method}
-\alias{extractandreplace-methods}
-\alias{[<-,ISA,character-method}
-\title{S4 Class ISA, initialization, extract- and replace-methods}
+\title{S4 Class ISA, initialization method}
 \usage{
 \S4method{initialize}{ISA}(.Object, path)
-
-\S4method{[}{ISA,character}(x, i)
-
-\S4method{[}{ISA,character}(x, i) <- value
 }
 \arguments{
 \item{.Object}{character, name of the object of class \linkS4class{ISA} to
@@ -23,12 +16,6 @@ be initialized}
 
 \item{path}{length-one character vector containing the path to the ISA-Tab
 files of the dataset.}
-
-\item{x}{S4 object of class \linkS4class{ISA}.}
-
-\item{i}{character, name of a slot to extract or replace.}
-
-\item{value}{ANY, replacement value for the slotname specified by \code{i}.}
 }
 \description{
 An S4 class to store information from an ISA-Tab data set, including an
@@ -41,14 +28,6 @@ When creating a new object of class \linkS4class{ISA} via:
 actual object. The \code{initialize-method} is seldomly used as a function
 itself.
 }
-\details{
-\code{x[i]} defines a method to extract the information in the slot of an S4
-object of class \\linkS4class{ISA} by using a character vector specifying the
-name of the slot. Via \code{x[i] <- value} the value(s) in a slot of an S4
-class object of class \linkS4class{ISA} can be replaced by means of
-specifying the name of the slot as a character vector. Below in the slot
-descriptions the character vectors to access specific slots are given.
-}
 \section{Slots}{
 
 \describe{
@@ -56,8 +35,7 @@ descriptions the character vectors to access specific slots are given.
 dataset.}
 
 \item{\code{iFileName}}{A length-one character vector containing the investigation
-filename (by definition starting with \strong{\emph{i_}} and ending at
-\strong{\emph{.txt}}).}
+filename (by definition starting with \strong{i_} and ending at \strong{.txt}).}
 
 \item{\code{oSR}}{A data.frame containing the "ONTOLOGY SOURCE REFERENCE" section of
 the investigation file.}

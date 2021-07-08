@@ -2,13 +2,12 @@
 % Please edit documentation in R/isatabr.R
 \docType{package}
 \name{isatabr-package}
+\alias{isatabr}
 \alias{isatabr-package}
 \title{isatabr package overview.}
 \description{
 The isatabr package is an implementation of the ISA-Tab format for R. It
-builds an R object from ISA-Tab format files.
-}
-\details{
+builds an R object from ISA-Tab format files.\cr\cr
 ISA is a metadata framework to manage an increasingly diverse set of life
 science, environmental and biomedical experiments that employ one or a
 combination of technologies. Built around the \strong{Investigation} (the
@@ -17,17 +16,33 @@ project context), \strong{Study} (a unit of research) and \strong{Assay}
 descriptions of experimental metadata (i.e. sample characteristics,
 technology and measurement types, sample-to-data relationships) so that the
 resulting data and discoveries are reproducible and reusable.
-
+}
+\details{
 The ISA Abstract Model has been implemented in two format specifications,
 ISA-Tab and ISA-JSON. In this package the former, ISA-Tab, is being used.
 ISA-Tab files are tab separated values files stored with a
-\strong{\emph{.txt}} extension.
+\strong{.txt} extension.
 }
 \references{
+\href{https://isa-tools.org/}{ISA framework}
+\href{https://isa-specs.readthedocs.io/en/stable/}{ISA Model and Serialization Specifications}
+\href{https://www.isacommons.org}{ISA users community}
+}
+\seealso{
+Useful links:
 \itemize{
-\item \href{https://isa-tools.org/}{ISA framework}
-\item \href{https://isa-specs.readthedocs.io/en/stable/}{ISA Model and
-Serialization Specifications}
-\item \href{https://www.isacommons.org}{ISA users community}
+  \item \url{https://github.com/Biometris/isatabr/}
+  \item Report bugs at \url{https://github.com/Biometris/isatabr/issues}
 }
+
 }
+\author{
+\strong{Maintainer}: Maikel Verouden \email{maikel.verouden@wur.nl} (\href{https://orcid.org/0000-0002-4893-3323}{ORCID}) [contributor]
+
+Authors:
+\itemize{
+  \item Bart-Jan van Rossum \email{bart-jan.vanrossum@wur.nl} (\href{https://orcid.org/0000-0002-8673-2514}{ORCID})
+}
+
+}
+\keyword{internal}

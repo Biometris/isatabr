@@ -50,7 +50,7 @@ writeInvestigationFile <- function(isaObject,
   sSections <- c("study", "sDD", "sPubs", "sFacts", "sAssays",
                  "sProts", "sContacts")
   ## Construct full output file name.
-  outFile <- file.path(path, isaObject[ISASyntax$iFileName])
+  outFile <- file.path(path, iFileName(isaObject))
   ## Create an empty output file.
   ## This requires that the file directory to exists.
   file.create(outFile)
@@ -58,7 +58,7 @@ writeInvestigationFile <- function(isaObject,
   openFile <- file(outFile, open = "w")
   for (section in iSections) {
     ## Get section content.
-    sectionContent <- t(isaObject[ISASyntax[[section]]])
+    sectionContent <- t(do.call(what = section, args = list(x = isaObject)))
     ## Add content to output file.
     writeSection(section = section,
                  sectionContent = sectionContent,
@@ -69,7 +69,7 @@ writeInvestigationFile <- function(isaObject,
   for (study in studies) {
     for (section in sSections) {
       ## Get section content.
-      sectionContent <- t(isaObject[ISASyntax[[section]]][[study]])
+      sectionContent <- t(do.call(what = section, args = list(x = isaObject))[[study]])
       ## Add content to output file.
       writeSection(section = section,
                    sectionContent = sectionContent,
@@ -88,7 +88,7 @@ writeInvestigationFile <- function(isaObject,
 writeStudyFiles <- function(isaObject,
                             studyFilenames = getStudyFileNames(isaObject),
                             path = getwd()){
-  studyFiles <- isaObject[ISASyntax$sFiles]
+  studyFiles <- sFiles(isaObject)
   for (studyFilename in studyFilenames) {
     studyContent <- studyFiles[[studyFilename]]
     ## Construct full output file name.
@@ -115,7 +115,7 @@ writeStudyFiles <- function(isaObject,
 writeAssayFiles <- function(isaObject,
                             assayFilenames = unlist(getAssayFileNames(isaObject)),
                             path = getwd()) {
-  assayFiles <- isaObject[ISASyntax$aFiles]
+  assayFiles <- aFiles(isaObject)
   for (assayFilename in assayFilenames) {
     assayContent <- assayFiles[[assayFilename]]
     ## Construct full output file name.
