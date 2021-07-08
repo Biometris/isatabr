@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
   fig.dim = c(7, 4)
 )
 library(isatabr)
-op <- options(width = 90)
+op <- options(width = 100)
 ```
 
 # The isatabr package {.unnumbered}
@@ -29,7 +29,7 @@ The isatabr package is developed as a easy-to-use package for reading, modifying
 
 # The ISA tab structure
 
-The ISA-Tab structure is described in full detail on <https://isa-specs.readthedocs.io/en/latest/isatab.html>. The description below is mostly taken from there and slightly condensed when appropriate.
+The ISA-Tab structure is described in full detail on [the ISA-tab website](https://isa-specs.readthedocs.io/en/latest/isatab.html){.uri}. The description below is mostly taken from there and slightly condensed when appropriate.
 
 ISA-Tab uses three types of file to capture the experimental metadata:
 
@@ -80,7 +80,7 @@ The Assay file represents a portion of the experimental graph (i.e., one part of
 
 ## Example data
 
-As an example for working with the `isatabr` package we will use the data set that accompanies [@Atwell2010]. The associated files are included in the package.
+As an example for working with the `isatabr` package we will use the data set that accompanies @Atwell2010. The associated files are included in the package.
 
 # Reading files in the ISA-Tab format
 
@@ -222,6 +222,32 @@ head(isaDat[, 1:10])
 The data is now stored in `isaDat` and can be used for further analysis within `R`.
 
 ## Mass spectrometry assay files
+
+Mass spectrometry data is usually stored in NetCDF file format, i.e. in .CDF files. Assay data containing these data will be processed in a different way than regular assay data. To be able to do this the [xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) package is required. This package is available from Bioconductor.
+
+As an example for the processing of Mass spectrometry files we will use a subset of the quantitated LC/MS peaks from the spinal cords of 6 wild-type and 6 FAAH knockout mice described in @Saghatelian2004. A more extensive version of this data set is available in the [faahKO](http://www.bioconductor.org/packages/release/data/experiment/html/faahKO.html){.uri} data package on Bioconductor.
+
+```{r readFaahko}
+## Read ISA-Tab files for faahKO.
+isaObject3 <- readISATab(path = file.path(system.file("extdata/faahKO", package = "isatabr")))
+```
+
+After reading the ISA-Tab files, we can now process the mass spectrometry assay data. In this example the raw data is available, so when processing the assay we specify `type = "raw"`. The rest of the code is similar to what we saw in the previous section.
+
+```{r processFaahko, message=FALSE, eval=requireNamespace("xcms")}
+## Get assay tabs for isaObject3.
+aTabObjects3 <- getAssayTabs(isaObject3)
+
+## Process assay data.
+isaDat3 <- processAssay(isaObject = isaObject3,
+                        aTabObject = aTabObjects3$s_Proteomic_profiling_of_yeast.txt$a_metabolite.txt,
+                        type = "raw")
+
+## Display output.
+isaDat3
+```
+
+As the output shows, processing the mass spectrometry data gives an object of class `xcmsSet` from the `xcms` package. This object contains all available information from the .CDF file that was read and can be used for further analysis.
 
 ## Microarray assay files
 
