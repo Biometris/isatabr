@@ -251,17 +251,39 @@ As the output shows, processing the mass spectrometry data gives an object of cl
 
 ## Microarray assay files
 
+Microarray data is usually stored in an Affymetrix Probe Results file. These .CEL files contain information on the probe set's intensity values, and a probe set represents a gene. Assay data containing these data will be processed in a different way than regular assay data. To be able to do this the [affy](https://www.bioconductor.org/packages/release/bioc/html/affy.html) package is required. This package is available from Bioconductor.
+
+Processing microarray data is done in a very similar way as processing mass spectrometry data, which is described in the previous section. The main difference is that the resulting object will in this case be an object object of class `ExpressionSet` which is used as input in many Bioconductor packages.
+
 # Writing files in the ISA-Tab format.
 
 After updating an `ISA` object it can be written back to a directory using the `writeISAtab` function. All content of the `ISA` object will be written to investigation, study and assay files following the ISA-Tab standard for file specification. By default the files are written to the current working directory, but the directory can be specified using the `path` argument.
 
-```{r write}
+```{r write, eval=FALSE}
 ## Write content of ISA object to a temporary directory.
 writeISAtab(isaObject = isaObject1, 
             path = tempdir())
 ```
 
 Note that existing files are always overwritten. So writing files to the directory where the original files were read from will result in the original files being overwritten.
+
+Besides writing the full `ISA` object it is also possible to write only the investigation file , one or more study files or one or more assay files.
+
+```{r writeSub, eval=FALSE}
+## Write investigation file.
+writeInvestigationFile(isaObject = isaObject1,
+                       path = tempdir())
+
+## Write study file.
+writeStudyFiles(isaObject = isaObject1,
+                studyFilenames = "s_study1.txt",
+                path = tempdir())
+
+## Write assay file.
+writeAssayFiles(isaObject = isaObject1,
+                assayFilenames = "a_study1.txt",
+                path = tempdir())
+```
 
 ```{r winddown, include = FALSE}
 options(op)
