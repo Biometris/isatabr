@@ -1,12 +1,37 @@
 #' Write ISA-Tab object.
 #'
 #' Write ISA-Tab object to files. The investigation file, study files and assay
-#' files are written to the folder specified in \code{path}.
+#' files are written to the folder specified in \code{path}.\cr\cr
+#' It is also possible to write only the investigation file, one or more
+#' study files, or one or more assay files using the respective functions.
 #'
 #' @param isaObject An object of the \code{\link{ISA-class}}.
 #' @param path A character vector with the name of the directory to which the
 #'             file(s) should be written. The default value is the current
 #'             working directory.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Write content of ISA object to a temporary directory.
+#' writeISAtab(isaObject = isaObject1,
+#'            path = tempdir())
+#'
+#' ## Write investigation file to a temporary directory.
+#' writeInvestigationFile(isaObject = isaObject1,
+#'                        path = tempdir())
+#'
+#' ## Write study file to a temporary directory.
+#' writeStudyFiles(isaObject = isaObject1,
+#'                 studyFilenames = "s_study1.txt",
+#'                 path = tempdir())
+#'
+#' ## Write assay file to a temporary directory.
+#' writeAssayFiles(isaObject = isaObject1,
+#'                 assayFilenames = "a_study1.txt",
+#'                 path = tempdir())
 #'
 #' @importFrom utils write.table
 #' @export
@@ -17,13 +42,7 @@ writeISAtab <- function(isaObject,
   writeAssayFiles(isaObject = isaObject, path = path)
 }
 
-#' Write investigation file.
-#'
-#' Write investigation file.
-#'
-#' @inheritParams writeISAtab
-#'
-#' @importFrom utils write.table
+#' @rdname writeISAtab
 #' @export
 writeInvestigationFile <- function(isaObject,
                                    path = getwd()) {
@@ -60,17 +79,11 @@ writeInvestigationFile <- function(isaObject,
   close(openFile)
 }
 
-#' Write study files.
-#'
-#' Write study files.
-#'
-#' @inheritParams writeISAtab
-#'
 #' @param studyFilenames A character vector indicating the study files that
 #'                       should be written. Default all study files in isaObject
 #'                       are written.
 #'
-#' @importFrom utils write.table
+#' @rdname writeISAtab
 #' @export
 writeStudyFiles <- function(isaObject,
                             studyFilenames = getStudyFileNames(isaObject),
@@ -93,17 +106,11 @@ writeStudyFiles <- function(isaObject,
   }
 }
 
-#' Write assay files.
-#'
-#' Write assay files.
-#'
-#' @inheritParams writeISAtab
-#'
 #' @param assayFilenames A character vector indicating the study files that
 #'                       should be written. Default all study files in isaObject
 #'                       are written.
 #'
-#' @importFrom utils write.table
+#' @rdname writeISAtab
 #' @export
 writeAssayFiles <- function(isaObject,
                             assayFilenames = unlist(getAssayFileNames(isaObject)),

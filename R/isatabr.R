@@ -28,9 +28,6 @@
 #'   \item \href{https://www.isacommons.org}{ISA users community}
 #' }
 #'
-#' @author
-#' Maikel Verouden
-#'
 #' @import methods
 #' @importFrom utils count.fields read.table write.table
 #'

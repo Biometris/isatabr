@@ -43,6 +43,3 @@ isaObject2 <- readISATab(path = file.path(system.file("extdata",
                          verbose = TRUE)
 
 }
-\author{
-Maikel Verouden
-}

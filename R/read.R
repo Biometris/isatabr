@@ -21,9 +21,6 @@
 #'
 #' @return An object of the \linkS4class{ISA} class.
 #'
-#' @author
-#' Maikel Verouden
-#'
 #' @examples
 #' ## Example Atwell data set.
 #' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",

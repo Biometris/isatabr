@@ -31,6 +31,3 @@ Serialization Specifications}
 \item \href{https://www.isacommons.org}{ISA users community}
 }
 }
-\author{
-Maikel Verouden
-}
