@@ -192,12 +192,20 @@ setMethod("aFiles<-", "ISA", function(x, value) {
 #' Retrieve from an object of the \code{\link{ISA-class}} the Study
 #' Identifier(s) and Study File Name(s) as contained in the Investigation.
 #' To directly access the Study Identifier(s) use the names() function, e.g.
-#' names(getStudyInfo(isaObject)).
+#' \code{names(getStudyFileNames(isaObject))}.
 #'
 #' @inheritParams writeISAtab
 #'
 #' @return A named character vector containing the Study File Name(s) and the
 #' name(s) representing the Study Identifier(s).
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract study identifiers and file names.
+#' getStudyFileNames(isaObject1)
 #'
 #' @export
 getStudyFileNames <- function(isaObject) {
@@ -214,6 +222,14 @@ getStudyFileNames <- function(isaObject) {
 #' @return A named list of character vectors containing the Assay File Name(s)
 #' for each Study Identifier. The name of the character vector or names of the
 #' list elements represent(s) the Study Identifier(s).
+#'
+#' #' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract assay file names per study.
+#' getAssayFileNames(isaObject1)
 #'
 #' @export
 getAssayFileNames <- function(isaObject) {

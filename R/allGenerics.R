@@ -206,20 +206,29 @@ setMethod(
 
 #' Get and set path
 #'
-#' Get and set the file path for an object of the \code{\link{ISA-class}}.
+#' Get and set the file path for an object of class \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
-#' @return The path to the folder for the object of the \code{\link{ISA-class}}.
+#' @return The path to the folder for the object of class \linkS4class{ISA}.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract path.
+#' path(isaObject1)
+#'
 #' @rdname path
 #' @export
 setGeneric("path", function(x) standardGeneric("path"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A length-one character vector indicating the path to an
 #' accessible directory on the system.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname path
 #' @export
 setGeneric("path<-", function(x, value) standardGeneric("path<-"))
@@ -229,20 +238,29 @@ setGeneric("path<-", function(x, value) standardGeneric("path<-"))
 #' Get and set iFileName
 #'
 #' Get and set the file name for the investigation file in an object of
-#' \code{\link{ISA-class}}.
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return The file name of the investigation file.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract investigation file name.
+#' iFileName(isaObject1)
+#'
 #' @rdname iFileName
 #' @export
 setGeneric("iFileName", function(x) standardGeneric("iFileName"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A length-one character vector indicating the name of the
 #' investigation file, a string starting with "i_" and ending in ".txt"
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname iFileName
 #' @export
 setGeneric("iFileName<-", function(x, value) standardGeneric("iFileName<-"))
@@ -252,21 +270,30 @@ setGeneric("iFileName<-", function(x, value) standardGeneric("iFileName<-"))
 #' Get and set oSR
 #'
 #' Get and set the ontology Source Reference (oSR) data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A data.frame containing the ontology Source Reference information.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract ontology Source Reference data.frame.
+#' oSR(isaObject1)
+#'
 #' @rdname oSR
 #' @export
 setGeneric("oSR", function(x) standardGeneric("oSR"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A data.frame containing the ontology Source Reference
 #' information. data.frame in which at least the following columns are present:
 #' `r paste0("``", oSRCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname oSR
 #' @export
 setGeneric("oSR<-", function(x, value) standardGeneric("oSR<-"))
@@ -276,21 +303,30 @@ setGeneric("oSR<-", function(x, value) standardGeneric("oSR<-"))
 #' Get and set invest.
 #'
 #' Get and set the investigation data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A data.frame containing the investigation information.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract investigation data.frame.
+#' invest(isaObject1)
+#'
 #' @rdname invest
 #' @export
 setGeneric("invest", function(x) standardGeneric("invest"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A data.frame containing the investigation information. A
 #' data.frame in which at least the following columns are present:
 #' `r paste0("``", investCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname invest
 #' @export
 setGeneric("invest<-", function(x, value) standardGeneric("invest<-"))
@@ -300,22 +336,31 @@ setGeneric("invest<-", function(x, value) standardGeneric("invest<-"))
 #' Get and set iPubs.
 #'
 #' Get and set the iPubs data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A data.frame containing the investigation publications information.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract iPubs data.frame.
+#' iPubs(isaObject1)
+#'
 #' @rdname iPubs
 #' @export
 setGeneric("iPubs", function(x) standardGeneric("iPubs"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A data.frame containing the investigation publications
 #' information. A data.frame in which at least the following columns are
 #' present:
 #' `r paste0("``", iPubsCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname iPubs
 #' @export
 setGeneric("iPubs<-", function(x, value) standardGeneric("iPubs<-"))
@@ -325,22 +370,31 @@ setGeneric("iPubs<-", function(x, value) standardGeneric("iPubs<-"))
 #' Get and set iContacts.
 #'
 #' Get and set the iContacts data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A data.frame containing the investigation contacts information.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract iContacts data.frame.
+#' iContacts(isaObject1)
+#'
 #' @rdname iContacts
 #' @export
 setGeneric("iContacts", function(x) standardGeneric("iContacts"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A data.frame containing the investigation contacts
 #' information. A data.frame in which at least the following columns are
 #' present:
 #' `r paste0("``", iContactsCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname iContacts
 #' @export
 setGeneric("iContacts<-", function(x, value) standardGeneric("iContacts<-"))
@@ -351,21 +405,30 @@ setGeneric("iContacts<-", function(x, value) standardGeneric("iContacts<-"))
 #' Get and set study.
 #'
 #' Get and set the list of study data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A list of data.frames containing the study information.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract list of study data.frames.
+#' study(isaObject1)
+#'
 #' @rdname study
 #' @export
 setGeneric("study", function(x) standardGeneric("study"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A list of data.frames containing the study information.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", studyCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname study
 #' @export
 setGeneric("study<-", function(x, value) standardGeneric("study<-"))
@@ -375,22 +438,31 @@ setGeneric("study<-", function(x, value) standardGeneric("study<-"))
 
 #' Get and set sDD.
 #'
-#' Get and set the list of sDD data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' Get and set the list of sDD data.frames in an object of
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A list of data.frames containing the study design descriptors.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract list of sDD data.frames.
+#' sDD(isaObject1)
+#'
 #' @rdname sDD
 #' @export
 setGeneric("sDD", function(x) standardGeneric("sDD"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A list of data.frames containing the study design descriptors.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", sDDCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname sDD
 #' @export
 setGeneric("sDD<-", function(x, value) standardGeneric("sDD<-"))
@@ -400,22 +472,31 @@ setGeneric("sDD<-", function(x, value) standardGeneric("sDD<-"))
 
 #' Get and set sPubs.
 #'
-#' Get and set the list of sPubs data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' Get and set the list of sPubs data.frames in an object of
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A list of data.frames containing the study publications.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract list of sPubs data.frames.
+#' sPubs(isaObject1)
+#'
 #' @rdname sPubs
 #' @export
 setGeneric("sPubs", function(x) standardGeneric("sPubs"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A list of data.frames containing the study publications.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", sPubsCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname sPubs
 #' @export
 setGeneric("sPubs<-", function(x, value) standardGeneric("sPubs<-"))
@@ -425,22 +506,31 @@ setGeneric("sPubs<-", function(x, value) standardGeneric("sPubs<-"))
 
 #' Get and set sFacts.
 #'
-#' Get and set the list of sFacts data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' Get and set the list of sFacts data.frames in an object of
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A list of data.frames containing the study factors.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract list of sFacts data.frames.
+#' sFacts(isaObject1)
+#'
 #' @rdname sFacts
 #' @export
 setGeneric("sFacts", function(x) standardGeneric("sFacts"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A list of data.frames containing the study factors.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", sFactsCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname sFacts
 #' @export
 setGeneric("sFacts<-", function(x, value) standardGeneric("sFacts<-"))
@@ -450,22 +540,31 @@ setGeneric("sFacts<-", function(x, value) standardGeneric("sFacts<-"))
 
 #' Get and set sAssays.
 #'
-#' Get and set the list of sAssays data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' Get and set the list of sAssays data.frames in an object of
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A list of data.frames containing the study assays.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract list of sAssays data.frames.
+#' sAssays(isaObject1)
+#'
 #' @rdname sAssays
 #' @export
 setGeneric("sAssays", function(x) standardGeneric("sAssays"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A list of data.frames containing the study assays.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", sAssaysCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname sAssays
 #' @export
 setGeneric("sAssays<-", function(x, value) standardGeneric("sAssays<-"))
@@ -475,22 +574,32 @@ setGeneric("sAssays<-", function(x, value) standardGeneric("sAssays<-"))
 
 #' Get and set sProts.
 #'
-#' Get and set the list of sProts data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' Get and set the list of sProts data.frames in an object of
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A list of data.frames containing the study protocols.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract list of sProts data.frames.
+#' sProts(isaObject1)
+#'
 #' @rdname sProts
 #' @export
 setGeneric("sProts", function(x) standardGeneric("sProts"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A list of data.frames containing the study protocols.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", sProtsCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
+#'
 #' @rdname sProts
 #' @export
 setGeneric("sProts<-", function(x, value) standardGeneric("sProts<-"))
@@ -500,22 +609,31 @@ setGeneric("sProts<-", function(x, value) standardGeneric("sProts<-"))
 
 #' Get and set sContacts.
 #'
-#' Get and set the list of sContacts data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' Get and set the list of sContacts data.frames in an object of
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A list of data.frames containing the study contacts.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract list of sContacts data.frames.
+#' sContacts(isaObject1)
+#'
 #' @rdname sContacts
 #' @export
 setGeneric("sContacts", function(x) standardGeneric("sContacts"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A list of data.frames containing the study contacts.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", sContactsCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname sContacts
 #' @export
 setGeneric("sContacts<-", function(x, value) standardGeneric("sContacts<-"))
@@ -526,22 +644,31 @@ setGeneric("sContacts<-", function(x, value) standardGeneric("sContacts<-"))
 
 #' Get and set sFiles.
 #'
-#' Get and set the list of sFiles data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' Get and set the list of sFiles data.frames in an object of
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A list of data.frames containing the study files.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract list of sFiles data.frames.
+#' sFiles(isaObject1)
+#'
 #' @rdname sFiles
 #' @export
 setGeneric("sFiles", function(x) standardGeneric("sFiles"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A list of data.frames containing the study files.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", sFilesCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname sFiles
 #' @export
 setGeneric("sFiles<-", function(x, value) standardGeneric("sFiles<-"))
@@ -551,22 +678,31 @@ setGeneric("sFiles<-", function(x, value) standardGeneric("sFiles<-"))
 
 #' Get and set aFiles.
 #'
-#' Get and set the list of aFiles data.frame in an object of
-#' \code{\link{ISA-class}}.
+#' Get and set the list of aFiles data.frames in an object of
+#' \linkS4class{ISA}.
 #'
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #'
 #' @return A list of data.frames containing the assay files.
+#'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Extract list of aFiles data.frames.
+#' aFiles(isaObject1)
+#'
 #' @rdname aFiles
 #' @export
 setGeneric("aFiles", function(x) standardGeneric("aFiles"))
 
-#' @param x An object of the \code{\link{ISA-class}}.
+#' @param x An object of class \linkS4class{ISA}.
 #' @param value A list of data.frames containing the assay files.
 #' In each data.frame at least the following columns are present:
 #' `r paste0("``", aFilesCols, "``", collapse = ", ")`.
 #'
-#' @return The updated object of the \code{\link{ISA-class}}.
+#' @return The updated object of class \linkS4class{ISA}.
 #' @rdname aFiles
 #' @export
 setGeneric("aFiles<-", function(x, value) standardGeneric("aFiles<-"))

@@ -16,16 +16,25 @@ path(x) <- value
 \S4method{path}{ISA}(x) <- value
 }
 \arguments{
-\item{x}{An object of the \code{\link{ISA-class}}.}
+\item{x}{An object of class \linkS4class{ISA}.}
 
 \item{value}{A length-one character vector indicating the path to an
 accessible directory on the system.}
 }
 \value{
-The path to the folder for the object of the \code{\link{ISA-class}}.
+The path to the folder for the object of class \linkS4class{ISA}.
 
-The updated object of the \code{\link{ISA-class}}.
+The updated object of class \linkS4class{ISA}.
 }
 \description{
-Get and set the file path for an object of the \code{\link{ISA-class}}.
+Get and set the file path for an object of class \linkS4class{ISA}.
+}
+\examples{
+## Read example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+                                          package = "isatabr")))
+
+## Extract path.
+path(isaObject1)
+
 }

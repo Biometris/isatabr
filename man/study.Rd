@@ -16,7 +16,7 @@ study(x) <- value
 \S4method{study}{ISA}(x) <- value
 }
 \arguments{
-\item{x}{An object of the \code{\link{ISA-class}}.}
+\item{x}{An object of class \linkS4class{ISA}.}
 
 \item{value}{A list of data.frames containing the study information.
 In each data.frame at least the following columns are present:
@@ -25,9 +25,18 @@ In each data.frame at least the following columns are present:
 \value{
 A list of data.frames containing the study information.
 
-The updated object of the \code{\link{ISA-class}}.
+The updated object of class \linkS4class{ISA}.
 }
 \description{
 Get and set the list of study data.frame in an object of
-\code{\link{ISA-class}}.
+\linkS4class{ISA}.
+}
+\examples{
+## Read example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+                                          package = "isatabr")))
+
+## Extract list of study data.frames.
+study(isaObject1)
+
 }

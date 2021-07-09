@@ -16,7 +16,7 @@ iFileName(x) <- value
 \S4method{iFileName}{ISA}(x) <- value
 }
 \arguments{
-\item{x}{An object of the \code{\link{ISA-class}}.}
+\item{x}{An object of class \linkS4class{ISA}.}
 
 \item{value}{A length-one character vector indicating the name of the
 investigation file, a string starting with "i_" and ending in ".txt"}
@@ -24,9 +24,18 @@ investigation file, a string starting with "i_" and ending in ".txt"}
 \value{
 The file name of the investigation file.
 
-The updated object of the \code{\link{ISA-class}}.
+The updated object of class \linkS4class{ISA}.
 }
 \description{
 Get and set the file name for the investigation file in an object of
-\code{\link{ISA-class}}.
+\linkS4class{ISA}.
+}
+\examples{
+## Read example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+                                          package = "isatabr")))
+
+## Extract investigation file name.
+iFileName(isaObject1)
+
 }

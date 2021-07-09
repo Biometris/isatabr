@@ -16,7 +16,7 @@ iPubs(x) <- value
 \S4method{iPubs}{ISA}(x) <- value
 }
 \arguments{
-\item{x}{An object of the \code{\link{ISA-class}}.}
+\item{x}{An object of class \linkS4class{ISA}.}
 
 \item{value}{A data.frame containing the investigation publications
 information. A data.frame in which at least the following columns are
@@ -26,9 +26,18 @@ present:
 \value{
 A data.frame containing the investigation publications information.
 
-The updated object of the \code{\link{ISA-class}}.
+The updated object of class \linkS4class{ISA}.
 }
 \description{
 Get and set the iPubs data.frame in an object of
-\code{\link{ISA-class}}.
+\linkS4class{ISA}.
+}
+\examples{
+## Read example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+                                          package = "isatabr")))
+
+## Extract iPubs data.frame.
+iPubs(isaObject1)
+
 }

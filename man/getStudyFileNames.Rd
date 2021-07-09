@@ -17,5 +17,14 @@ name(s) representing the Study Identifier(s).
 Retrieve from an object of the \code{\link{ISA-class}} the Study
 Identifier(s) and Study File Name(s) as contained in the Investigation.
 To directly access the Study Identifier(s) use the names() function, e.g.
-names(getStudyInfo(isaObject)).
+\code{names(getStudyFileNames(isaObject))}.
+}
+\examples{
+## Read example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+                                          package = "isatabr")))
+
+## Extract study identifiers and file names.
+getStudyFileNames(isaObject1)
+
 }

@@ -16,7 +16,7 @@ aFiles(x) <- value
 \S4method{aFiles}{ISA}(x) <- value
 }
 \arguments{
-\item{x}{An object of the \code{\link{ISA-class}}.}
+\item{x}{An object of class \linkS4class{ISA}.}
 
 \item{value}{A list of data.frames containing the assay files.
 In each data.frame at least the following columns are present:\if{html}{\out{<div class=".">}}\preformatted{}\if{html}{\out{</div>}}}
@@ -24,9 +24,18 @@ In each data.frame at least the following columns are present:\if{html}{\out{<di
 \value{
 A list of data.frames containing the assay files.
 
-The updated object of the \code{\link{ISA-class}}.
+The updated object of class \linkS4class{ISA}.
 }
 \description{
-Get and set the list of aFiles data.frame in an object of
-\code{\link{ISA-class}}.
+Get and set the list of aFiles data.frames in an object of
+\linkS4class{ISA}.
+}
+\examples{
+## Read example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+                                          package = "isatabr")))
+
+## Extract list of aFiles data.frames.
+aFiles(isaObject1)
+
 }

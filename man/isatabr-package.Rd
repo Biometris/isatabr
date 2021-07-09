@@ -37,11 +37,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Maikel Verouden \email{maikel.verouden@wur.nl} (\href{https://orcid.org/0000-0002-4893-3323}{ORCID}) [contributor]
+\strong{Maintainer}: Bart-Jan van Rossum \email{bart-jan.vanrossum@wur.nl} (\href{https://orcid.org/0000-0002-8673-2514}{ORCID})
 
 Authors:
 \itemize{
-  \item Bart-Jan van Rossum \email{bart-jan.vanrossum@wur.nl} (\href{https://orcid.org/0000-0002-8673-2514}{ORCID})
+  \item Maikel Verouden \email{maikel.verouden@wur.nl} (\href{https://orcid.org/0000-0002-4893-3323}{ORCID})
 }
 
 }
