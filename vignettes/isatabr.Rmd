@@ -51,8 +51,9 @@ The Investigation file fulfills four needs:
 
 -   to declare key entities, such as factors, protocols, which may be referenced in the other files
 -   to track provenance of the terminologies (controlled vocabularies or ontologies) there are used, where applicable
--   to relate Assay files to Studies
--   to relate each Study file to an Investigation (this only becomes necessary when two or more Study files need to be grouped).
+-   to relate each Study file to an Investigation (this only becomes necessary when two or more Study files need to be grouped)
+-   to relate Assay files to Studies.
+
 
 An Investigation file is structured as a table with vertical headings along the first column, and corresponding values in the subsequent columns. The following section headings must appear in the Investigation file (in order), and the study block (headings from STUDY to STUDY CONTACTS) can be repeated, one block per study associated with the investigation.
 
