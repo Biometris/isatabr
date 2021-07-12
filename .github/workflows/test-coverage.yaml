@@ -41,8 +41,9 @@ jobs:
           install.packages(c("remotes"))
           remotes::install_deps(dependencies = NA)
           remotes::install_cran(c("covr", "tinytest"))
+          remotes::install_bioc(c("affy", "Biobase", "xcms"))
         shell: Rscript {0}
 
       - name: Test coverage
-        run: covr::codecov(type = "none", code = "tinytest::run_test_dir(at_home = FALSE)")
+        run: covr::codecov(type = "none", code = "tinytest::run_test_dir(at_home = TRUE)")
         shell: Rscript {0}
