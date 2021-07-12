@@ -109,39 +109,23 @@ In both cases `readISATab` will automatically detect the Investigation, Study an
 
 All information from the ISA-Tab files is stored within slots in the `ISA` object. The table below gives an overview of the different slots and a brief description of the information stored in the slot. For a more exhaustive description see `help("ISA")`. Note that an investigation may have multiple studies and data concerning studies is therefore stored in a `list` where one element in the `list` corresponds to one study. Likewise a study may consist of multiple assays and assay data is stored in a `list` where one element in the `list` corresponds to one assay.
 
-+-----------+-------------------------+----------------------------------------------------------+
 | Slot      | Type                    | Description                                              |
-+===========+=========================+==========================================================+
+|-----------|-------------------------|----------------------------------------------------------|
 | path      | `character`             | path to the ISA-Tab files                                |
-+-----------+-------------------------+----------------------------------------------------------+
 | iFileName | `character`             | name of the investigation file                           |
-+-----------+-------------------------+----------------------------------------------------------+
 | oSR       | `data.frame`            | ontology source reference section of investigation file  |
-+-----------+-------------------------+----------------------------------------------------------+
 | invest    | `data.frame`            | investigation section of investigation file              |
-+-----------+-------------------------+----------------------------------------------------------+
 | iPubs     | `data.frame`            | investigation publications section of investigation file |
-+-----------+-------------------------+----------------------------------------------------------+
 | iContacts | `data.frame`            | investigation contacts section of investigation file     |
-+-----------+-------------------------+----------------------------------------------------------+
 | study     | `list` of `data.frames` | study sections of investigation file                     |
-+-----------+-------------------------+----------------------------------------------------------+
 | sDD       | `list` of `data.frames` | study design descriptors sections of investigation file  |
-+-----------+-------------------------+----------------------------------------------------------+
 | sPubs     | `list` of `data.frames` | study publications sections of investigation file        |
-+-----------+-------------------------+----------------------------------------------------------+
 | sFacts    | `list` of `data.frames` | study factors sections of investigation file             |
-+-----------+-------------------------+----------------------------------------------------------+
 | sAssays   | `list` of `data.frames` | study assays sections of investigation file              |
-+-----------+-------------------------+----------------------------------------------------------+
 | sProts    | `list` of `data.frames` | study protocols sections of investigation file           |
-+-----------+-------------------------+----------------------------------------------------------+
 | sContacts | `list` of `data.frames` | study contacts sections of investigation file            |
-+-----------+-------------------------+----------------------------------------------------------+
 | sFiles    | `list` of `data.frames` | content of study files                                   |
-+-----------+-------------------------+----------------------------------------------------------+
 | aFiles    | `list` of `data.frames` | content of assay files                                   |
-+-----------+-------------------------+----------------------------------------------------------+
 
 All slots have corresponding functions for accessing and modifying information. The names of these access functions are the same as the slots they refer to, e.g. accessing the path slot in an `ISA` object can be done using the `path` function.
 

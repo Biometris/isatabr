@@ -38,10 +38,10 @@ validISAObject <- function(object) {
   objiFileName <- iFileName(object)
   noIFilenames <- length(objiFileName)
   if (noIFilenames == 0) {
-    stop("Did not find any investigation file at folder ", path, ".\n")
+    stop("Did not find any investigation file at folder ", objPath, ".\n")
   } else if (noIFilenames > 1) {
     stop("Found too many possible investigation files: ",
-         paste(object["Investigation Filename"], collapse = ", "), "\n")
+         paste(objiFileName, collapse = ", "), "\n")
   }
   ## Check structure of investigation file name.
   if (!grepl(pattern = paste0("^",
@@ -53,7 +53,7 @@ validISAObject <- function(object) {
     stop(paste0("The investigation file: \"",
                 objiFileName,
                 "\" for the \"",
-                ISASyntax$objiFileName,
+                ISASyntax$iFileName,
                 "\" slot does not match the requirements (start with ",
                 "\"i_\" and end with \".txt\").\n"))
   }
