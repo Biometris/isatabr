@@ -1,5 +1,3 @@
-Sys.setlocale("LC_COLLATE", "C")
-
 ## Get location to external data folder.
 extdataPath <- file.path(system.file("extdata", package = "isatabr"))
 

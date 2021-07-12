@@ -57,7 +57,8 @@ setMethod(
                         comment.char = "#",
                         blank.lines.skip = TRUE,
                         stringsAsFactors = FALSE,
-                        col.names = paste0("V", seq_len(iNoCols)))
+                        col.names = paste0("V", seq_len(iNoCols)),
+                        fileEncoding = "UTF8")
     iRownames <- iFile[, 1]
     ## row numbers where sections in the investigation file start
     OSRStart <- which(iRownames == ISASyntax$oSR)
@@ -170,7 +171,8 @@ setMethod(
                            sep = "\t",
                            blank.lines.skip = TRUE,
                            check.names = FALSE,
-                           stringsAsFactors = FALSE)
+                           stringsAsFactors = FALSE,
+                           fileEncoding = "UTF8")
       ## Remove empty rows.
       tempdf <- tempdf[apply(tempdf, 1, function(x) any(nzchar(x))), ]
       .Object@sFiles[[i]] <- unique(tempdf)
@@ -187,7 +189,8 @@ setMethod(
                            sep = "\t",
                            blank.lines.skip = TRUE,
                            check.names = FALSE,
-                           stringsAsFactors = FALSE)
+                           stringsAsFactors = FALSE,
+                           fileEncoding = "UTF8")
       ## Remove empty rows.
       tempdf <- tempdf[apply(tempdf, 1, function(x) any(nzchar(x))), ]
       colNames <- colnames(tempdf)

@@ -134,7 +134,8 @@ setMethod(f = "processAssay",
                                    header = TRUE,
                                    check.names = FALSE,
                                    blank.lines.skip = TRUE,
-                                   stringsAsFactors = FALSE)
+                                   stringsAsFactors = FALSE,
+                                   fileEncoding = "UTF8")
               ## Remove empty rows.
               tempdf <- tempdf[apply(tempdf, 1, function(x) any(nzchar(x))), ]
               ## Remove empty columns.

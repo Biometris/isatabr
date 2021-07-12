@@ -106,7 +106,8 @@ writeStudyFiles <- function(isaObject,
                 col.names = TRUE,
                 quote = TRUE,
                 sep = "\t",
-                na = "\"\"")
+                na = "\"\"",
+                fileEncoding = "UTF8")
   }
 }
 
@@ -137,7 +138,8 @@ writeAssayFiles <- function(isaObject,
                 col.names = TRUE,
                 quote = TRUE,
                 sep = "\t",
-                na = "\"\"")
+                na = "\"\"",
+                fileEncoding = "UTF8")
   }
 }
 
@@ -175,7 +177,8 @@ writeSection <- function(section = "",
                 quote = TRUE,
                 sep = "\t",
                 na = "\"\"",
-                append = TRUE)
+                append = TRUE,
+                fileEncoding = "UTF8")
   }
 }
 
