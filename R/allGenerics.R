@@ -218,20 +218,20 @@ setMethod(
 #'                                           package = "isatabr")))
 #'
 #' ## Extract path.
-#' path(isaObject1)
+#' isaPath(isaObject1)
 #'
-#' @rdname path
+#' @rdname isaPath
 #' @export
-setGeneric("path", function(x) standardGeneric("path"))
+setGeneric("isaPath", function(x) standardGeneric("isaPath"))
 
 #' @param x An object of class \linkS4class{ISA}.
-#' @param value A length-one character vector indicating the path to an
+#' @param value A length-one character vector indicating the isaPath to an
 #' accessible directory on the system.
 #'
 #' @return The updated object of class \linkS4class{ISA}.
-#' @rdname path
+#' @rdname isaPath
 #' @export
-setGeneric("path<-", function(x, value) standardGeneric("path<-"))
+setGeneric("isaPath<-", function(x, value) standardGeneric("isaPath<-"))
 
 ### iFileName standard generics.
 

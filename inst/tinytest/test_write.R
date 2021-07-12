@@ -14,7 +14,7 @@ expect_silent(writeISAtab(isaObject, path = tmpDir))
 isaObject2 <- readISATab(tmpDir)
 
 ## To simplify comparison set path for isaObject2 to that of isaObject.
-path(isaObject2) <- path(isaObject)
+isaPath(isaObject2) <- isaPath(isaObject)
 
 expect_identical(isaObject, isaObject2)
 

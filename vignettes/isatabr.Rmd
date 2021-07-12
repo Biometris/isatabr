@@ -127,12 +127,12 @@ All information from the ISA-Tab files is stored within slots in the `ISA` objec
 | sFiles    | `list` of `data.frames` | content of study files                                   |
 | aFiles    | `list` of `data.frames` | content of assay files                                   |
 
-All slots have corresponding functions for accessing and modifying information. The names of these access functions are the same as the slots they refer to, e.g. accessing the path slot in an `ISA` object can be done using the `path` function.
+All slots have corresponding functions for accessing and modifying information. The names of these access functions are the same as the slots they refer to, e.g. accessing the iFileName slot in an `ISA` object can be done using the `iFileName` function. There is one exception to this. To prevent problems with the `path` function that already exists in quite some other packages, the path slot in an `ISA` object should be accessed using the `isaPath` function. 
 
 ```{r pathAccess}
 ## Access path for isaObjects
-path(isaObject1)
-path(isaObject2)
+isaPath(isaObject1)
+isaPath(isaObject2)
 ```
 
 The path for `isaObject1` shows the directory from which the files where read. As `isaObject2` was read directly for a zipped archive, the files where first extracted into a temporary folder and that read from there. This temporary folder is shown as the path.

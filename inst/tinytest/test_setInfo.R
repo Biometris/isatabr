@@ -5,12 +5,12 @@ extdataPath <- file.path(system.file("extdata", package = "isatabr"))
 isaObject <- readISATab(path = file.path(extdataPath, "Atwell"))
 
 ## Check path.
-expect_true(grepl("extdata", path(isaObject)))
-expect_true(grepl("Atwell", path(isaObject)))
+expect_true(grepl("extdata", isaPath(isaObject)))
+expect_true(grepl("Atwell", isaPath(isaObject)))
 
-expect_error(path(isaObject) <- "tst",
+expect_error(isaPath(isaObject) <- "tst",
              "is not an existing folder on this system")
-expect_silent(path(isaObject) <- path(isaObject))
+expect_silent(isaPath(isaObject) <- isaPath(isaObject))
 
 ## Check iFileName
 expect_equal(iFileName(isaObject), "i_Investigation.txt")

@@ -17,3 +17,12 @@ objects of class \code{\link{assayTab}}.
 \description{
 Retrieve from an object of the \code{\link{ISA-class}} the Assay Tables.
 }
+\examples{
+## Read example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+                                          package = "isatabr")))
+
+## Get assay tabs for isaObject1.
+aTabObjects <- getAssayTabs(isaObject1)
+
+}

@@ -38,3 +38,38 @@ Process data from assay tab files with technology type DNA microarray
 (ms). Processing those files requires the Biobase and affy packages to be
 installed.
 }
+\examples{
+### Atwell data.
+
+## Read example Atwell data set.
+isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+                                          package = "isatabr")))
+
+## Get assay tabs for isaObject1.
+aTabObjects <- getAssayTabs(isaObject1)
+
+## Process assay data.
+isaDat <- processAssay(isaObject = isaObject1,
+                      aTabObject = aTabObjects$s_study1.txt$a_study1.txt,
+                       type = "derived")
+
+## Display first rows and columns.
+head(isaDat[, 1:10])
+
+### faahKO data.
+## Read ISA-Tab files for faahKO.
+isaObject3 <- readISATab(path = file.path(system.file("extdata/faahKO",
+                                          package = "isatabr")))
+
+## Get assay tabs for isaObject3.
+aTabObjects3 <- getAssayTabs(isaObject3)
+
+## Process assay data.
+isaDat3 <- processAssay(isaObject = isaObject3,
+                        aTabObject = aTabObjects3$s_Proteomic_profiling_of_yeast.txt$a_metabolite.txt,
+                        type = "raw")
+
+## Display output.
+isaDat3
+
+}

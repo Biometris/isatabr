@@ -28,7 +28,7 @@
 #' @export
 validISAObject <- function(object) {
   ## Check that path points to an existing folder.
-  objPath <- path(object)
+  objPath <- isaPath(object)
   if (!file.exists(objPath)) {
     stop(objPath, " is not an existing folder on this system.\n")
   } else {

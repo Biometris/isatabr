@@ -2,11 +2,11 @@
 
 ### Path.
 
-#' @rdname path
-setMethod("path", "ISA", function(x) x@path)
+#' @rdname isaPath
+setMethod("isaPath", "ISA", function(x) x@path)
 
-#' @rdname path
-setMethod("path<-", "ISA", function(x, value) {
+#' @rdname isaPath
+setMethod("isaPath<-", "ISA", function(x, value) {
   ## nomalizePath is required to protect against system dependent paths,
   ## e.g. extra or missing /.
   x@path <- normalizePath(value)

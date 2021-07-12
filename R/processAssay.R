@@ -8,6 +8,14 @@
 #' each list element, named by the Study Identifier, contains a list of
 #' objects of class \code{\link{assayTab}}.
 #'
+#' @examples
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Get assay tabs for isaObject1.
+#' aTabObjects <- getAssayTabs(isaObject1)
+#'
 #' @export
 getAssayTabs <- function(isaObject) {
   ## Get info from isaObject.
@@ -26,7 +34,7 @@ getAssayTabs <- function(isaObject) {
         paste0(assayTechName, "AssayTab") else "assayTab"
       assayMeasType <- studyAssay[j, ISASyntax$sAssayMeasType]
       new(assayClass,
-          path = path(isaObject),
+          path = isaPath(isaObject),
           sFilename = studyFileNames[i],
           sIdentifier = studyId,
           aFilename = studyAssay[j, ISASyntax$aFileName],
@@ -52,6 +60,40 @@ getAssayTabs <- function(isaObject) {
 #' processed, either "raw" for raw data files, or "derived" for derived data
 #' files. The file names are taken from the corresponding column in the
 #' \code{aTabObject}.
+#'
+#' @examples
+#' ### Atwell data.
+#'
+#' ## Read example Atwell data set.
+#' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",
+#'                                           package = "isatabr")))
+#'
+#' ## Get assay tabs for isaObject1.
+#' aTabObjects <- getAssayTabs(isaObject1)
+#'
+#' ## Process assay data.
+#' isaDat <- processAssay(isaObject = isaObject1,
+#'                       aTabObject = aTabObjects$s_study1.txt$a_study1.txt,
+#'                        type = "derived")
+#'
+#' ## Display first rows and columns.
+#' head(isaDat[, 1:10])
+#'
+#' ### faahKO data.
+#' ## Read ISA-Tab files for faahKO.
+#' isaObject3 <- readISATab(path = file.path(system.file("extdata/faahKO",
+#'                                           package = "isatabr")))
+#'
+#' ## Get assay tabs for isaObject3.
+#' aTabObjects3 <- getAssayTabs(isaObject3)
+#'
+#' ## Process assay data.
+#' isaDat3 <- processAssay(isaObject = isaObject3,
+#'                         aTabObject = aTabObjects3$s_Proteomic_profiling_of_yeast.txt$a_metabolite.txt,
+#'                         type = "raw")
+#'
+#' ## Display output.
+#' isaDat3
 #'
 #' @docType methods
 #' @rdname processAssay-methods
