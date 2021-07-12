@@ -79,7 +79,8 @@ getAssayTabs <- function(isaObject) {
 #' ## Display first rows and columns.
 #' head(isaDat[, 1:10])
 #'
-#' ### faahKO data.
+#' \donttest{
+#' ### faahKO data. - This requires the xcms package to be installed.
 #' ## Read ISA-Tab files for faahKO.
 #' isaObject3 <- readISATab(path = file.path(system.file("extdata/faahKO",
 #'                                           package = "isatabr")))
@@ -88,12 +89,14 @@ getAssayTabs <- function(isaObject) {
 #' aTabObjects3 <- getAssayTabs(isaObject3)
 #'
 #' ## Process assay data.
-#' isaDat3 <- processAssay(isaObject = isaObject3,
-#'                         aTabObject = aTabObjects3$s_Proteomic_profiling_of_yeast.txt$a_metabolite.txt,
-#'                         type = "raw")
+#' isaDat3 <-
+#'   processAssay(isaObject = isaObject3,
+#'                aTabObject = aTabObjects3$s_Proteomic_profiling_of_yeast.txt$a_metabolite.txt,
+#'                type = "raw")
 #'
 #' ## Display output.
 #' isaDat3
+#' }
 #'
 #' @docType methods
 #' @rdname processAssay-methods
