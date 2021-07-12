@@ -7,8 +7,8 @@
 #'
 #' @param isaObject An object of the \code{\link{ISA-class}}.
 #' @param path A character vector with the name of the directory to which the
-#'             file(s) should be written. The default value is the current
-#'             working directory.
+#' file(s) should be written. The default value is the current working
+#' directory.
 #'
 #' @examples
 #' ## Read example Atwell data set.
@@ -80,8 +80,7 @@ writeInvestigationFile <- function(isaObject,
 }
 
 #' @param studyFilenames A character vector indicating the study files that
-#'                       should be written. Default all study files in isaObject
-#'                       are written.
+#' should be written. Default all study files in isaObject are written.
 #'
 #' @rdname writeISAtab
 #' @export
@@ -89,6 +88,11 @@ writeStudyFiles <- function(isaObject,
                             studyFilenames = getStudyFileNames(isaObject),
                             path = getwd()){
   studyFiles <- sFiles(isaObject)
+  missStudyFiles <- studyFilenames[!studyFilenames %in% names(studyFiles)]
+  if (length(missStudyFiles) > 0) {
+    stop("The following study files are not present in the isaObject:\n",
+         paste(missStudyFiles, collapse = ","))
+  }
   for (studyFilename in studyFilenames) {
     studyContent <- studyFiles[[studyFilename]]
     ## Construct full output file name.
@@ -106,9 +110,8 @@ writeStudyFiles <- function(isaObject,
   }
 }
 
-#' @param assayFilenames A character vector indicating the study files that
-#'                       should be written. Default all study files in isaObject
-#'                       are written.
+#' @param assayFilenames A character vector indicating the assay files that
+#' should be written. Default all assay files in isaObject are written.
 #'
 #' @rdname writeISAtab
 #' @export
@@ -116,6 +119,11 @@ writeAssayFiles <- function(isaObject,
                             assayFilenames = unlist(getAssayFileNames(isaObject)),
                             path = getwd()) {
   assayFiles <- aFiles(isaObject)
+  missAssayFiles <- assayFilenames[!assayFilenames %in% names(assayFiles)]
+  if (length(missAssayFiles) > 0) {
+    stop("The following assay files are not present in the isaObject:\n",
+         paste(missAssayFiles, collapse = ","))
+  }
   for (assayFilename in assayFilenames) {
     assayContent <- assayFiles[[assayFilename]]
     ## Construct full output file name.
@@ -138,11 +146,11 @@ writeAssayFiles <- function(isaObject,
 #' Helper function for adding a single section to an output file.
 #'
 #' @param section A length-one character vector indicating the section name
-#'                matching a section name in ISASyntax.
+#' matching a section name in ISASyntax.
 #' @param sectionContent A data.frame with the content of the section that is to
-#'                       be written.
+#' be written.
 #' @param outFile A length-one character vector containing the full path to the
-#'                output file.
+#' output file.
 #'
 #' @noRd
 #' @keywords internal

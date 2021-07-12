@@ -1,4 +1,6 @@
 ## Check that checks work correctly.
+expect_error(readISATab(path = 1),
+             "The provided arguments must be of class character")
 expect_error(readISATab(path = "bla"),
              "bla is not an existing folder on this system")
 expect_error(readISATab(),

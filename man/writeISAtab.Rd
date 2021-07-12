@@ -27,16 +27,14 @@ writeAssayFiles(
 \item{isaObject}{An object of the \code{\link{ISA-class}}.}
 
 \item{path}{A character vector with the name of the directory to which the
-file(s) should be written. The default value is the current
-working directory.}
+file(s) should be written. The default value is the current working
+directory.}
 
 \item{studyFilenames}{A character vector indicating the study files that
-should be written. Default all study files in isaObject
-are written.}
+should be written. Default all study files in isaObject are written.}
 
-\item{assayFilenames}{A character vector indicating the study files that
-should be written. Default all study files in isaObject
-are written.}
+\item{assayFilenames}{A character vector indicating the assay files that
+should be written. Default all assay files in isaObject are written.}
 }
 \description{
 Write ISA-Tab object to files. The investigation file, study files and assay
