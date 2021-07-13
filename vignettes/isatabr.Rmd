@@ -124,7 +124,7 @@ All information from the ISA-Tab files is stored within slots in the `ISA` objec
 | sFacts    | `list` of `data.frames` | STUDY FACTORS sections of investigation file             |
 | sAssays   | `list` of `data.frames` | STUDY ASSAYS sections of investigation file              |
 | sProts    | `list` of `data.frames` | STUDY PROTOCOLS sections of investigation file           |
-| sContacts | `list` of `data.frames` | STUY CONTACTS sections of investigation file            |
+| sContacts | `list` of `data.frames` | STUDY CONTACTS sections of investigation file            |
 | sFiles    | `list` of `data.frames` | content of study files                                   |
 | aFiles    | `list` of `data.frames` | content of assay files                                   |
 
