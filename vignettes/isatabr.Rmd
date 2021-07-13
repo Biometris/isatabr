@@ -49,25 +49,25 @@ In order to facilitate identification of ISA-Tab component files, specific namin
 
 The Investigation file fulfills four needs:
 
--   to declare key entities, such as factors, protocols, which may be referenced in the other files
--   to track provenance of the terminologies (controlled vocabularies or ontologies) there are used, where applicable
--   to relate each Study file to an Investigation (this only becomes necessary when two or more Study files need to be grouped)
--   to relate Assay files to Studies.
+1. to declare key entities, such as factors, protocols, which may be referenced in the other files;
+2. to track provenance of the terminologies (controlled vocabularies or ontologies) there are used, where applicable;
+3. to relate each Study file to an Investigation (this only becomes necessary when two or more Study files need to be grouped);
+4. to relate Assay files to Studies.
 
 
 An Investigation file is structured as a table with vertical headings along the first column, and corresponding values in the subsequent columns. The following section headings must appear in the Investigation file (in order), and the study block (headings from STUDY to STUDY CONTACTS) can be repeated, one block per study associated with the investigation.
 
--   ONTOLOGY SOURCE REFERENCE
--   INVESTIGATION
--   INVESTIGATION PUBLICATIONS
--   INVESTIGATION CONTACTS
--   STUDY
--   STUDY DESIGN DESCRIPTORS
--   STUDY PUBLICATIONS
--   STUDY FACTORS
--   STUDY ASSAYS
--   STUDY PROTOCOLS
--   STUDY CONTACTS
+* ONTOLOGY SOURCE REFERENCE
+* INVESTIGATION
+* INVESTIGATION PUBLICATIONS
+* INVESTIGATION CONTACTS
+* STUDY
+* STUDY DESIGN DESCRIPTORS
+* STUDY PUBLICATIONS
+* STUDY FACTORS
+* STUDY ASSAYS
+* STUDY PROTOCOLS
+* STUDY CONTACTS
 
 For a full description of all sections see the aforementioned [site](https://isa-specs.readthedocs.io/en/latest/isatab.html).
 
@@ -87,16 +87,16 @@ As an example for working with the `isatabr` package we will use the data set th
 
 ISA-Tab files can be stored in two different ways, either as separate files in a directory, or as .zip file containing the files. The example data is included in both ways in the package. Both formats can be read into `R` using the `readISATab` function.
 
-When reading ISA-Tab files from a directory, only the name of the directory where the ISA-TAB files are located needs to be specified.
+When reading ISA-Tab files from a directory, only the name of the directory, where the ISA-TAB files are located, needs to be specified.
 
-isaObject1 \<- readISATab(path = file.path(system.file("extdata/Atwell", package = "isatabr")))
+<!-- isaObject1 \<- readISATab(path = file.path(system.file("extdata/Atwell", package = "isatabr"))) -->
 
 ```{r read}
 ## Read ISA-Tab files from directory.
 isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell", package = "isatabr")))
 ```
 
-When reading zipped files, both the directory where the zip-file is located and the name of the file need to be specified.
+When reading zipped files, both the directory, where the zip-file is located, and the name of the file need to be specified.
 
 ```{r readZip}
 ## Read ISA-Tab files from directory.
@@ -104,31 +104,31 @@ isaObject2 <- readISATab(path = file.path(system.file("extdata", package = "isat
                          zipfile = "Atwell.zip")
 ```
 
-In both cases `readISATab` will automatically detect the Investigation, Study and Assay files assuming the naming conventions described in the previous section are followed. If this is not the case the function will give an error indicating the problem. The imported ISA-Tab files are stored in an object of the S4 class `ISA`. Since the information is almost identical for reading files from a directory and zipped-files the following sections will show the example for the files read from a directory only.
+In both cases `readISATab` will automatically detect the Investigation, Study and Assay files assuming the naming conventions described in the previous section are followed. If this is not the case, the function will give an error indicating the problem. The imported ISA-Tab files are stored in an object of the S4 class `ISA`. Since the information is almost identical for reading files from a directory and zipped-files, the following sections will show the example for the files read from a directory only.
 
 # Accessing and updating ISA objects.
 
-All information from the ISA-Tab files is stored within slots in the `ISA` object. The table below gives an overview of the different slots and a brief description of the information stored in the slot. For a more exhaustive description see `help("ISA")`. Note that an investigation may have multiple studies and data concerning studies is therefore stored in a `list` where one element in the `list` corresponds to one study. Likewise a study may consist of multiple assays and assay data is stored in a `list` where one element in the `list` corresponds to one assay.
+All information from the ISA-Tab files is stored within slots in the `ISA` object. The table below gives an overview of the different slots and a brief description of the information stored in the slot. For a more exhaustive description see `help("ISA")`. Note that an investigation may have multiple studies. Therefore, data concerning studies is stored in a `list` object, where one element in the `list` corresponds to one study. Likewise a study may consist of multiple assays and assay data is stored in a `list` object, where one element in the `list` corresponds to one assay.
 
 | Slot      | Type                    | Description                                              |
 |-----------|-------------------------|----------------------------------------------------------|
 | path      | `character`             | path to the ISA-Tab files                                |
 | iFileName | `character`             | name of the investigation file                           |
-| oSR       | `data.frame`            | ontology source reference section of investigation file  |
-| invest    | `data.frame`            | investigation section of investigation file              |
-| iPubs     | `data.frame`            | investigation publications section of investigation file |
-| iContacts | `data.frame`            | investigation contacts section of investigation file     |
-| study     | `list` of `data.frames` | study sections of investigation file                     |
-| sDD       | `list` of `data.frames` | study design descriptors sections of investigation file  |
-| sPubs     | `list` of `data.frames` | study publications sections of investigation file        |
-| sFacts    | `list` of `data.frames` | study factors sections of investigation file             |
-| sAssays   | `list` of `data.frames` | study assays sections of investigation file              |
-| sProts    | `list` of `data.frames` | study protocols sections of investigation file           |
-| sContacts | `list` of `data.frames` | study contacts sections of investigation file            |
+| oSR       | `data.frame`            | ONTOLOGY SOURCE REFERENCE section of investigation file  |
+| invest    | `data.frame`            | INVESTIGATION section of investigation file              |
+| iPubs     | `data.frame`            | INVESTIGATION PUBLICATIONS section of investigation file |
+| iContacts | `data.frame`            | INVESTIGATION CONTACTS section of investigation file     |
+| study     | `list` of `data.frames` | STUDY sections of investigation file                     |
+| sDD       | `list` of `data.frames` | STUDY DESIGN DESCRIPTORS sections of investigation file  |
+| sPubs     | `list` of `data.frames` | STUDY PUBLICATIONS sections of investigation file        |
+| sFacts    | `list` of `data.frames` | STUDY FACTORS sections of investigation file             |
+| sAssays   | `list` of `data.frames` | STUDY ASSAYS sections of investigation file              |
+| sProts    | `list` of `data.frames` | STUDY PROTOCOLS sections of investigation file           |
+| sContacts | `list` of `data.frames` | STUY CONTACTS sections of investigation file            |
 | sFiles    | `list` of `data.frames` | content of study files                                   |
 | aFiles    | `list` of `data.frames` | content of assay files                                   |
 
-All slots have corresponding functions for accessing and modifying information. The names of these access functions are the same as the slots they refer to, e.g. accessing the iFileName slot in an `ISA` object can be done using the `iFileName` function. There is one exception to this. To prevent problems with the `path` function that already exists in quite some other packages, the path slot in an `ISA` object should be accessed using the `isaPath` function. 
+All slots have corresponding functions for accessing and modifying information. The names of these access functions are the same as the slots they refer to, e.g. accessing the iFileName slot in an `ISA` object can be done using the `iFileName()` function. There is one exception to this. To prevent problems with the `path()` function, that already exists in quite some other packages, the path slot in an `ISA` object should be accessed using the `isaPath()` function. 
 
 ```{r pathAccess}
 ## Access path for isaObjects
@@ -136,7 +136,7 @@ isaPath(isaObject1)
 isaPath(isaObject2)
 ```
 
-The path for `isaObject1` shows the directory from which the files where read. As `isaObject2` was read directly for a zipped archive, the files where first extracted into a temporary folder and that read from there. This temporary folder is shown as the path.
+The path for `isaObject1` shows the directory from which the files were read. As `isaObject2` was read directly for a zipped archive, the files were first extracted into a temporary folder and subsequently read from there. This temporary folder is shown as the path.
 
 The other slots are accessible in a similar way. Some more examples are shown below.
 
@@ -154,9 +154,9 @@ isaSDD <- sDD(isaObject1)
 isaSDD$GMI_Atwell_study
 ```
 
-It is not only possible to access the different slots in an `ISA` object, the slots can also be updated. As the access function, the functions that allow to do this have the same name as the slots they refer to. As an example, let's assume an error sneaked into the ontology source reference section and we want to update one of the source versions.
+It is not only possible to access the different slots in an `ISA` object, the slots can also be updated. As the access function, the update functions have the same name as the slots they refer to. As an example, let's assume an error sneaked into the ONTOLOGY SOURCE REFERENCE section and we want to update one of the source versions.
 
-First have a look at the current content of the ontology source reference section.
+First have a look at the current content of the ONTOLOGY SOURCE REFERENCE section.
 
 ```{r osrAccess}
 (isaOSR <- oSR(isaObject1))
@@ -179,9 +179,9 @@ In a similar way all slots in an `ISA` object can be accessed and updated.
 
 # Processing assay files
 
-The assay files may contain information about the files used to store the actual data for the assay. Per assay file two types of data files may be referred to, the file(s) containing the raw data and the file(s) containing derived data.
+The assay files may contain information about the files used to store the actual data for the assay. Per assay file two types of data files may be referred to: 1) the file(s) containing the raw data, and 2) the file(s) containing derived data.
 
-Looking at the assay tab file in our example data, we see that the Raw Data File column is empty, no raw data files are available. The Derived Data File however mentions the file d_data.txt.
+Looking at the assay tab file in our example data, we see that the Raw Data File column is empty, no raw data files are available. However, the Derived Data File shows the file `d_data.txt`.
 
 ```{r getAssay}
 ## Inspect assay tab.
@@ -189,9 +189,9 @@ isaAFile <- aFiles(isaObject1)
 head(isaAFile$a_study1.txt)
 ```
 
-To read the contents of the data files, either raw or derived, in the assay tab file, we can use the `processAssay` function. The exact working of this function depends on the technology type of the assay. For most technology types the data files are read as plain .txt files assuming a tab-delimited format. Only for mass spectrometry and micro array data the files are read differently (see the sections below). As the output above shows the assay file in the example has a Data Transformation technology and is therefore read as tab-delimited file.
+To read the contents of the data files, either raw or derived, in the assay tab file, we can use the `processAssay()` function. The exact working of this function depends on the technology type of the assay. For most technology types the data files are read as plain `.txt` files assuming a tab-delimited format. Only for mass spectrometry and microarray data the files are read differently (see the sections below). As the output above shows, the assay file in the example has a Data Transformation technology and is therefore read as tab-delimited file.
 
-Before being able to process the assay file, i.e. read the data, we first have to extract the assay tabs using the `getAssayTabs` function. This function extracts all the assay files from an `ISA` object and stores them as `assayTab` objects. These `assayTab` objects contain not only the content of the assay tab file, but also extra information, e.g. technology type.
+Before being able to process the assay file, i.e. read the data, we first have to extract the assay tabs using the `getAssayTabs()` function. This function extracts all the assay files from an `ISA` object and stores them as `assayTab` objects. These `assayTab` objects contain not only the content of the assay tab file, but also extra information, e.g. technology type.
 
 ```{r procAssay}
 ## Get assay tabs for isaObject1.
@@ -210,16 +210,16 @@ The data is now stored in `isaDat` and can be used for further analysis within `
 
 ## Mass spectrometry assay files
 
-Mass spectrometry data is usually stored in NetCDF file format, i.e. in .CDF files. Assay data containing these data will be processed in a different way than regular assay data. To be able to do this the [xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) package is required. This package is available from Bioconductor.
+Mass spectrometry data is often stored in Network Common Data Form (NetCDF) files, i.e. in .CDF files. Assay data containing these data will be processed in a different way than regular assay data. To be able to do this the [xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) package is required. This package is available from [Bioconductor](https://bioconductor.org/).
 
-As an example for the processing of Mass spectrometry files we will use a subset of the quantitated LC/MS peaks from the spinal cords of 6 wild-type and 6 FAAH knockout mice described in @Saghatelian2004. A more extensive version of this data set is available in the [faahKO](http://www.bioconductor.org/packages/release/data/experiment/html/faahKO.html){.uri} data package on Bioconductor.
+As an example for the processing of mass spectrometry files we will use a subset of the quantitated LC/MS peaks from the spinal cords of 6 wild-type and 6 fatty acid amide hydrolase (FAAH) knockout mice described in @Saghatelian2004. A more extensive version of this data set is available in the [faahKO](http://www.bioconductor.org/packages/release/data/experiment/html/faahKO.html){.uri} data package on Bioconductor.
 
 ```{r readFaahko}
 ## Read ISA-Tab files for faahKO.
 isaObject3 <- readISATab(path = file.path(system.file("extdata/faahKO", package = "isatabr")))
 ```
 
-After reading the ISA-Tab files, we can now process the mass spectrometry assay data. In this example the raw data is available, so when processing the assay we specify `type = "raw"`. The rest of the code is similar to what we saw in the previous section.
+After reading the ISA-Tab files, we can now process the mass spectrometry assay data. In this example the raw data is available, so when processing the assay we specify `type = "raw"`. The rest of the code is similar to the previous section.
 
 ```{r processFaahko, message=FALSE, eval=requireNamespace("xcms")}
 ## Get assay tabs for isaObject3.
@@ -238,13 +238,13 @@ As the output shows, processing the mass spectrometry data gives an object of cl
 
 ## Microarray assay files
 
-Microarray data is usually stored in an Affymetrix Probe Results file. These .CEL files contain information on the probe set's intensity values, and a probe set represents a gene. Assay data containing these data will be processed in a different way than regular assay data. To be able to do this the [affy](https://www.bioconductor.org/packages/release/bioc/html/affy.html) package is required. This package is available from Bioconductor.
+Microarray data is often stored in an Affymetrix Probe Results file. These `.CEL` files contain information on the probe set's intensity values, and a probe set represents a gene. Assay data containing these data will be processed in a different way than regular assay data. To be able to do this the [affy](https://www.bioconductor.org/packages/release/bioc/html/affy.html) package is required. This package is available from [Bioconductor](https://bioconductor.org/).
 
-Processing microarray data is done in a very similar way as processing mass spectrometry data, which is described in the previous section. The main difference is that the resulting object will in this case be an object object of class `ExpressionSet` which is used as input in many Bioconductor packages.
+Processing microarray data is done in a very similar way as processing mass spectrometry data, as described in the previous section. The main difference is that the resulting object will in this case be an object object of class `ExpressionSet`, which is used as input in many Bioconductor packages.
 
 # Writing files in the ISA-Tab format.
 
-After updating an `ISA` object it can be written back to a directory using the `writeISAtab` function. All content of the `ISA` object will be written to investigation, study and assay files following the ISA-Tab standard for file specification. By default the files are written to the current working directory, but the directory can be specified using the `path` argument.
+After updating an `ISA` object, it can be written back to a directory using the `writeISAtab()` function. All content of the `ISA` object will be written to investigation, study and assay files following the ISA-Tab standard for file specification. By default the files are written to the current working directory, but the directory can be specified using the `path` argument.
 
 ```{r write, eval=FALSE}
 ## Write content of ISA object to a temporary directory.
@@ -252,7 +252,7 @@ writeISAtab(isaObject = isaObject1,
             path = tempdir())
 ```
 
-Note that existing files are always overwritten. So writing files to the directory where the original files were read from will result in the original files being overwritten.
+Note that existing files are always overwritten. Therefore, writing files to the same directory, from where the original files were read, will result in the original files being overwritten.
 
 Besides writing the full `ISA` object it is also possible to write only the investigation file , one or more study files or one or more assay files.
 
