@@ -6,3 +6,4 @@ testData
 testScripts
 R/old/
 ^info/
+^cran-comments\.md$
