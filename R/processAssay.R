@@ -82,20 +82,22 @@ getAssayTabs <- function(isaObject) {
 #' \donttest{
 #' ### faahKO data. - This requires the xcms package to be installed.
 #' ## Read ISA-Tab files for faahKO.
-#' isaObject3 <- readISATab(path = file.path(system.file("extdata/faahKO",
-#'                                           package = "isatabr")))
+#' if (requireNamespace("xcms")) {
+#'   isaObject3 <- readISATab(path = file.path(system.file("extdata/faahKO",
+#'                                             package = "isatabr")))
 #'
-#' ## Get assay tabs for isaObject3.
-#' aTabObjects3 <- getAssayTabs(isaObject3)
+#'   ## Get assay tabs for isaObject3.
+#'   aTabObjects3 <- getAssayTabs(isaObject3)
 #'
-#' ## Process assay data.
-#' isaDat3 <-
-#'   processAssay(isaObject = isaObject3,
-#'                aTabObject = aTabObjects3$s_Proteomic_profiling_of_yeast.txt$a_metabolite.txt,
-#'                type = "raw")
+#'   ## Process assay data.
+#'   isaDat3 <-
+#'     processAssay(isaObject = isaObject3,
+#'                  aTabObject = aTabObjects3$s_Proteomic_profiling_of_yeast.txt$a_metabolite.txt,
+#'                  type = "raw")
 #'
-#' ## Display output.
-#' isaDat3
+#'   ## Display output.
+#'   isaDat3
+#'   }
 #' }
 #'
 #' @docType methods
