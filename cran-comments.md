@@ -7,6 +7,7 @@
 ## Test environments
 
 * local Windows 10 install, R 4.1
+* winbuilder (release)
 * Ubuntu (on github actions, devel and release)
 * macOS (on github actions, release)
 * R-hub (devel and release)
@@ -26,8 +27,10 @@ Maintainer: 'Bart-Jan van Rossum <bart-jan.vanrossum@wur.nl>'
 New submission
 
 Possibly mis-spelled words in DESCRIPTION:
-  ISA (4:33, 7:61)
+  ISA (4:31, 6:14, 8:64)
+  biomedical (7:40)
+  isatabr (7:67)
   
-This is spelled correctly.
+These are all spelled correctly.
   
   
