@@ -1,5 +1,7 @@
 ## Initial release
 
+- After earlier submission, title and DESCRIPTION have been modified according to comments. Also writeISATab.Rd now has a \value section.
+
 ----
 
 ## Test environments

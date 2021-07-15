@@ -36,6 +36,9 @@ should be written. Default all study files in isaObject are written.}
 \item{assayFilenames}{A character vector indicating the assay files that
 should be written. Default all assay files in isaObject are written.}
 }
+\value{
+No return value, files are written to path.
+}
 \description{
 Write ISA-Tab object to files. The investigation file, study files and assay
 files are written to the folder specified in \code{path}.\cr\cr

@@ -10,6 +10,8 @@
 #' file(s) should be written. The default value is the current working
 #' directory.
 #'
+#' @return No return value, files are written to path.
+#'
 #' @examples
 #' ## Read example Atwell data set.
 #' isaObject1 <- readISATab(path = file.path(system.file("extdata/Atwell",

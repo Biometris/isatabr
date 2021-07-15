@@ -1,9 +1,12 @@
 Package: isatabr
 Type: Package
-Date: 2021-07-14
-Title: R Implementation for the ISA Abstract Model of the Metadata Framework
+Date: 2021-07-15
+Title: Implementation for the ISA Abstract Model
 Version: 1.0.0
-Description: Reading, modifying and writing of files in the ISA tab format.
+Description: ISA is a metadata framework to manage an increasingly diverse set 
+    of life science, environmental and biomedical experiments. In isatabr 
+    methods for reading, modifying and writing of files in the ISA-Tab format
+    are implemented. It also contains methods for processing assay data.
 Authors@R: c(
     person("Bart-Jan", "van Rossum", role = c("aut", "cre"),
            email = "bart-jan.vanrossum@wur.nl",
