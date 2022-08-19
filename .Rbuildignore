@@ -12,3 +12,4 @@ R/old/
 ^docs$
 ^pkgdown$
 .gitlab-ci.yml
+^CRAN-SUBMISSION$

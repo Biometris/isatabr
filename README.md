@@ -7,7 +7,7 @@
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/isatabr)](https://www.r-pkg.org/pkg/isatabr)
 [![R-CMD-check](https://github.com/Biometris/isatabr/workflows/R-CMD-check/badge.svg)](https://github.com/Biometris/isatabr/actions?workflow=R-CMD-check)
-[![codecov](https://codecov.io/gh/Biometris/isatabr/branch/master/graph/badge.svg)](https://codecov.io/gh/Biometris/isatabr)
+[![codecov](https://codecov.io/gh/Biometris/isatabr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Biometris/isatabr)
 
 **isatabr** is an R package for easily reading, modifying and writing
 files in the Investigation/Study/Assay (ISA) Abstract Model of the
