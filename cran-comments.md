@@ -1,12 +1,12 @@
-## Initial release
+## Patch release
 
-- After earlier submission, title and DESCRIPTION have been modified according to comments. Also writeISATab.Rd now has a \value section.
+- Patch release to fix issues with HTML5 documentation
 
 ----
 
 ## Test environments
 
-* local Windows 10 install, R 4.1
+* local Windows 10 install, R 4.2.1
 * winbuilder (release)
 * Ubuntu (on github actions, devel and release)
 * macOS (on github actions, release)
@@ -17,20 +17,3 @@
 ## R CMD check results
 
 There were no ERRORs or WARNINGs.
-
-There was 1 NOTE:
-
-* checking CRAN incoming feasibility ... NOTE
-
-Maintainer: 'Bart-Jan van Rossum <bart-jan.vanrossum@wur.nl>'
-
-New submission
-
-Possibly mis-spelled words in DESCRIPTION:
-  ISA (4:31, 6:14, 8:64)
-  biomedical (7:40)
-  isatabr (7:67)
-  
-These are all spelled correctly.
-  
-  
