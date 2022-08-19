@@ -11,3 +11,4 @@ R/old/
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+.gitlab-ci.yml
