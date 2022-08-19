@@ -1,7 +1,7 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   isatabr: isatabr.html
-last_built: 2021-07-16T07:23Z
+last_built: 2022-08-19T09:31Z
 
