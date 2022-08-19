@@ -2,7 +2,7 @@ Package: isatabr
 Type: Package
 Date: 2022-08-19
 Title: Implementation for the ISA Abstract Model
-Version: 1.0.1
+Version: 1.0.1.9000
 Description: ISA is a metadata framework to manage an increasingly diverse set 
     of life science, environmental and biomedical experiments. In isatabr 
     methods for reading, modifying and writing of files in the ISA-Tab format
